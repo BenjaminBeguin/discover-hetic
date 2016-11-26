@@ -12,4 +12,6 @@ $ bundle exec rake db:migrate
 
 $ rails s
 
+$ git checkout dev
+
 ```
