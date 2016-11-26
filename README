@@ -1,0 +1,89 @@
+#####################################################################
+#                                  TP 2                             #
+#####################################################################
+
+/!\ Exécutez toutes les commandes depuis /tp2
+
+-------------------------------------------------------------------
+Installation
+-------------------------------------------------------------------
+
+Pour installer Ruby: http://marcgg.com/classes/hetic/
+
+Pour installer l'environnement (bundler, rspec, rails):
+
+$ cd /path/to/tp/
+$ gem install bundler
+$ bundle install
+
+Pour vérifier si l'installation s'est bien déroulée, lancez:
+
+$ bundle exec rails -v
+
+... qui devrait vous donner: "Rails 5.0.0.1"
+
+Ensuite créez votre base de données en faisant:
+
+$ bundle exec rake db:create
+
+-------------------------------------------------------------------
+Les Tests
+-------------------------------------------------------------------
+
+Cette fois ci, les fichiers sont localisés dans /spec/models/
+
+Pour les lancer, faites:
+
+$ bundle exec rspec spec/ --format=documentation --color
+
+/!\ Si vous exécutez un generateur, il vous demandera si vous
+souhaitez créer des fichiers de tests et donc remplacer ceux
+que je vous ai fourni. A ce moment la dites bien sûr "non".
+
+-------------------------------------------------------------------
+Les Migrations
+-------------------------------------------------------------------
+
+Utilisez des migrations pour créer et modifier votre base de données.
+
+Attention, vous ne pouvez pas modifier une migration une fois qu'elle
+a été exécutée (cf cours).
+
+Dans ce cas vous pouvez soit créer une migration de plus pour corriger
+votre erreur, soit détruire et recréer la base de données:
+
+$ bundle exec rake db:drop
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate RAILS_ENV=test
+
+
+-------------------------------------------------------------------
+Rendu
+-------------------------------------------------------------------
+
+- Renommez le dossier téléchargé avec les noms de votre binome
+
+- Modifiez le fichier EQUIPE.txt en respectant le format "NOM / Prénom", une personne par ligne.
+
+- Compressez le dossier et mettez le sur l'intranet
+
+- Date limite de rendu: Dimanche 23h59 de la semaine du TP
+
+-------------------------------------------------------------------
+Notation
+-------------------------------------------------------------------
+
+- 1 point par test qui passe après l'exécution de:
+
+$ bundle exec rake db:drop
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate RAILS_ENV=test
+$ bundle exec rspec spec
+
+- Retrait de 2 points par jour de retard, 0 pour un non rendu avant le prochain cours
+
+- Retrait de 5 points pour non respect du format de rendu (EQUIPE.txt, renommage du dossier)
+
+- 0 pour les deux groupes si il y copie avérée
+
+

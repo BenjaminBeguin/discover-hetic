@@ -1,0 +1,15 @@
+<h1>List of Users</h1>
+<div>
+	<% if @connected %>
+
+	  	<%= link_to "sign out", destroy_user_session_path, method: :delete %>
+	<% end %>
+</div>
+
+<% @users.each do |user| %>
+	<li>
+		<%= image_tag(user.avatar.url(:thumb)) %> ->
+		<%= user.first_name %> <%= user.last_name %>
+	</li>
+
+<% end %>
