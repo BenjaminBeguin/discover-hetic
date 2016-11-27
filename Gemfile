@@ -24,8 +24,8 @@ gem 'turbolinks'
 
 gem 'devise'
 gem 'paperclip', '~> 4.1'
-gem 'aws-sdk', '~> 2.3.0'
-
+#gem 'aws-sdk', '~> 2.3.0'
+gem 'aws-sdk', '< 2.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 ruby "2.3.1"
