@@ -3,27 +3,33 @@ require "spec_helper"
 RSpec.describe "User", :type => :model do
 
   it "can be saved" do
-    user = User.create(name: "Mordecai", email: "m@rshow.com")
+    user = User.create(first_name: "Jean", last_name: "Villagois", email: "jean@gmail.com", password: "password")
     user.save!
 
     found = User.last
-    expect(found.name).to eq("Mordecai")
-    expect(found.email).to eq("m@rshow.com")
+    expect(found.first_name).to eq("Jean")
+    expect(found.last_name).to eq("Villagois")
+    expect(found.email).to eq("jean@gmail.com")
   end
 
-  it "requires a name and an email" do
+  it "requires a first name,lastname, an email and a password" do
     user = User.new
     expect(user.valid?).to eq(false)
 
-    user.name = "Rigby"
+    user.first_name = "Clement"
+    user.last_name = "Rotule"
     expect(user.valid?).to eq(false)
 
     user.email = "r@rshow.com"
+    expect(user.valid?).to eq(false)
+
+    user.password = "password"
     expect(user.valid?).to eq(true)
+
   end
 
   it "requires a somewhat valid email" do
-    user = User.new(name: "Rigby")
+    user = User.new(first_name: "Jean", last_name: "Villagois" , password: "jesuislepassword" )
     expect(user.valid?).to eq(false)
 
     user.email = "rigby"
@@ -32,27 +38,32 @@ RSpec.describe "User", :type => :model do
     user.email = "rigby@rshow"
     expect(user.valid?).to eq(false)
 
-    user.email = "rigby@rshow.com"
+    user.email = "rigby@rssshow.com"
+
+    expect(user.valid?).to eq(true)
+  end
+
+  it "requires more than 6 caracteres for password" do
+    user = User.new(first_name: "Jean", last_name: "Villagois" , email: "rigby@rssshow.com" )
+    expect(user.valid?).to eq(false)
+
+    user.password = "12345"
+    expect(user.valid?).to eq(false)
+
+    user.password = "Aze12"
+    expect(user.valid?).to eq(false)
+
+    user.password = "Aze124"
+
     expect(user.valid?).to eq(true)
   end
 
   it "is impossible to add the same email twice" do
-    user = User.create(name: "Mordecai", email: "m@rshow.com")
+    user = User.create(first_name: "Jean", last_name: "Villagois" , email: "m@rshow.com" , password: "jesuislepassword")
     expect(user.valid?).to eq(true)
 
-    other_user = User.create(name: "Mordecai", email: "m@rshow.com")
+    other_user = User.create(first_name: "Jean", last_name: "Villagois" , email: "m@rshow.com" , password: "jesuislepassword")
     expect(other_user.valid?).to eq(false)
   end
 
-  it "exists a method to export all data to json" do
-    user = User.create(name: "Mordecai", email: "m@rshow.com")
-    other_user = User.create(name: "Javier", email: "jav@ier.com")
-    res = User.export(format: :json)
-    expect(res).to eq('[{"id":'+user.id.to_s+',"name":"Mordecai","email":"m@rshow.com"},{"id":'+other_user.id.to_s+',"name":"Javier","email":"jav@ier.com"}]')
-
-    expect{User.export(format: :xml)}.to raise_error(ArgumentError)
-
-    # For more info about errors and exceptions in Ruby
-    # http://rubylearning.com/satishtalim/ruby_exceptions.html
-  end
 end
