@@ -42,3 +42,5 @@ production:
   database: discover_production
   pool: 5
   timeout: 5000
+  access_key_id: AKIAIUQT3ZCLQ5JLLTJA
+  secret_access_key: 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

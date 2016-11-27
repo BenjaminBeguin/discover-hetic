@@ -6596,3 +6596,647 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 33ms (Views: 15.3ms | ActiveRecord: 3.5ms)
 
 
+  [1m[35m (1.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "discover_development"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "discover_test"[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4272962377141525935);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20161125232910)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161125232910"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFirstnameToUsers (20161125235330)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161125235330"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFieldToUsers (20161126002606)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "url" character varying[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161126002606"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeAvartFormatInUsers (20161126005657)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" DROP "avatar"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_content_type" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_updated_at" timestamp[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161126005657"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-11-27 13:37:47 UTC], ["updated_at", 2016-11-27 13:37:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4272962377141525935)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for ::1 at 2016-11-27 14:37:54 +0100
+Started GET "/" for ::1 at 2016-11-27 14:38:43 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 429ms (Views: 416.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/application.self-85a3df08aab34bc6a22c0cf18bd349b5a3fda5edca3e6dead5e0390446173b12.js?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/application.self-565a90fd247bd9ef75cf5f71be1e11e37c3ad80695d8bdfb331fe844afbe0a9e.css?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-11-27 14:38:43 +0100
+Started GET "/users/index" for ::1 at 2016-11-27 14:38:49 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/users/index"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered collection of /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [26 times] (23.1ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (11.0ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (102.2ms)
+Started GET "/users/" for ::1 at 2016-11-27 14:39:06 +0100
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-27 14:39:06 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (37.6ms)
+Completed 200 OK in 112ms (Views: 62.6ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/zeht" for ::1 at 2016-11-27 14:54:10 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/users/zeht"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered collection of /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [26 times] (7.5ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (68.5ms)
+Started GET "/users/sign_up" for ::1 at 2016-11-27 14:55:18 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 65ms (Views: 63.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/zegrhty" for ::1 at 2016-11-27 14:57:11 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/users/zegrhty"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [26 times] (10.1ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (72.4ms)
+Started GET "/users/" for ::1 at 2016-11-27 15:16:42 +0100
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-27 15:16:42 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 46ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/users.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/application.self-565a90fd247bd9ef75cf5f71be1e11e37c3ad80695d8bdfb331fe844afbe0a9e.css?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/welcome.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/application.self-85a3df08aab34bc6a22c0cf18bd349b5a3fda5edca3e6dead5e0390446173b12.js?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-11-27 15:16:42 +0100
+Started POST "/users/sign_in" for ::1 at 2016-11-27 15:16:47 +0100
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2I63gPp0hD1NooAqgfL9LVSfB1J7qmcG1knk5QMvo+I6uDrT4BzJp4CiclNyTxNOEjK3xEdYZEN4icrDPsgQDw==", "user"=>{"email"=>"jean@bon.fr", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jean@bon.fr"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 33ms (ActiveRecord: 3.5ms)
+
+
+Processing by Users::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2I63gPp0hD1NooAqgfL9LVSfB1J7qmcG1knk5QMvo+I6uDrT4BzJp4CiclNyTxNOEjK3xEdYZEN4icrDPsgQDw==", "user"=>{"email"=>"jean@bon.fr", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 198ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-11-27 15:16:50 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 47ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-11-27 15:17:04 +0100
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qpML5f9V7VORgDIHIJ7jW6/KLpEvalD4u1o93ERcUfJIpYa25T2gyVyAwH7TIw046WeeBxOYU70VmhP6ebviHw==", "user"=>{"email"=>"jean@bon.fr", "first_name"=>"jean", "last_name"=>"bon", "url"=>"", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f9cdab8d340 @tempfile=#<Tempfile:/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/RackMultipart20161127-15584-1wl5wyu.vcf>, @original_filename="contacts.vcf", @content_type="text/directory", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"contacts.vcf\"\r\nContent-Type: text/directory\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/4136a932eb7724a00cb87c3fb9e1ea1d20161127-15584-bi65ht.vcf[0]' 2>/dev/null
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.0ms)
+
+
+  
+Paperclip::Errors::CommandNotFoundError (Could not run the `identify` command. Please install ImageMagick.):
+  
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:45:in `raise_because_imagemagick_missing'
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:30:in `rescue in geometry_string'
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:16:in `geometry_string'
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:9:in `make'
+paperclip (4.3.7) lib/paperclip/geometry.rb:26:in `from_file'
+paperclip (4.3.7) lib/paperclip/thumbnail.rb:34:in `initialize'
+paperclip (4.3.7) lib/paperclip/processor.rb:33:in `new'
+paperclip (4.3.7) lib/paperclip/processor.rb:33:in `make'
+paperclip (4.3.7) lib/paperclip/attachment.rb:523:in `block in post_process_style'
+paperclip (4.3.7) lib/paperclip/attachment.rb:522:in `each'
+paperclip (4.3.7) lib/paperclip/attachment.rb:522:in `inject'
+paperclip (4.3.7) lib/paperclip/attachment.rb:522:in `post_process_style'
+paperclip (4.3.7) lib/paperclip/attachment.rb:513:in `block in post_process_styles'
+paperclip (4.3.7) lib/paperclip/attachment.rb:512:in `each'
+paperclip (4.3.7) lib/paperclip/attachment.rb:512:in `post_process_styles'
+paperclip (4.3.7) lib/paperclip/attachment.rb:504:in `block (2 levels) in post_process'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_avatar_post_process_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+paperclip (4.3.7) lib/paperclip/callbacks.rb:36:in `run_paperclip_callbacks'
+paperclip (4.3.7) lib/paperclip/attachment.rb:502:in `block in post_process'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_post_process_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+paperclip (4.3.7) lib/paperclip/callbacks.rb:36:in `run_paperclip_callbacks'
+paperclip (4.3.7) lib/paperclip/attachment.rb:501:in `post_process'
+paperclip (4.3.7) lib/paperclip/attachment.rb:457:in `post_process_file'
+paperclip (4.3.7) lib/paperclip/attachment.rb:109:in `assign'
+paperclip (4.3.7) lib/paperclip/has_attached_file.rb:66:in `block in define_setter'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:46:in `public_send'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:46:in `_assign_attribute'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:40:in `block in _assign_attributes'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:39:in `each'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:39:in `_assign_attributes'
+activerecord (5.0.0.1) lib/active_record/attribute_assignment.rb:26:in `_assign_attributes'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:33:in `assign_attributes'
+activerecord (5.0.0.1) lib/active_record/core.rb:319:in `initialize'
+activerecord (5.0.0.1) lib/active_record/inheritance.rb:65:in `new'
+activerecord (5.0.0.1) lib/active_record/inheritance.rb:65:in `new'
+devise (4.2.0) lib/devise/models/registerable.rb:20:in `new_with_session'
+devise (4.2.0) app/controllers/devise/registrations_controller.rb:100:in `build_resource'
+devise (4.2.0) app/controllers/devise/registrations_controller.rb:15:in `create'
+actionpack (5.0.0.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.0.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.0.1) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.0.1) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.0.1) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.0.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.0.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.0.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.0.0.1) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+warden (1.2.6) lib/warden/manager.rb:34:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.8ms)
+Started POST "/users" for ::1 at 2016-11-27 15:19:37 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qpML5f9V7VORgDIHIJ7jW6/KLpEvalD4u1o93ERcUfJIpYa25T2gyVyAwH7TIw046WeeBxOYU70VmhP6ebviHw==", "user"=>{"email"=>"jean@bon.fr", "first_name"=>"jean", "last_name"=>"bon", "url"=>"", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fddc9189120 @tempfile=#<Tempfile:/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/RackMultipart20161127-16370-1me1bki.vcf>, @original_filename="contacts.vcf", @content_type="text/directory", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"contacts.vcf\"\r\nContent-Type: text/directory\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/4136a932eb7724a00cb87c3fb9e1ea1d20161127-16370-1u87sgt.vcf[0]' 2>/dev/null
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 6.5ms)
+
+
+  
+Paperclip::Errors::CommandNotFoundError (Could not run the `identify` command. Please install ImageMagick.):
+  
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:45:in `raise_because_imagemagick_missing'
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:30:in `rescue in geometry_string'
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:16:in `geometry_string'
+paperclip (4.3.7) lib/paperclip/geometry_detector_factory.rb:9:in `make'
+paperclip (4.3.7) lib/paperclip/geometry.rb:26:in `from_file'
+paperclip (4.3.7) lib/paperclip/thumbnail.rb:34:in `initialize'
+paperclip (4.3.7) lib/paperclip/processor.rb:33:in `new'
+paperclip (4.3.7) lib/paperclip/processor.rb:33:in `make'
+paperclip (4.3.7) lib/paperclip/attachment.rb:523:in `block in post_process_style'
+paperclip (4.3.7) lib/paperclip/attachment.rb:522:in `each'
+paperclip (4.3.7) lib/paperclip/attachment.rb:522:in `inject'
+paperclip (4.3.7) lib/paperclip/attachment.rb:522:in `post_process_style'
+paperclip (4.3.7) lib/paperclip/attachment.rb:513:in `block in post_process_styles'
+paperclip (4.3.7) lib/paperclip/attachment.rb:512:in `each'
+paperclip (4.3.7) lib/paperclip/attachment.rb:512:in `post_process_styles'
+paperclip (4.3.7) lib/paperclip/attachment.rb:504:in `block (2 levels) in post_process'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_avatar_post_process_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+paperclip (4.3.7) lib/paperclip/callbacks.rb:36:in `run_paperclip_callbacks'
+paperclip (4.3.7) lib/paperclip/attachment.rb:502:in `block in post_process'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_post_process_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+paperclip (4.3.7) lib/paperclip/callbacks.rb:36:in `run_paperclip_callbacks'
+paperclip (4.3.7) lib/paperclip/attachment.rb:501:in `post_process'
+paperclip (4.3.7) lib/paperclip/attachment.rb:457:in `post_process_file'
+paperclip (4.3.7) lib/paperclip/attachment.rb:109:in `assign'
+paperclip (4.3.7) lib/paperclip/has_attached_file.rb:66:in `block in define_setter'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:46:in `public_send'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:46:in `_assign_attribute'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:40:in `block in _assign_attributes'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:39:in `each'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:39:in `_assign_attributes'
+activerecord (5.0.0.1) lib/active_record/attribute_assignment.rb:26:in `_assign_attributes'
+activemodel (5.0.0.1) lib/active_model/attribute_assignment.rb:33:in `assign_attributes'
+activerecord (5.0.0.1) lib/active_record/core.rb:319:in `initialize'
+activerecord (5.0.0.1) lib/active_record/inheritance.rb:65:in `new'
+activerecord (5.0.0.1) lib/active_record/inheritance.rb:65:in `new'
+devise (4.2.0) lib/devise/models/registerable.rb:20:in `new_with_session'
+devise (4.2.0) app/controllers/devise/registrations_controller.rb:100:in `build_resource'
+devise (4.2.0) app/controllers/devise/registrations_controller.rb:15:in `create'
+actionpack (5.0.0.1) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.0.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.0.1) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.0.1) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.0.1) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.0.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.0.1) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.0.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.0.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.0.0.1) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+warden (1.2.6) lib/warden/manager.rb:34:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.3ms)
+Started GET "/users" for ::1 at 2016-11-27 15:21:32 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 17ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-11-27 15:21:32 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (38.3ms)
+Completed 200 OK in 271ms (Views: 252.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-11-27 15:21:38 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 43ms (Views: 41.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-11-27 15:21:56 +0100
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ew1Q9uqfrbO973R5MCfCf7YuN9+HRR4VCDM27SA5uPfxO92l8PfgKXDvhgDDmiwc8IOHSbu3HVCm8xjLHd4LGg==", "user"=>{"email"=>"jean@bon.fr", "first_name"=>"jean", "last_name"=>"bon", "url"=>"", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fa80b711258 @tempfile=#<Tempfile:/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/RackMultipart20161127-17229-1oxl8qa.jpg>, @original_filename="potté.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"potte\xCC\x81.jpg\"\r\nContent-Type: image/jpeg\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-v5bech.jpg[0]' 2>/dev/null
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format %m '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-v5bech.jpg[0]'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; convert '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-v5bech.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/360bae422b083cff56d6b09d5fc0bb0620161127-17229-ysf27d'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-v5bech.jpg[0]' 2>/dev/null
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format %m '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-v5bech.jpg[0]'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; convert '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-v5bech.jpg[0]' -auto-orient -resize "x100" -crop "100x100+30+0" +repage '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/360bae422b083cff56d6b09d5fc0bb0620161127-17229-1dthywq'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jean@bon.fr"], ["LIMIT", 1]]
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; file -b --mime '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-1vi0agd.jpg'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 782ms (Views: 38.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for ::1 at 2016-11-27 15:22:09 +0100
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1YpufDYUo7npQD/LS/71wcAD+HkqaI5KRf6amvazxrw3vOMvLHzuIyRAzbK4Qxuihq5I7xaajQ/rPrS8y1R1UQ==", "user"=>{"email"=>"jean@bon.fr", "first_name"=>"jean", "last_name"=>"bon", "url"=>"", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fa80b1ab1b0 @tempfile=#<Tempfile:/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/RackMultipart20161127-17229-1fdfbte.vcf>, @original_filename="contacts.vcf", @content_type="text/directory", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"contacts.vcf\"\r\nContent-Type: text/directory\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/4136a932eb7724a00cb87c3fb9e1ea1d20161127-17229-1jcn3wz.vcf[0]' 2>/dev/null
+[paperclip] An error was received while processing: #<Paperclip::Errors::NotIdentifiedByImageMagickError: Paperclip::Errors::NotIdentifiedByImageMagickError>
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/4136a932eb7724a00cb87c3fb9e1ea1d20161127-17229-1jcn3wz.vcf[0]' 2>/dev/null
+[paperclip] An error was received while processing: #<Paperclip::Errors::NotIdentifiedByImageMagickError: Paperclip::Errors::NotIdentifiedByImageMagickError>
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jean@bon.fr"], ["LIMIT", 1]]
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; file -b --mime '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/4136a932eb7724a00cb87c3fb9e1ea1d20161127-17229-jigfsw.vcf'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 249ms (Views: 31.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for ::1 at 2016-11-27 15:22:24 +0100
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6+iEiKGU/L1r+qAZ9CuwD18+ZHrq5Uq6Iep07P80fO0J3gnbu/yxJ6b6UmAHll5sGZPU7NYXSf+PKlrKwtPPAA==", "user"=>{"email"=>"jean@bon.fr", "first_name"=>"jean", "last_name"=>"bon", "url"=>"", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fa807b94770 @tempfile=#<Tempfile:/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/RackMultipart20161127-17229-12gg4cj.jpg>, @original_filename="potté.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"potte\xCC\x81.jpg\"\r\nContent-Type: image/jpeg\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-pa0oxj.jpg[0]' 2>/dev/null
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format %m '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-pa0oxj.jpg[0]'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; convert '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-pa0oxj.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/100e45bcf779d1f8a18a9046d736902520161127-17229-1cocmjj'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-pa0oxj.jpg[0]' 2>/dev/null
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format %m '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-pa0oxj.jpg[0]'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; convert '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-pa0oxj.jpg[0]' -auto-orient -resize "x100" -crop "100x100+30+0" +repage '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/100e45bcf779d1f8a18a9046d736902520161127-17229-1n4rvfq'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jean@bon.fr"], ["LIMIT", 1]]
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; file -b --mime '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-7pdjlq.jpg'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 749ms (Views: 44.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users" for ::1 at 2016-11-27 15:22:35 +0100
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QYXqn6a3Bv1q6Mpfz7ioFuBVFh7k4YJ2b/asky6mNE+js2fMvN9LZ6foOCY8BUZ1pvimiNgTgTPBNoK1E0GHog==", "user"=>{"email"=>"jean@bon.fr", "first_name"=>"jean", "last_name"=>"bon", "url"=>"", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fa80d129618 @tempfile=#<Tempfile:/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/RackMultipart20161127-17229-13bvhxq.jpg>, @original_filename="potté.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"potte\xCC\x81.jpg\"\r\nContent-Type: image/jpeg\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-db54nu.jpg[0]' 2>/dev/null
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format %m '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-db54nu.jpg[0]'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; convert '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-db54nu.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/8bd0e9e8f45f902c2837516cf16d5efd20161127-17229-unp1wj'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-db54nu.jpg[0]' 2>/dev/null
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; identify -format %m '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-db54nu.jpg[0]'
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; convert '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-db54nu.jpg[0]' -auto-orient -resize "x100" -crop "100x100+30+0" +repage '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/8bd0e9e8f45f902c2837516cf16d5efd20161127-17229-10un9s5'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jean@bon.fr"], ["LIMIT", 1]]
+Command :: PATH=/assets/images/ImageMagick/bin:$PATH; file -b --mime '/var/folders/mm/xqvjgz6x1qd8j59dz2g10zx00000gn/T/a32bd4165e622cbdf3ecf7173e91af4120161127-17229-oosdl9.jpg'
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "last_name", "url", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "jean@bon.fr"], ["encrypted_password", "$2a$11$qPtn1q70YdrqlXBdYACUketa5LBAy0gDNj8wMZUT4ssuECOeE5Rwi"], ["created_at", 2016-11-27 14:22:36 UTC], ["updated_at", 2016-11-27 14:22:36 UTC], ["first_name", "jean"], ["last_name", "bon"], ["url", ""], ["avatar_file_name", "potté.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 223720], ["avatar_updated_at", 2016-11-27 14:22:35 UTC]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-11-27 14:22:36 UTC], ["last_sign_in_at", 2016-11-27 14:22:36 UTC], ["current_sign_in_ip", "::1"], ["last_sign_in_ip", "::1"], ["updated_at", 2016-11-27 14:22:36 UTC], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 690ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/" for ::1 at 2016-11-27 15:22:36 +0100
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 27ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/index" for ::1 at 2016-11-27 15:23:23 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/users/index"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/stephenrichard/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered collection of /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [26 times] (12.3ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.5ms)
+  Rendering /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /Users/stephenrichard/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (85.8ms)
+Started GET "/users/" for ::1 at 2016-11-27 15:23:39 +0100
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 35ms (Views: 30.4ms | ActiveRecord: 0.8ms)
+
+
