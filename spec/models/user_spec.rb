@@ -66,4 +66,21 @@ RSpec.describe "User", :type => :model do
     expect(other_user.valid?).to eq(false)
   end
 
+  it "password is encoded" do
+    user = User.create(first_name: "Jean", last_name: "Villagois" , email: "m@rshow.com" , password: "jesuislepassword")
+    expect(user.valid?).to eq(true)
+
+
+    userFromDB = User.last
+    expect(userFromDB.first_name).to eq("Jean")
+    expect(userFromDB.last_name).to eq("Villagois")
+    expect(userFromDB.email).to eq("m@rshow.com")
+
+    expect(userFromDB.password == user.password).to eq(false)
+
+
+
+
+  end
+
 end
