@@ -1,0 +1,29 @@
+<h1>Posts#new</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<h1>Create a new post!</h1>
+
+<%= form_for @post, url: {action: "create"} do |f| %>
+
+ 	<div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, autofocus: true %>
+    </div>
+
+    <div class="field">
+        <%= f.label :content %><br />
+        <%= f.text_field :content, autofocus: true %>
+    </div>
+
+    <div class="field">
+        <%= f.label :url %><br />
+        <%= f.text_field :url, autofocus: true %>
+    </div>
+
+    <div class="field">
+        <%= f.label "category" %><br />
+        <%= f.collection_select :category_id, @categories, :id, :label  %>
+    </div>
+
+ <%= f.submit "Create" %>
+<% end %>

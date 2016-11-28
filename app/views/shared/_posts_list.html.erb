@@ -1,0 +1,16 @@
+<% @posts.each do |post| %>
+	<div>Title : <%= post.title %></div>
+	<div>Content : <%= post.content %></div>
+	<div>url : <%= post.url %></div>
+	<div>author : <%
+		if post.user
+			concat post.user.name
+		else
+			concat "user deleted"
+		end
+	 %>
+	 	
+	</div>
+	<div>category : <%= post.category.label %></div>
+	<br><br>
+<% end %>

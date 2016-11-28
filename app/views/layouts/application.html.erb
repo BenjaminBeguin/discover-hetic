@@ -13,6 +13,16 @@
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<p id="error"><%= flash[:error] %></p>
+
+
+<%= link_to "user edit", edit_user_registration_path, method: :get %> <br>
+<%= link_to "all user", user_registration_path, method: :get %> <br><br>
+<%= link_to "all post", posts_path, method: :get %> <br>
+<%= link_to "your post ", users_posts_path, method: :get %> <br>
+<%= link_to "new post ", posts_new_path, method: :get %> <br>
+
+
 
 <%= yield %>
 

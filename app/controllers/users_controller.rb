@@ -8,4 +8,8 @@ class UsersController < ApplicationController
   	@users = User.all
   end
 
+  def get_user_post
+  	@posts = Post.where(user_id: current_user.id);
+  end
+
 end

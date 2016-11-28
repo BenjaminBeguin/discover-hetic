@@ -3,12 +3,11 @@ require "spec_helper"
 RSpec.describe "User", :type => :model do
 
   it "can be saved" do
-    user = User.create(first_name: "Jean", last_name: "Villagois", email: "jean@gmail.com", password: "password")
+    user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
     user.save!
 
     found = User.last
-    expect(found.first_name).to eq("Jean")
-    expect(found.last_name).to eq("Villagois")
+    expect(found.name).to eq("Jean")
     expect(found.email).to eq("jean@gmail.com")
   end
 
@@ -16,8 +15,7 @@ RSpec.describe "User", :type => :model do
     user = User.new
     expect(user.valid?).to eq(false)
 
-    user.first_name = "Clement"
-    user.last_name = "Rotule"
+    user.name = "Clement"
     expect(user.valid?).to eq(false)
 
     user.email = "r@rshow.com"
@@ -29,7 +27,7 @@ RSpec.describe "User", :type => :model do
   end
 
   it "requires a somewhat valid email" do
-    user = User.new(first_name: "Jean", last_name: "Villagois" , password: "jesuislepassword" )
+    user = User.new(name: "Jean" , password: "jesuislepassword" )
     expect(user.valid?).to eq(false)
 
     user.email = "rigby"
@@ -44,7 +42,7 @@ RSpec.describe "User", :type => :model do
   end
 
   it "requires more than 6 caracteres for password" do
-    user = User.new(first_name: "Jean", last_name: "Villagois" , email: "rigby@rssshow.com" )
+    user = User.new(name: "Jean", email: "rigby@rssshow.com" )
     expect(user.valid?).to eq(false)
 
     user.password = "12345"
@@ -59,21 +57,20 @@ RSpec.describe "User", :type => :model do
   end
 
   it "is impossible to add the same email twice" do
-    user = User.create(first_name: "Jean", last_name: "Villagois" , email: "m@rshow.com" , password: "jesuislepassword")
+    user = User.create(name: "Jean" , email: "m@rshow.com" , password: "jesuislepassword")
     expect(user.valid?).to eq(true)
 
-    other_user = User.create(first_name: "Jean", last_name: "Villagois" , email: "m@rshow.com" , password: "jesuislepassword")
+    other_user = User.create(name: "Jean", email: "m@rshow.com" , password: "jesuislepassword")
     expect(other_user.valid?).to eq(false)
   end
 
   it "password is encoded" do
-    user = User.create(first_name: "Jean", last_name: "Villagois" , email: "m@rshow.com" , password: "jesuislepassword")
+    user = User.create(name: "Jean", email: "m@rshow.com" , password: "jesuislepassword")
     expect(user.valid?).to eq(true)
 
 
     userFromDB = User.last
-    expect(userFromDB.first_name).to eq("Jean")
-    expect(userFromDB.last_name).to eq("Villagois")
+    expect(userFromDB.name).to eq("Jean")
     expect(userFromDB.email).to eq("m@rshow.com")
 
     expect(userFromDB.password == user.password).to eq(false)

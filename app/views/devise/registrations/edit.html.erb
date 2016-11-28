@@ -9,10 +9,11 @@
         <%= f.email_field :email, autofocus: true %>
     </div>
 
-    <div class="field">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, autofocus: true %>
+     <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %>
     </div>
+
 
     <div class="field">
         <%= f.label :url %><br />
@@ -24,10 +25,7 @@
         <%= f.file_field :avatar, autofocus: true %>
     </div>
 
-    <div class="field">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, autofocus: true %>
-    </div>
+   
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

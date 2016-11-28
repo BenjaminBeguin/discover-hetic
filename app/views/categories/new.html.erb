@@ -1,0 +1,11 @@
+<h1>Categories#new</h1>
+<p>Find me in app/views/categories/new.html.erb</p>
+
+
+<h1>Create a new category!</h1>
+
+<%= form_for @category, url: {action: "create"} do |f| %>
+ <%= f.text_field :slug %>
+ <%= f.text_field :label %>
+ <%= f.submit "Create" %>
+<% end %>

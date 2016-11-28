@@ -1,11 +1,36 @@
 Rails.application.routes.draw do
 
-    root 'welcome#index' #home
+
+
+  get 'categories/'  => "categories#index"
+  post 'categories/create'
+
+  get 'categories/new'
+
+    root 'posts#index' #home
+
+    #-------------- COMMENTS -------------#
+
+    resources :comments
+    
+    get 'comments/index'
+
+    get 'comments/new'
+
+
 
     #-------------- POST -------------#
     
-    resources :posts
 
+    get 'posts' => "posts#index"
+    get 'posts/new'
+    get 'posts/update'
+    get 'posts/vote'
+
+    get 'posts/index'
+    get 'posts/:slug' => "posts#category"
+
+    resources :posts
     #-------------- USER -------------#
 
     devise_for :users, controllers: {
@@ -18,6 +43,7 @@ Rails.application.routes.draw do
     end
       
     get 'users/' => 'users#index'
+    get 'users/posts' => 'users#get_user_post'
 
     #----------------------------------#
 
