@@ -1,32 +1,39 @@
 class PostsController < ApplicationController
-    
-  def index
-    @posts = Post.all
-   
-  end
 
-  def category
-    @category_slug = params[:slug]
-    if Category.where(slug: @category_slug).first
-      @category = Category.where(slug: @category_slug).first;
-      @posts = Post.where(category_id: @category.id)
-    else
-      redirect_to action: "index"
+    def not_found
+        render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
+    end
+
+    def show
+        @post = Post.find_by_id(params[:id]) or not_found
     end
 
 
-  end
-
-  def new
-    @connected = user_signed_in?
-    if @connected
-        @post = Post.new
-        @categories = Category.all;
-    else
-        flash[:error] = 'You need to be login to post'
-        redirect_to action: "index"
+    def index
+        @posts = Post.all
     end
-  end
+
+    def category
+        @category_slug = params[:slug];
+
+        if Category.where(slug: @category_slug).first
+            @category = Category.where(slug: @category_slug).first;
+            @posts = Post.where(category_id: @category.id)
+        else
+            redirect_to action: "index"
+        end
+    end
+
+    def new
+        @connected = user_signed_in?
+        if @connected
+            @post = Post.new
+            @categories = Category.all;
+        else
+            flash[:error] = 'You need to be login to post'
+            redirect_to action: "index"
+        end
+    end
 
   def create
 

@@ -1,8 +1,23 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true
 	validates :email, format: { with: /\w*@\w*\.\w*/ }, uniqueness: true
+
+	validate  :url, :if => :check_url
+
+	def check_url
+		if (self.url)	
+			if !self.url.strip.empty?
+				uri = URI.parse(self.url)
+				if !%w( http https ).include?(uri.scheme)
+					errors.add(:url, "not valid  url")
+				end				
+			end	
+		end
+	end
+
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

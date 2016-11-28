@@ -11,7 +11,7 @@ RSpec.describe "User", :type => :model do
     expect(found.email).to eq("jean@gmail.com")
   end
 
-  it "requires a first name,lastname, an email and a password" do
+  it "requires a name, an email and a password" do
     user = User.new
     expect(user.valid?).to eq(false)
 
@@ -64,6 +64,26 @@ RSpec.describe "User", :type => :model do
     expect(other_user.valid?).to eq(false)
   end
 
+  it "if url is not blank, have to be a real url" do
+    user = User.create(name: "Jeaqcn" , email: "m@rshoqscqscw.com" , password: "jesuislepassword", url: "")
+    expect(user.valid?).to eq(true)
+
+    other_user = User.create(name: "zC", email: "m@rshqcsow.com" , password: "jesuislepassword", url: "Salut")
+    expect(other_user.valid?).to eq(false)
+
+    otherone_user = User.create(name: "BF", email: "m@rshqscqcow.com" , password: "jesuislepassword", url: "https://www.facebook.com/")
+    expect(otherone_user.valid?).to eq(true)
+
+  end
+
+   it "is impossible to add the same pseudo twice" do
+    user = User.create(name: "Jean" , email: "m@rshsscsow.com" , password: "jesuislepassword")
+    expect(user.valid?).to eq(true)
+
+    other_user = User.create(name: "Jean", email: "mscsc@rshow.com" , password: "jesuislepassword")
+    expect(other_user.valid?).to eq(false)
+  end
+
   it "password is encoded" do
     user = User.create(name: "Jean", email: "m@rshow.com" , password: "jesuislepassword")
     expect(user.valid?).to eq(true)
@@ -74,8 +94,6 @@ RSpec.describe "User", :type => :model do
     expect(userFromDB.email).to eq("m@rshow.com")
 
     expect(userFromDB.password == user.password).to eq(false)
-
-
 
 
   end
