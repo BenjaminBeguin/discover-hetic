@@ -8,7 +8,6 @@ class PostsController < ApplicationController
         @post = Post.find_by_id(params[:id]) or not_found
     end
 
-
     def index
         @posts = Post.all
     end

@@ -12,10 +12,16 @@ class UsersController < ApplicationController
         @posts = Post.where(user_id: current_user.id);
     end
 
+    def not_found
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
+    end
+
     def edit_user_post
-        @post = Post.where(id: params[:id]).first;
-        if is_my_post?
-          redirect_to users_posts_path
+        @post = Post.find_by_id(params[:id]) or not_found;
+        if @post 
+            if is_my_post?
+              redirect_to users_posts_path
+            end
         end
     end
 
