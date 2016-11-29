@@ -12,6 +12,19 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
 
+    def category
+        @category_slug = params[:slug];
+
+        if Category.where(slug: @category_slug).first
+            @category = Category.where(slug: @category_slug).first;
+            @posts = Post.where(category_id: @category.id)
+        else
+            redirect_to action: "index"
+        end
+    end
+
+    #------------------ SECURE BY USER LOGIN -----------------#
+
     def unpublish!
         @post_to_update = Post.find_by_id(params[:id]) or not_found
         @post_to_update.published = false
@@ -30,17 +43,6 @@ class PostsController < ApplicationController
         redirect_to action: "index"
     end
 
-    def category
-        @category_slug = params[:slug];
-
-        if Category.where(slug: @category_slug).first
-            @category = Category.where(slug: @category_slug).first;
-            @posts = Post.where(category_id: @category.id)
-        else
-            redirect_to action: "index"
-        end
-    end
-
     def new
         @connected = user_signed_in?
         if @connected
@@ -53,7 +55,6 @@ class PostsController < ApplicationController
     end
 
   def create
-
     @connected = user_signed_in?
     if @connected
         @post = Post.new(
@@ -70,6 +71,24 @@ class PostsController < ApplicationController
   end
 
   def update
+    @connected = user_signed_in?
+    if @connected
+        @post = Post.find(params[:post][:id])
+        if @post.user_id = current_user.id
+            @post.update(
+                title: params[:post][:title],
+                category_id: params[:post][:category_id],
+                url: params[:post][:url],
+                content: params[:post][:content]
+                )
+            @post.save!
+            render json: @post 
+        else
+            redirect_to new_user_session_path 
+        end
+    else
+        redirect_to new_user_session_path 
+    end
   end
 
   def vote

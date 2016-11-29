@@ -4,7 +4,7 @@
 
 <%= @post.title %>
 
-<%= form_for @post do |f| %>
+<%= form_for @post , :url => posts_update_path do |f| %>
  <div class="field">
          <%= f.label :title %><br />
          <%= f.text_field :title, autofocus: true %>
@@ -23,6 +23,10 @@
      <div class="field">
          <%= f.label "category" %><br />
          <%= f.collection_select :category_id, @categories, :id, :label  %>
+     </div>
+
+     <div class="field">
+         <%= f.hidden_field :id  %>
      </div>
 
   <%= f.submit %>
