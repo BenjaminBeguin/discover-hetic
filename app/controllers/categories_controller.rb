@@ -9,11 +9,11 @@ class CategoriesController < ApplicationController
 
   def create
 	@category = Category.new(
-	  slug: params[:category][:slug],
-	  label: params[:category][:label]
-	 )
+        label: params[:category][:label]
+	)
 	@category.save
 	redirect_to action: "index"
   end
 
+    
 end
