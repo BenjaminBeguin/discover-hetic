@@ -27,15 +27,15 @@ gulp.task('sass', function () {
             indentedSyntax: false
         }))
         .pipe(autoprefixer())
-        .pipe(gulp.dest('./vendor/dist/css'))
+        .pipe(gulp.dest('./app/assets/stylesheets'))
 });
 
 gulp.task('js_libs', function() {
     return      gulp.src('./vendor/assets/scripts/libs/**/*.js')
         .pipe(concat('libs.js'))
-        .pipe(gulp.dest('./vendor/dist/scripts'))
+        .pipe(gulp.dest('./app/assets/javascripts'))
         .pipe(uglify())
-        .pipe(gulp.dest('./vendor/dist/scripts'))
+        .pipe(gulp.dest('./app/assets/javascripts'))
         .pipe(notify({ message: 'Vendor scripts task complete', onLast: true }));
 });
 
@@ -43,7 +43,7 @@ gulp.task('js_app', function() {
     return      gulp.src('./vendor/assets/scripts/custom/*.js')
         .pipe(concat('custom.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./vendor/dist/scripts'))
+        .pipe(gulp.dest('./app/assets/javascripts'))
         .pipe(notify({ message: 'Custom scripts task complete', onLast: true }));
 });
 
