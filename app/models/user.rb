@@ -4,7 +4,6 @@ class User < ApplicationRecord
 	validates :name, presence: true, uniqueness: true
 	validates :email, presence: true, format: { with: /\w*@\w*\.\w*/ }, uniqueness: true
 
-
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -12,7 +11,7 @@ class User < ApplicationRecord
 					  :styles => { 
 					  	:medium => "300x300>", 
 					  	:thumb => "100x100#" 
-				  	  }, 
+				  	  },
 					  :default_url => "/images/:style/missing.png"
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 

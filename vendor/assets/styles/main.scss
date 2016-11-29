@@ -1,6 +1,16 @@
-//IMPORT PARTIALS
-@import 'parts/ui';
+/* VARS */
 @import 'parts/vars';
+@import 'parts/reset';
+
+/* IMPORT COMMONS */
+@import 'parts/ui';
+@import 'parts/footer';
+@import 'parts/header';
+
+/* IMPORT PARTIALS */
+@import 'parts/home';
+@import 'parts/profile';
+@import 'parts/post';
 
 h1{
 	font-size: 25px;

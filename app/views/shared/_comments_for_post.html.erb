@@ -1,0 +1,14 @@
+<% @comments.each do |comment| %>
+	<div class="comment">
+		<p class="comment__datas"><strong><%= @post.user.name %></strong> commented on <i><%= @post.created_at %></i></p>
+		
+		<div class="comment__content">
+			<%= comment.message %>
+		</div>
+
+		<div class="comment__user-actions">
+			<%= link_to "Delete comment", [comment.post, comment], method: :delete %>
+			<%= link_to "Edit comment", edit_post_comment_path(comment.post, comment) %>
+		</div>
+	</div>
+<% end %>

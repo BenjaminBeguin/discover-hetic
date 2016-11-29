@@ -26,11 +26,14 @@ Rails.application.routes.draw do
     get 'posts/new'
     get 'posts/update'
     get 'posts/vote'
+    post 'posts/post_comment'
 
     get 'posts/index'
     get 'category/:slug' => "posts#category"
 
-    resources :posts
+    resources :posts do
+        resources :comments, :only => [:create, :destroy, :update, :edit]
+    end
     #-------------- USER -------------#
 
     devise_for :users, controllers: {

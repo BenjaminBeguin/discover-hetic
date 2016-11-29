@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find_by_id(params[:id]) or not_found
+        @comments = Comment.where(post_id: params[:id])
+        @connected = user_signed_in?
     end
 
     def index

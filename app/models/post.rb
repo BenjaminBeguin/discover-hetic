@@ -8,6 +8,9 @@ class Post < ApplicationRecord
 
 	validates :url, :format => URI::regexp(%w(http https));
 
+	def show
+		@comments = Comment.where(post_id: @post).order('created_at DESC')
+	end
 
 	def is_my_post?
 	    self.user_id == Post.current_user.id
