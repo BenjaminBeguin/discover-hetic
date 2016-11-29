@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get 'posts/vote'
 
     get 'posts/index'
-    get 'posts/:slug' => "posts#category"
+    get 'category/:slug' => "posts#category"
 
     resources :posts
     #-------------- USER -------------#

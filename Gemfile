@@ -12,17 +12,11 @@ group :development, :test do
 	gem 'sqlite3'
 end	
 
-gem 'sass-rails'
-gem 'uglifier'
-
 gem 'rspec'
 gem 'rspec-rails'
 gem 'database_cleaner'
 gem 'factory_girl'
 gem "factory_girl_rails"
-
-gem 'jquery-rails'
-gem 'turbolinks'
 
 gem 'devise'
 gem 'paperclip', '~> 4.1'
