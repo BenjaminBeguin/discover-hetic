@@ -15,3 +15,12 @@ $ rails s
 $ git checkout dev
 
 ```
+
+## Install Front Workflow
+
+```
+$ npm install
+
+$ gulp
+
+```
