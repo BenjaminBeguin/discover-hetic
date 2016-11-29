@@ -12,5 +12,10 @@
 	 	
 	</div>
 	<div>category : <%= post.category.label %></div>
+	<%	if post.is_my_post? %>
+	<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br><br>
+
+
+	<% end %>
 	<br><br>
 <% end %>
