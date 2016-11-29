@@ -27,21 +27,30 @@ class PostsController < ApplicationController
 
     def unpublish!
         @post_to_update = Post.find_by_id(params[:id]) or not_found
-        @post_to_update.published = false
-        puts @post_to_update.published
-        @post_to_update.save!
-        #render :json => @post_to_update 
-        #render :nothing => true
-        redirect_to action: "index"
+
+        if @post_to_update.user_id = current_user.id
+            @post_to_update.published = false
+            puts @post_to_update.published
+            @post_to_update.save!
+            #render :json => @post_to_update 
+            #render :nothing => true
+            redirect_to action: "index"
+        else
+            redirect_to new_user_session_path 
+        end
     end
 
     def publish!
         @post_to_update = Post.find_by_id(params[:id]) or not_found
-        @post_to_update.published = true
-        @post_to_update.save!
-        #render :json => @post_to_update 
-        #render :nothing => true
-        redirect_to action: "index"
+        if @post_to_update.user_id = current_user.id
+            @post_to_update.published = true
+            @post_to_update.save!
+            #render :json => @post_to_update 
+            #render :nothing => true
+            redirect_to action: "index"
+        else
+            redirect_to new_user_session_path 
+        end
     end
 
     def new
