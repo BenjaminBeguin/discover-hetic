@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     def unpublish!
         @post_to_update = Post.find_by_id(params[:id]) or not_found
         @post_to_update.published = false
+        puts @post_to_update.published
         @post_to_update.save!
         #render :json => @post_to_update 
         #render :nothing => true
