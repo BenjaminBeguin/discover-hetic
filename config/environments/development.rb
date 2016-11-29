@@ -41,14 +41,14 @@ Rails.application.configure do
   Paperclip.options[:image_magick_path] = "/assets/images/ImageMagick/bin"
   Paperclip.options[:command_path] = "/assets/images/ImageMagick/bin"
 
-  # config.paperclip_defaults = {
-  #   storage: :s3,
-  #   s3_host_name: 's3.eu-central-1.amazonaws.com',
-  #   s3_credentials: {
-  #     bucket: 'discover-hetic',
-  #     access_key_id: 'AKIAIUQT3ZCLQ5JLLTJA',
-  #     secret_access_key: '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',
-  #     s3_region: 'eu-central-1'
-  #   }
-  # }
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_host_name: 's3.eu-central-1.amazonaws.com',
+    s3_credentials: {
+      bucket: 'discover-hetic',
+      access_key_id: 'AKIAIUQT3ZCLQ5JLLTJA',
+      secret_access_key: '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',
+      s3_region: 'eu-central-1'
+    }
+  }
 end
