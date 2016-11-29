@@ -3,3 +3,33 @@
 <h3>Is secure, you can only modifie your post or u ll be redirect</h3>
 
 <%= @post.title %>
+
+<%= form_for @post do |f| %>
+ <div class="field">
+         <%= f.label :title %><br />
+         <%= f.text_field :title, autofocus: true %>
+     </div>
+
+     <div class="field">
+         <%= f.label :content %><br />
+         <%= f.text_field :content, autofocus: true %>
+     </div>
+
+     <div class="field">
+         <%= f.label :url %><br />
+         <%= f.text_field :url, autofocus: true %>
+     </div>
+
+     <div class="field">
+         <%= f.label "category" %><br />
+         <%= f.collection_select :category_id, @categories, :id, :label  %>
+     </div>
+
+  <%= f.submit %>
+ <% end %>
+
+
+
+
+
+<%= link_to "Back", :back %>

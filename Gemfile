@@ -17,6 +17,7 @@ gem 'rspec-rails'
 gem 'database_cleaner'
 gem 'factory_girl'
 gem "factory_girl_rails"
+gem 'jquery-rails'
 
 gem 'devise'
 gem 'paperclip', '~> 4.1'

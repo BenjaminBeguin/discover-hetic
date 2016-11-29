@@ -1,4 +1,5 @@
 <% @posts.each do |post| %>
+	<div>Published : <%= post.published %></div>
 	<div>Title : <%= post.title %></div>
 	<div>Content : <%= post.content %></div>
 	<div>url : <%= post.url %></div>
@@ -13,9 +14,16 @@
 	</div>
 	<div>category : <%= post.category.label %></div>
 	<%	if post.is_my_post? %>
-	<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br><br>
-
-
+		<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br>
+		
+		<%	if post.published? %>
+			<%= button_to 'Unpublish', posts_unpublished_path(id: post.id ), method: :post, :remote=>true %>
+		<%	else %>
+			<%= button_to 'Publish', posts_published_path(id: post.id ), method: :post, :remote=>true %>
+		<%	end %>
 	<% end %>
 	<br><br>
 <% end %>
+
+
+

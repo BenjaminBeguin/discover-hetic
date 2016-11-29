@@ -12,6 +12,24 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
 
+    def unpublish!
+        @post_to_update = Post.find_by_id(params[:id]) or not_found
+        @post_to_update.published = false
+        @post_to_update.save!
+        #render :json => @post_to_update 
+        #render :nothing => true
+        redirect_to action: "index"
+    end
+
+    def publish!
+        @post_to_update = Post.find_by_id(params[:id]) or not_found
+        @post_to_update.published = true
+        @post_to_update.save!
+        #render :json => @post_to_update 
+        #render :nothing => true
+        redirect_to action: "index"
+    end
+
     def category
         @category_slug = params[:slug];
 

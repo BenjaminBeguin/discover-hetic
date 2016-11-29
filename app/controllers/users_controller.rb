@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
     def edit_user_post
         @post = Post.find_by_id(params[:id]) or not_found;
+        @categories = Category.all
         if @post 
             if is_my_post?
               redirect_to users_posts_path

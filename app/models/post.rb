@@ -6,13 +6,24 @@ class Post < ApplicationRecord
 
 	validates :user_id, presence: true
 
-	validates :url, :format => URI::regexp(%w(http https));
+	#default_scope { where(published: true) }
+	#validates :url, :format => URI::regexp(%w(http https));
 
+	before_save :capitalize_title
 
-	def is_my_post?
-	    self.user_id == Post.current_user.id
+	def capitalize_title
+		if self.title
+	  		self.title = self.title.capitalize
+		end
 	end
 
-	#default_scope { where(published: true) }
+	def is_my_post?
+		if Post.current_user
+	    	self.user_id == Post.current_user.id
+		end
+	end
 
+	def published?
+		return self.published
+	end
 end
