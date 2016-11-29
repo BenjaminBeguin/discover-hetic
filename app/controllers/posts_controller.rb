@@ -25,6 +25,36 @@ class PostsController < ApplicationController
         end
     end
 
+    #------------------ SECURE BY USER LOGIN -----------------#
+
+    def unpublish!
+        @post_to_update = Post.find_by_id(params[:id]) or not_found
+
+        if @post_to_update.user_id = current_user.id
+            @post_to_update.published = false
+            puts @post_to_update.published
+            @post_to_update.save!
+            #render :json => @post_to_update 
+            #render :nothing => true
+            redirect_to action: "index"
+        else
+            redirect_to new_user_session_path 
+        end
+    end
+
+    def publish!
+        @post_to_update = Post.find_by_id(params[:id]) or not_found
+        if @post_to_update.user_id = current_user.id
+            @post_to_update.published = true
+            @post_to_update.save!
+            #render :json => @post_to_update 
+            #render :nothing => true
+            redirect_to action: "index"
+        else
+            redirect_to new_user_session_path 
+        end
+    end
+
     def new
         @connected = user_signed_in?
         if @connected
@@ -37,7 +67,6 @@ class PostsController < ApplicationController
     end
 
   def create
-
     @connected = user_signed_in?
     if @connected
         @post = Post.new(
@@ -54,6 +83,24 @@ class PostsController < ApplicationController
   end
 
   def update
+    @connected = user_signed_in?
+    if @connected
+        @post = Post.find(params[:post][:id])
+        if @post.user_id = current_user.id
+            @post.update(
+                title: params[:post][:title],
+                category_id: params[:post][:category_id],
+                url: params[:post][:url],
+                content: params[:post][:content]
+                )
+            @post.save!
+            render json: @post 
+        else
+            redirect_to new_user_session_path 
+        end
+    else
+        redirect_to new_user_session_path 
+    end
   end
 
   def vote
