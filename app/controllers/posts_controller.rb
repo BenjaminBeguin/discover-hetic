@@ -133,10 +133,11 @@ class PostsController < ApplicationController
                     url: params[:post][:url],
                     content: params[:post][:content]
                     )
-                if @post.valid?
-                    @post.save
+                if @post.save                    
+                    render json: @post
+                else
+                  
                 end
-                render json: @post 
             else
                 redirect_to new_user_session_path 
             end
