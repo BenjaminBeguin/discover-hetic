@@ -4,6 +4,7 @@
 	<div>Content : <%= post.content %></div>
 	<div>url : <%= post.url %></div>
 	<div>vote : <%= post.vote  %></div>
+	<div>created : <%= post.created_at  %></div>
 	<div>author : <%
 		if post.user
 			concat post.user.name
