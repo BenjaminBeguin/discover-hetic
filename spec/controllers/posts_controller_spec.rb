@@ -16,7 +16,7 @@ RSpec.describe PostsController, type: :controller do
 			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1, user_id: subject.current_user.id)
 			post.save!
 
-			patch :update, { params: { id: post.id, post: { title: "New titre", content: "new contenu",  url: "https://www.google.fr/", category_id: 1 ,id: post.id }}
+			patch :update, { params: { id: post.id, post: { title: "New titre", content: "new contenu",  url: "", category_id: 1 ,id: post.id }}
 			}
 			post.save!
 

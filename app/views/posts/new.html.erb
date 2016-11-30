@@ -3,8 +3,10 @@
 
 <h1>Create a new post!</h1>
 
+
 <%= form_for @post, url: {action: "create"} do |f| %>
 
+<%= @post.errors.full_messages.join(",") %>
  	<div class="field">
         <%= f.label :title %><br />
         <%= f.text_field :title, autofocus: true %>

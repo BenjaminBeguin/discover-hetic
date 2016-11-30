@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
 
+  get 'votes/index'
+
+  get 'votes/new'
+
   get 'categories/'  => "categories#index"
   post 'categories/create'
 
@@ -30,6 +34,7 @@ Rails.application.routes.draw do
 
     post 'posts/unpublish/:id' => "posts#unpublish!", :as => :posts_unpublished 
     post 'posts/publish/:id' => "posts#publish!", :as => :posts_published 
+    post 'posts/vote/:id' => "posts#vote", :as => :posts_add_vote
 
     get 'posts/index'
     get 'category/:slug' => "posts#category"

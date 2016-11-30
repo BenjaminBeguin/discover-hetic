@@ -5,13 +5,17 @@ class PostsController < ApplicationController
     end
 
     def show
+
+        @connected = user_signed_in?
         @post = Post.find_by_id(params[:id]) or not_found
         @comments = Comment.where(post_id: params[:id])
         @connected = user_signed_in?
     end
 
     def index
-        @posts = Post.all
+        session[:return_to] ||= request.referer
+        @connected = user_signed_in?
+        @posts = Post.where(published: true);
     end
 
     def category
@@ -54,6 +58,30 @@ class PostsController < ApplicationController
         end
     end
 
+    def vote
+        @connected = user_signed_in?
+        if @connected
+            @post = Post.find(params[:id])
+            @already_voted = Vote.where(user_id: current_user.id , post_id: @post.id);
+            if @already_voted.empty?
+                @post.update(vote: @post.vote + 1)
+                @post.save
+                @vote = Vote.create(user_id: current_user.id , post_id: @post.id)
+                @vote.save
+
+                redirect_to session.delete(:return_to)
+            else
+                @post.update(vote: @post.vote - 1)
+                @post.save
+                Vote.delete(@already_voted.first.id)
+                redirect_to session.delete(:return_to)
+            end
+        else
+            redirect_to new_user_session_path 
+        end
+
+    end
+
     def new
         @connected = user_signed_in?
         if @connected
@@ -75,10 +103,15 @@ class PostsController < ApplicationController
             url: params[:post][:url],
             content: params[:post][:content]
         )
-        @post.save
+        if @post.save
+            @post.validate!   
+            redirect_to action: "index"
+        else
+            @post.validate!   
+
+        end
     end
 
-    redirect_to action: "index"
   end
 
   def update
@@ -102,8 +135,5 @@ class PostsController < ApplicationController
     else
         redirect_to new_user_session_path 
     end
-  end
-
-  def vote
   end
 end
