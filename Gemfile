@@ -26,4 +26,6 @@ gem 'aws-sdk', '< 2.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
 
+gem 'will_paginate', '~> 3.1.0'
+
 ruby "2.3.1"
