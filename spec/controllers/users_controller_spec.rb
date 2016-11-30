@@ -5,7 +5,7 @@ describe UsersController do
 	it "Can link a post to a user" do
 	  user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
 	  user.save!
-	  post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: user.id)
+	  post = Post.create(title: "Titre", content: "contenu", category_id: 1 , url: "https://www.google.fr/" , user_id: user.id)
 	  post.save!
 
 	  found_user = User.last
@@ -21,7 +21,7 @@ describe UsersController do
 	it "a not login user cant edit a post" do
 	  user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
 	  user.save!
-	  post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: user.id)
+	  post = Post.create(title: "Titre", content: "contenu", category_id: 1, url: "https://www.google.fr/" , user_id: user.id)
 	  post.save!
 
 	  found_user = User.last
@@ -42,7 +42,7 @@ describe UsersController do
 	login_user
 
 	it "a login user can edit him post" do
-		post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id)
+		post = Post.create(title: "Titre", content: "contenu", category_id: 1,url: "https://www.google.fr/" , user_id: subject.current_user.id)
 		post.save!
 
 		found_post = Post.last
@@ -59,7 +59,7 @@ describe UsersController do
 	end
 
 	it "a login user can not edit not him post" do
-		post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id + 1)
+		post = Post.create(title: "Titre", content: "contenu", category_id: 1, url: "https://www.google.fr/" , user_id: subject.current_user.id + 1)
 		post.save!
 
 		found_post = Post.last

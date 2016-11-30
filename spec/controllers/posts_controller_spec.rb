@@ -11,11 +11,12 @@ RSpec.describe PostsController, type: :controller do
 
   login_user
 
+
 	    it "is possible to edit a post" do
-			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id)
+			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1, user_id: subject.current_user.id)
 			post.save!
 
-			patch :update, params: { post: { title: "New titre", content: "new contenu" , id: post.id }
+			patch :update, params: { post: { title: "New titre", content: "new contenu",  url: "https://www.google.fr/", category_id: 1 ,id: post.id }
 			}
 			post.save!
 
@@ -24,25 +25,11 @@ RSpec.describe PostsController, type: :controller do
 			post.reload
 			expect(my_last_post.title).to eq("New titre")
 			expect(my_last_post.content).to eq("new contenu")
-	    end
 
-	    it "is possible to edit a post" do
-			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id)
-			post.save!
-
-			patch :update, params: { post: { title: "New titre", content: "new contenu" , id: post.id }
-			}
-			post.save!
-
-			my_last_post = Post.last
-
-			post.reload
-			expect(my_last_post.title).to eq("New titre")
-			expect(my_last_post.content).to eq("new contenu")
 	    end
 
 	    it "Post are published by default" do
-			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id)
+			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
 			post.save!
 
 			expect(post.published).to eq(true)
@@ -50,7 +37,7 @@ RSpec.describe PostsController, type: :controller do
 	    end
 
 	    it "Post can be unpublish" do
-			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id)
+			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , category_id: 1, user_id: subject.current_user.id)
 			my_post.save!
 
 			expect(my_post.published).to eq(true)
@@ -65,7 +52,7 @@ RSpec.describe PostsController, type: :controller do
 	    end
 
 	    it "Post can be unpublish and published again" do
-			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id)
+			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
 			my_post.save!
 
 			expect(my_post.published).to eq(true)
@@ -86,7 +73,7 @@ RSpec.describe PostsController, type: :controller do
 	    end
 
 	    it "Post can be unpublish and published again if user connected and only his post" do
-			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , user_id: subject.current_user.id)
+			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , category_id: 1, user_id: subject.current_user.id)
 			my_post.save!
 
 			expect(my_post.published).to eq(true)
@@ -107,7 +94,6 @@ RSpec.describe PostsController, type: :controller do
 
 			expect(post_update_twice.published).to eq(false)
 
-	
 	    end
   	end
 
