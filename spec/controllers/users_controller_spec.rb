@@ -53,9 +53,7 @@ describe UsersController do
 
 		expect(subject.current_user).to_not eq(nil)
 
-		puts subject.current_user.id
-
-		get :edit_user_post , { id: post.id }
+		get :edit_user_post , params: { id: post.id }
 
 		expect(response).to have_http_status(:success)
 	end
@@ -71,9 +69,6 @@ describe UsersController do
 		expect(found_post.content).to eq("contenu")
 
 		expect(subject.current_user).to_not eq(nil)
-
-		puts subject.current_user.id
-
 		get :edit_user_post , { id: post.id }
 
 		expect(response).to_not have_http_status(:success)

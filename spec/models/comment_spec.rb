@@ -8,4 +8,6 @@ RSpec.describe "Comment", type: :model do
     # comment = Comment.create(user: my_user, post: my_post, message: "Hello world!")
 
     # expect(comment.message).to eq("Hello world!")
+  end
+
 end
