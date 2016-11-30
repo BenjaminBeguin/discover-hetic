@@ -95,6 +95,69 @@ RSpec.describe PostsController, type: :controller do
 			expect(post_update_twice.published).to eq(false)
 
 	    end
+	end
+
+	describe "VOTE" do
+
+		login_user
+
+	    it "test multiple vote on post" do
+			post1 = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
+			post2 = Post.create(title: "Titre2", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
+			post3 = Post.create(title: "Titre3", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
+			post4 = Post.create(title: "Titre4", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
+			post5 = Post.create(title: "Titre5", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
+			post1.save!
+			post2.save!
+			post3.save!
+			post4.save!
+			post5.save!
+
+
+			expect(post1.published).to eq(true)
+			expect(post2.published).to eq(true)
+			expect(post3.published).to eq(true)
+			expect(post4.published).to eq(true)
+			expect(post5.published).to eq(true)
+			
+			post :vote, params: { id: post1.id }
+			post :vote, params: { id: post2.id }
+			post :vote, params: { id: post3.id }
+
+			from_db_post1 = Post.find_by_id(post1.id)
+			expect(from_db_post1.published).to eq(true)
+			expect(from_db_post1.vote).to eq(1)
+
+			post :vote, params: { id: post1.id }
+			post :vote, params: { id: post3.id }
+
+			from_db_post1 = Post.find_by_id(post1.id)
+			expect(from_db_post1.published).to eq(true)
+			expect(from_db_post1.vote).to eq(0)
+
+			from_db_post2 = Post.find_by_id(post2.id)
+			expect(from_db_post2.vote).to eq(1)
+
+			from_db_post3 = Post.find_by_id(post3.id)
+			expect(from_db_post3.vote).to eq(0)
+
+			post :vote, params: { id: post5.id }
+			post :vote, params: { id: post5.id }
+			post :vote, params: { id: post5.id }
+			post :vote, params: { id: post5.id }
+			post :vote, params: { id: post5.id }
+			post :vote, params: { id: post5.id }
+			post :vote, params: { id: post5.id }
+
+			from_db_post5 = Post.find_by_id(post5.id)
+			expect(from_db_post5.vote).to eq(1)
+
+			post :vote, params: { id: post5.id }
+
+			from_db_post5 = Post.find_by_id(post5.id)
+			expect(from_db_post5.vote).to eq(0)
+
+	    end
   	end
 
 end

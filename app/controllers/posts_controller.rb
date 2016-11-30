@@ -69,12 +69,21 @@ class PostsController < ApplicationController
                 @vote = Vote.create(user_id: current_user.id , post_id: @post.id)
                 @vote.save
 
-                redirect_to session.delete(:return_to)
+                if session.delete(:return_to)
+                    redirect_to session.delete(:return_to)
+                else
+                    redirect_to new_user_session_path 
+                end
             else
                 @post.update(vote: @post.vote - 1)
                 @post.save
                 Vote.delete(@already_voted.first.id)
-                redirect_to session.delete(:return_to)
+                
+                if session.delete(:return_to)
+                    redirect_to session.delete(:return_to)
+                else
+                    redirect_to new_user_session_path 
+                end
             end
         else
             redirect_to new_user_session_path 
