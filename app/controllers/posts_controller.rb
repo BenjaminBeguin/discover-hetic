@@ -1,26 +1,43 @@
 class PostsController < ApplicationController
+    def index
+        @connected = user_signed_in?
+        @posts = Post.paginate(:page => params[:page], :per_page => 6)
+          @day = Time.now
+        @post = top_of_the_day(@day);
+    end
 
     def show
         @connected = user_signed_in?
         @post = Post.find_by_id(params[:id]) or not_found
         @comments = Comment.where(post_id: params[:id])
-        @connected = user_signed_in?
+
+      
     end
 
-    def index
+    def top_of_the_day(date)
         @connected = user_signed_in?
-        @posts = Post.paginate(:page => params[:page], :per_page => 6)
+        @post_first = Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first or not_found
     end
 
+
+    #------------------ filter and order -----------------#
     def category
         @category_slug = params[:slug];
         if Category.where(slug: @category_slug).first
             @category = Category.where(slug: @category_slug).first;
-            @posts = Post.where(category_id: @category.id)
+            if params[:orderby] == 'top'
+                @posts = Post.where(category_id: @category.id).order(vote: :desc)
+            else
+                @posts = Post.where(category_id: @category.id).order(created_at: :desc)
+            end
+            #--- get the first by vote --#
+            @post_first = Post.where(category_id: @category.id).order(vote: :desc).first
         else
             redirect_to action: "index"
         end
     end
+
+
 
     #------------------ SECURE BY USER LOGIN -----------------#
 
