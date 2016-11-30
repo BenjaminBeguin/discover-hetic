@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
     get 'posts' => "posts#index"
     get 'posts/new'
-    get 'posts/update' 
+    patch 'posts/update/:id' => "posts#update", as: :posts_update
     get 'posts/vote'
     post 'posts/post_comment'
 
