@@ -2,11 +2,13 @@ class Post < ApplicationRecord
 	belongs_to :user
 	belongs_to :category
 	has_many :comments
+
 	cattr_accessor :current_user
 
 	validates :user_id, presence: true
 	validates :category_id, presence: true
 	validates :title, presence: true
+
 	#default_scope { where(published: true) }
 	#validates :url, :format => URI::regexp(%w(http https));
 
@@ -24,12 +26,10 @@ class Post < ApplicationRecord
 		end
 	end
 
-
-
 	before_save :capitalize_title
 
 	def check_field
-		if !self.content && !self.url
+		if (!self.content || self.content == "") && (!self.url || self.url == "")
 			errors.add(:content, "Need to choose one more field")
 		end
 	end

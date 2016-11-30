@@ -1,0 +1,7 @@
+<h1>Votes#index</h1>
+<p>Find me in app/views/votes/index.html.erb</p>
+
+<% @votes.each do |vote| %>
+	<div>user : <%= vote.user.name %></div>
+	<div>post : <%= vote.post.title %></div>
+<% end %>
