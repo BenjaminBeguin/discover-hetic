@@ -55,9 +55,13 @@ Rails.application.routes.draw do
       
     get 'users/' => 'users#index'
     get 'users/posts' => 'users#get_user_post'
-    get 'users/posts/:id' => 'users#edit_user_post' , :as => :users_posts_id   
+    get 'users/posts/:id' => 'users#edit_user_post' , :as => :users_posts_id 
+
+
 
 
     #----------------------------------#
+
+    get "*path" => redirect("/")
 
 end

@@ -150,6 +150,7 @@ class PostsController < ApplicationController
   #---------------- Function ------------------#
 
    def not_found
-        render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
+        redirect_to root_path
+       # render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
     end
 end

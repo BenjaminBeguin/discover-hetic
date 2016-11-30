@@ -1,25 +1,30 @@
-<div>Title : <%= @top_post.title %></div>
-<div>Content : <%= @top_post.content %></div>
-<div>url : <%= @top_post.url %></div>
-<div>vote : <%= @top_post.vote %></div>
-<div>author : <%
-	if @top_post.user
-		concat @top_post.user.name
-	else
-		concat "user deleted"
-	end
- %>
- 	
-</div>
-<div>category : <%= @top_post.category.label %></div>
-<%	if @top_post.is_my_post? %>
-<%= link_to "Edit", users_posts_id_path(:id => @top_post.id), method: :get  %> 
-<% end %>	
-<% if user_signed_in? %>
-  	<%= button_to "LIKE", posts_add_vote_path(id: @top_post.id ), method: :post, :remote=>true %>
-<% end %>
 
-<br>
-<br>
-<br>
-<br>
+<% if  @top_post %>
+	<div>Title : <%= @top_post.title %></div>
+	<div>Content : <%= @top_post.content %></div>
+	<div>url : <%= @top_post.url %></div>
+	<div>vote : <%= @top_post.vote %></div>
+	<div>author : <%
+		if @top_post.user
+			concat @top_post.user.name
+		else
+			concat "user deleted"
+		end
+	 %>
+	 	
+	</div>
+	<div>category : <%= @top_post.category.label %></div>
+	<%	if @top_post.is_my_post? %>
+	<%= link_to "Edit", users_posts_id_path(:id => @top_post.id), method: :get  %> 
+	<% end %>	
+	<% if user_signed_in? %>
+	  	<%= button_to "LIKE", posts_add_vote_path(id: @top_post.id ), method: :post, :remote=>true %>
+	<% end %>
+
+	<br>
+	<br>
+	<br>
+	<br>
+<% else %>	
+	Pas de post du jour pour le moment, revenez plus tard
+<% end %>
