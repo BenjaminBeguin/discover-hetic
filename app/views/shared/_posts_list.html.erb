@@ -27,7 +27,7 @@
 		<%	end %>
 	<% end %>
 
-	<% if @connected %>
+	<% if user_signed_in? %>
 	  	<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
 	<% end %>
 

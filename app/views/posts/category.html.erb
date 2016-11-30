@@ -1,32 +1,17 @@
-<h1>Posts#category</h1>
+<section>
+	<h1>My first post</h1>
+	<%= render "shared/top_post" %>
+</section>
 
-<h2>Slug : <%= @category_slug %></h2>
+<section>
+	<h1>Tous les post de la categorie : <%= @category.label %></h1>
+	<br>
+	<br>
 
-<h1>Fist post</h1>
-<div>Title : <%= @post_first.title %></div>
-<div>Content : <%= @post_first.content %></div>
-<div>url : <%= @post_first.url %></div>
-<div>vote : <%= @post_first.vote %></div>
-<div>author : <%
-	if @post_first.user
-		concat @post_first.user.name
-	else
-		concat "user deleted"
-	end
- %>
- 	
-</div>
-<div>category : <%= @post_first.category.label %></div>
-<%	if @post_first.is_my_post? %>
-<%= link_to "Edit", users_posts_id_path(:id => @post_first.id), method: :get  %> <br><br>
-<% end %>
+	<%= render "shared/posts_list" %>
+	
+</section>
 
-<h1>End first post</h1>
-
-<h3>label : <%= @category.label  %></h3>
-<h3>id : <%= @category.id  %></h3>
-
-<%= render "shared/posts_list" %>
 
 
 

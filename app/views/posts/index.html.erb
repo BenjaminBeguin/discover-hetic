@@ -1,31 +1,18 @@
-Today = <%= @day %>
-
-
 <h1>Fist post</h1>
-<div>Title : <%= @post_first.title %></div>
-<div>Content : <%= @post_first.content %></div>
-<div>url : <%= @post_first.url %></div>
-<div>vote : <%= @post_first.vote %></div>
-<div>author : <%
-	if @post_first.user
-		concat @post_first.user.name
-	else
-		concat "user deleted"
-	end
- %>
- 	
-</div>
-<div>category : <%= @post_first.category.label %></div>
-<%	if @post_first.is_my_post? %>
-<%= link_to "Edit", users_posts_id_path(:id => @post_first.id), method: :get  %> <br><br>
-<% end %>
+<section>
+	<%= render "shared/top_post" %>
+</section>
 
-<h1>End first post</h1>
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<section>
+		<br><br>
+	<h1>All post</h1>
+	<p>Find me in app/views/posts/index.html.erb</p>
 
+	<%= render "shared/posts_list" %>
+	<%= will_paginate @posts %>
 
-<%= render "shared/posts_list" %>
-<%= will_paginate @posts %>
+	
+</section>
+
 
 
