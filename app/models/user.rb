@@ -14,7 +14,15 @@ class User < ApplicationRecord
 					  	:thumb => "100x100#" 
 				  	  },
 					  :default_url => "/images/:style/missing.png"
+  	validates_attachment :avatar,
+  		content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"] }
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+	before_post_process :check_file_size
+	def check_file_size
+	  valid?
+	  errors[:image_file_size].blank?
+	end
 
 	validate  :url, :if => :check_url
 

@@ -1,5 +1,8 @@
 
 	<div>Title : <%= @post.title %></div>
+
+	<%= image_tag @post.asset.url %>
+
 	<div>Content : <%= @post.content %></div>
 	<div>url : <%= @post.url %></div>
 	<div>author : <%

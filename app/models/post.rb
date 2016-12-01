@@ -11,6 +11,22 @@ class Post < ApplicationRecord
 	#default_scope { where(published: true) }
 	#validates :url, :format => URI::regexp(%w(http https));
 
+	has_attached_file :asset,
+					  :styles => { 
+					  	:medium => "300x300>", 
+					  	:thumb => "100x100#" 
+				  	  },
+					  :default_url => "/images/:style/missing.png"
+  	validates_attachment :asset,
+  		content_type: { content_type: ["image/jpeg", "image/jpeg", "image/gif", "image/png"] }
+	validates_attachment_content_type :asset, :content_type => /\Aimage\/.*\Z/
+
+	before_post_process :check_file_size
+	def check_file_size
+	  valid?
+	  errors[:image_file_size].blank?
+	end
+
 	validate  :check_field
 	validate  :url, :if => :check_url
 

@@ -16,6 +16,8 @@
 	 %>	 	
 	</div>
 
+	<%= image_tag post.asset.url %>
+
 	<div>author : <%
 		if post.user.slug
 			concat post.user.slug

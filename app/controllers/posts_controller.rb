@@ -183,7 +183,8 @@ class PostsController < ApplicationController
                     title: params[:post][:title],
                     category_id: params[:post][:category_id],
                     url: params[:post][:url],
-                    content: params[:post][:content]
+                    content: params[:post][:content],
+                    asset: params[:post][:asset]
                     )
                 if @post.save                    
                     redirect_to users_posts_path

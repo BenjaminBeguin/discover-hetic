@@ -18,13 +18,18 @@
     </div>
 
     <div class="field">
-        <%= f.label :url %><br />
-        <%= f.text_field :url, autofocus: true %>
+        <%= f.label :asset %><br />
+        <%= f.file_field :asset, autofocus: true %>
     </div>
 
     <div class="field">
         <%= f.label "category" %><br />
         <%= f.collection_select :category_id, @categories, :id, :label  %>
+    </div>
+
+    <div class="field">
+        <%= f.label :url %><br />
+        <%= f.text_field :url, autofocus: true %>
     </div>
 
  <%= f.submit "Create" %>

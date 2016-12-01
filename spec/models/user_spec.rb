@@ -94,8 +94,23 @@ RSpec.describe "User", :type => :model do
     expect(userFromDB.email).to eq("m@rshow.com")
 
     expect(userFromDB.password == user.password).to eq(false)
+  end
 
+  it "verify the file format should be an image" do
+    user = User.new(name: "Jean Pierre", email: "m@rshow.com" , password: "jesuislepassword")
+    expect(user.valid?).to eq(true)
 
+    user.avatar = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/1f1e6.svg'), 'image/svg');
+    expect(user.valid?).to eq(false)
+
+    user.avatar = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/games.html'), 'file/html');
+    expect(user.valid?).to eq(false)
+
+    user.avatar = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/potté.jpg'), 'image/jpg');
+    expect(user.valid?).to eq(true)
+
+    user.avatar = Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/tyrion.png'), 'image/png');
+    expect(user.valid?).to eq(true)
   end
 
   it "requires a name,and a slug" do
@@ -104,8 +119,6 @@ RSpec.describe "User", :type => :model do
     userFromDB = User.last
     expect(userFromDB.name).to eq("Jean Pierre")
     expect(userFromDB.slug).to eq("jean_pierre")
-
-
   end
 
   it "no duplicated slug" do

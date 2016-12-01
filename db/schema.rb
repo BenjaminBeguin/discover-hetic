@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201141645) do
+ActiveRecord::Schema.define(version: 20161201211908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,16 @@ ActiveRecord::Schema.define(version: 20161201141645) do
     t.string   "title"
     t.string   "content"
     t.string   "url"
-    t.boolean  "published",   default: true
-    t.integer  "vote",        default: 0
+    t.boolean  "published",          default: true
+    t.integer  "vote",               default: 0
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "category_id"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
