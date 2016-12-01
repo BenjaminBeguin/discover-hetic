@@ -3,8 +3,7 @@ class CommentsController < ApplicationController
 	before_action :find_comment, only: [:destroy, :edit, :update]
 
 	def create
-		@connected = user_signed_in?
-		if @connected 
+		if user_signed_in? 
 			@comment = @post.comments.create(params[:comment].permit(:message))
 			@comment.user_id = current_user.id
 

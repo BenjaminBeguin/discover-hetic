@@ -9,7 +9,8 @@ RSpec.describe PostsController, type: :controller do
     end
 
 
-  login_user
+  	login_user
+  	render_views
 
 
 	    it "is possible to edit a post" do
@@ -98,12 +99,9 @@ RSpec.describe PostsController, type: :controller do
 
 	     it "Can show all post for one user" do
 			user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
-		  	user.save!
 		  	post = Post.create(title: "Titre", content: "contenu", category_id: 1 , url: "https://www.google.fr/" , user_id: user.id)
-		  	post.save!
 
 		  	post2 = Post.create(title: "Titre2", content: "contenu2", category_id: 1 , url: "https://www.google.fr/" , user_id: user.id)
-		  	post2.save!
 
 		  	from_db_post1 = Post.find_by_id(post.id)
 			expect(from_db_post1.published).to eq(true)
@@ -114,6 +112,7 @@ RSpec.describe PostsController, type: :controller do
 			expect(response.body).to include("contenu2")
 
 	    end
+
 	end
 
 	describe "VOTE" do
