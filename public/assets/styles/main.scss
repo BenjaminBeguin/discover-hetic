@@ -6,6 +6,7 @@
 @import 'parts/ui';
 @import 'parts/footer';
 @import 'parts/header';
+@import 'parts/fonts';
 
 /* IMPORT PARTIALS */
 @import 'parts/home';
@@ -18,4 +19,8 @@ h1{
 
 a{
 	color:blue;
+}
+
+body, a, p{
+	font-family: 'discover-semibold';
 }

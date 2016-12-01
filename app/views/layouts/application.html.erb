@@ -2,11 +2,10 @@
 <html>
 <head>
   <title>TP2</title>
-
-  <%= stylesheet_link_tag "main" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "libs" %>
-  <%= javascript_include_tag "custom" %>
+  
+  <link rel="stylesheet" href="/assets/dist/styles/main.css">
+  <script href="/assets/dist/scripts/libs.js"></script>
+  <script href="/assets/dist/scripts/custom.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,7 +21,6 @@
 <%= link_to "all post", posts_path, method: :get %> <br>
 <%= link_to "your post ", users_posts_path, method: :get %> <br>
 <%= link_to "new post ", posts_new_path, method: :get %> <br>
-
 
 
 <%= yield %>

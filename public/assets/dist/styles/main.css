@@ -3,7 +3,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,10 +47,46 @@ table {
   border-spacing: 0; }
 
 /* IMPORT COMMONS */
+body {
+  padding: 50px; }
+
+section {
+  background: #ebebeb;
+  margin-bottom: 50px;
+  padding: 60px; }
+
 /* @group FOOTER */
 /* @endgroup FOOTER */
 /* @group HEADER */
 /* @endgroup HEADER */
+@font-face {
+  font-family: 'discover-semibold';
+  src: url("../../fonts/GTEestiProDisplay-Medium.eot");
+  src: url("../../fonts/GTEestiProDisplay-Medium.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'discover-regular';
+  src: url("../../fonts/GTEestiProDisplay-Regular.eot");
+  src: url("../../fonts/GTEestiProDisplay-Regular.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'discover-bold';
+  src: url("../../fonts/GTEestiProDisplay-Bold.eot");
+  src: url("../../fonts/GTEestiProDisplay-Bold.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'discover-light';
+  src: url("../../fonts/GTEestiProDisplay-Light.eot");
+  src: url("../../fonts/GTEestiProDisplay-Light.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
 /* IMPORT PARTIALS */
 /* @group HOME */
 /* @endgroup HOME */
@@ -83,3 +118,6 @@ h1 {
 
 a {
   color: blue; }
+
+body, a, p {
+  font-family: 'discover-semibold'; }
