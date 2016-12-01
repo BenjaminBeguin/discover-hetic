@@ -1,10 +1,13 @@
 <% @posts.find_each do |post| %>
 	<div><%= link_to "Link", post_path(:id => post.id), method: :get  %> </div>
 
+	<div>voted? : <%= post.already_voted %></div>
 	<div>Published : <%= post.published %></div>
+	
 	<div>Title : <%= post.title %></div>
 	<div>Content : <%= post.content %></div>
 	<div>url : <%= post.url %></div>
+	<div>id : <%= post.id %></div>
 	<div>vote : <%= post.vote  %></div>
 	<div>created : <%= post.created_at  %></div>
 	<div>author : <%
@@ -41,7 +44,12 @@
 	<% end %>
 
 	<% if user_signed_in? %>
-	  	<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+		<% if @post_voted.include?(post.id) %>
+	  		<%= button_to "UNLIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+		<% else %>
+	  		<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+
+		<% end %>
 	<% end %>
 
 	<br><br>

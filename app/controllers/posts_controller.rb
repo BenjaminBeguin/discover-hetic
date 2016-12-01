@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
     def index
         @posts = Post.paginate(:page => params[:page], :per_page => 6)
+        @post_voted = post_like_unlike
+
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
-        #@best_users = Post.all
         @best_users = get_best_users
     end
     
@@ -13,14 +14,6 @@ class PostsController < ApplicationController
 
     def get_best_users
         @all_user = User.order(vote_count: :desc).limit(5)
-
-        #render json: @all_user;
-
-       # Post.order(:vote).limit(5)
-        # Post.joins(:users)
-        #   .select("users.id, users.name, SUM(post.vote) as vote")
-        #   .group("users.id, users.name")
-        #   .order("users.id")
     end
 
     def show
@@ -39,12 +32,23 @@ class PostsController < ApplicationController
             else
                 @posts = Post.where(category_id: @category.id).order(created_at: :desc)
             end
+            post_like_unlike
             #--- get the first by vote --#
             date = Date.yesterday
             @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).first
         else
-           # redirect_to action: "index"
+            redirect_to action: "index"
         end
+    end
+
+    def post_like_unlike
+        posts_voted = Vote.select(:post_id).where(user_id: current_user.id)
+        @post_voted = [];
+        posts_voted.each do |post_voted|
+            @post_voted << post_voted.post_id
+        end
+
+        @post_voted
     end
 
     def by_user
@@ -57,6 +61,7 @@ class PostsController < ApplicationController
             else
                 @posts = Post.where(user_id: @user.id).order(created_at: :desc)
             end
+            post_like_unlike
         else
             redirect_to action: "index"
         end
