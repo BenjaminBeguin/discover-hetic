@@ -53,11 +53,10 @@ RSpec.describe CommentsController, type: :controller do
       delete :destroy, { params: { id: comment.id, post_id: post.id, user_id: subject.current_user.id } }
       expect(Comment.find_by_id(comment.id)).to eq(nil)
 
-      other_comment = Comment.create(message: "Hello premier com", post_id: post.id, user_id: 12)
+      other_comment = Comment.create(message: "Hello premier com", post_id: post.id, user_id: user.id)
       other_comment.save!
-      delete :destroy, { params: { id: other_comment.id, post_id: post.id, comment: {user_id: subject.current_user.id} } }
+      delete :destroy, { params: { id: other_comment.id, post_id: post.id, user_id: subject.current_user.id} }
 
-      Comment.last.destroy
       expect(Comment.find_by_id(other_comment.id).message).to eq("Hello premier com")
     end
   end

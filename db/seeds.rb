@@ -20,7 +20,7 @@
 # 	)
 # end
 
-# 20.times do
+# 10.times do
 # 	Comment.create(
 # 		post_id: Post.order("RANDOM()").first.id,
 # 		user_id: User.order("RANDOM()").first.id,
