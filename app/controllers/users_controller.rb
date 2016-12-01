@@ -43,12 +43,14 @@ class UsersController < ApplicationController
     end
 
     def post_like_unlike
-        posts_voted = Vote.select(:post_id).where(user_id: current_user.id)
-        @post_voted = [];
-        posts_voted.each do |post_voted|
-            @post_voted << post_voted.post_id
-        end
+        if user_signed_in?
+            posts_voted = Vote.select(:post_id).where(user_id: current_user.id)
+            @post_voted = [];
+            posts_voted.each do |post_voted|
+                @post_voted << post_voted.post_id
+            end
 
-        @post_voted
+            @post_voted            
+        end
     end
 end
