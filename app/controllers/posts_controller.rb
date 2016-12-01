@@ -3,8 +3,8 @@ class PostsController < ApplicationController
         @posts = Post.paginate(:page => params[:page], :per_page => 6)
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
-        @best_users = Post.all
-        #@best_users = get_best_users
+        #@best_users = Post.all
+        @best_users = get_best_users
     end
     
     def top_of_the_day(date)
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     end
 
     def get_best_users
-        @all_user = Post.group(:user_id).sum(:vote)
+        @all_user = User.order(vote_count: :desc).limit(5)
 
         #render json: @all_user;
 

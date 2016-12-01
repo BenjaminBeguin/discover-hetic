@@ -1,5 +1,4 @@
-<% @best_users.each do |post| %>
-	<li> <%= post.user.name %></li>
-	<li> <%= post.user.vote_count %> yo</li>
+<% @best_users.each do |user| %>
+	<li> <%= user.name %> => <%= user.vote_count %> votes</li>
 
 <% end %>
