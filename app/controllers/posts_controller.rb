@@ -189,7 +189,8 @@ class PostsController < ApplicationController
                 if @post.save                    
                     redirect_to users_posts_path
                 else
-                    
+                    @categories = Category.all
+                    render 'users/edit_user_post', :id => @post.id
                 end
             else
                 redirect_to new_user_session_path 
