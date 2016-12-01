@@ -1,4 +1,4 @@
-<% @posts.each do |post| %>
+<% @posts.find_each do |post| %>
 	<div><%= link_to "Link", post_path(:id => post.id), method: :get  %> </div>
 
 	<div>Published : <%= post.published %></div>

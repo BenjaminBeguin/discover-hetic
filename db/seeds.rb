@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# 5.times do
+# 	Category.create(label: Faker::Team.sport)
+# end
+
+# 10.times do
+# 	Post.create(
+# 		user_id: rand(20),
+# 		category_id: Category.order("RANDOM()").first.id,
+# 		title: Faker::Lorem.sentence,
+# 		url: Faker::Internet.url('example.com'),
+# 		content: Faker::Lorem.sentence(7, true)
+# 	)
+# end
+
+# 20.times do
+# 	Comment.create(
+# 		post_id: Post.order("RANDOM()").first.id,
+# 		user_id: User.order("RANDOM()").first.id,
+# 		message: Faker::Lorem.sentence(7, true)
+# 	)
+# end

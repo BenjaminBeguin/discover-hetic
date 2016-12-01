@@ -16,7 +16,8 @@ gem 'rspec'
 gem 'rspec-rails'
 gem 'database_cleaner'
 gem 'factory_girl'
-gem "factory_girl_rails"
+gem 'factory_girl_rails'
+gem 'faker', '~> 1.6', '>= 1.6.3'
 gem 'jquery-rails'
 
 gem 'devise'
