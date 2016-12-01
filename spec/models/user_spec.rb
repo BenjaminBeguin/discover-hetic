@@ -98,4 +98,26 @@ RSpec.describe "User", :type => :model do
 
   end
 
+  it "requires a name,and a slug" do
+    user = User.create(name: "Jean Pierre", email: "m@rshow.com" , password: "jesuislepassword")
+
+    userFromDB = User.last
+    expect(userFromDB.name).to eq("Jean Pierre")
+    expect(userFromDB.slug).to eq("jean_pierre")
+
+
+  end
+
+  it "no duplicated slug" do
+    user = User.create(name: "Jéan Pierre", email: "m@rshow.com" , password: "jesuislepassword")
+    userFromDB = User.last
+    expect(userFromDB.name).to eq("Jéan Pierre")
+    expect(userFromDB.slug).to eq("j_an_pierre")
+
+    other_user = User.create(name: "Jàan Pierre", email: "qscm@rshow.com" , password: "jesuislepassword")
+
+    expect(other_user.valid?).to eq(false)
+
+  end
+
 end

@@ -95,6 +95,25 @@ RSpec.describe PostsController, type: :controller do
 			expect(post_update_twice.published).to eq(false)
 
 	    end
+
+	     it "Can show all post for one user" do
+			user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
+		  	user.save!
+		  	post = Post.create(title: "Titre", content: "contenu", category_id: 1 , url: "https://www.google.fr/" , user_id: user.id)
+		  	post.save!
+
+		  	post2 = Post.create(title: "Titre2", content: "contenu2", category_id: 1 , url: "https://www.google.fr/" , user_id: user.id)
+		  	post2.save!
+
+		  	from_db_post1 = Post.find_by_id(post.id)
+			expect(from_db_post1.published).to eq(true)
+			expect(from_db_post1.user.id).to eq(user.id)
+			expect(from_db_post1.user.slug).to eq(user.slug)
+
+			get :by_user, params: { slug: user.slug }
+			expect(response.body).to include("contenu2")
+
+	    end
 	end
 
 	describe "VOTE" do

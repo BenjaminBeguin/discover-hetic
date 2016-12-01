@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     def index
         @posts = Post.paginate(:page => params[:page], :per_page => 6)
-        @day = Time.now
+        @day = Date.yesterday
         @top_post = top_of_the_day(@day);
     end
     
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
     #------------------ filter and order -----------------#
     def category
-        @category_slug = params[:slug];
+        @user_slug = params[:slug];
         @category = Category.where(slug: @category_slug).first
 
         if  @category.present?
@@ -27,7 +27,23 @@ class PostsController < ApplicationController
                 @posts = Post.where(category_id: @category.id).order(created_at: :desc)
             end
             #--- get the first by vote --#
-            @top_post = Post.where(category_id: @category.id).order(vote: :desc).first
+            day = Date.yesterday
+            @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).first
+        else
+            redirect_to action: "index"
+        end
+    end
+
+    def by_user
+        @user_slug = params[:slug];
+        @user = User.where(slug: @user_slug).first
+
+        if  @user.present?
+            if params[:orderby] == 'top'
+                @posts = Post.where(user_id: @user.id).order(vote: :desc)
+            else
+                @posts = Post.where(user_id: @user.id).order(created_at: :desc)
+            end
         else
             redirect_to action: "index"
         end
@@ -85,20 +101,17 @@ class PostsController < ApplicationController
         @connected = user_signed_in?
         date = Time.now;
         if @connected
-            @has_vited = Post.where(created_at: date.midnight..date.end_of_day, user_id: current_user.id).first
-            if @has_vited.blank?
+            #@has_voted = Post.where(created_at: date.midnight..date.end_of_day, user_id: current_user.id).first
+            if @has_voted.blank?
                 @post = Post.new
                 @categories = Category.all;
             else
-                render json: @has_vited;
+                render json: @has_voted;
             end
         else
             flash[:error] = 'You need to be login to post'
             redirect_to action: "index"
         end
-        
-
-        
 
     end
 
@@ -106,7 +119,7 @@ class PostsController < ApplicationController
         @connected = user_signed_in?
         if @connected
             @post = Post.new(params.require(:post).permit(:title, :category_id, :url, :content));
-            @post.user_id = current_user.id ; 
+            @post.user_id = current_user.id 
             if @post.save 
                 redirect_to action: "index"
             else
@@ -121,6 +134,8 @@ class PostsController < ApplicationController
         if @connected
             @post = Post.find(params[:post][:id])
             if @post.user_id = current_user.id
+                @post.update(params.require(:post).permit(:title, :category_id, :url, :content));
+                
                 @post.update(
                     title: params[:post][:title],
                     category_id: params[:post][:category_id],

@@ -8,14 +8,24 @@
 	<div>vote : <%= post.vote  %></div>
 	<div>created : <%= post.created_at  %></div>
 	<div>author : <%
-		if post.user
+		if post.user.name
 			concat post.user.name
 		else
 			concat "user deleted"
 		end
-	 %>
-	 	
+	 %>	 	
 	</div>
+
+	<div>author : <%
+		if post.user.slug
+			concat post.user.slug
+		else
+			concat "no slug"
+		end
+	 %>	 	
+	</div>
+
+
 	<div>category : <%= post.category.label %></div>
 	<br>
 
