@@ -8,15 +8,15 @@ class PostsController < ApplicationController
 
     def show
         @connected = user_signed_in?
-        @post = Post.find_by_id(params[:id]) or not_found
-        @comments = Comment.where(post_id: params[:id])
+        @post = Post.find_by_id(params[:id])
+        @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
 
       
     end
 
     def top_of_the_day(date)
         @connected = user_signed_in?
-        @post_first = Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first or not_found
+        @post_first = Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first
     end
 
 

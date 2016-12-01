@@ -3,19 +3,28 @@ class CommentsController < ApplicationController
 	before_action :find_comment, only: [:destroy, :edit, :update]
 
 	def create
-		@comment = @post.comments.create(params[:comment].permit(:message))
-		@comment.user_id = current_user.id
+		@connected = user_signed_in?
+		if @connected 
+			@comment = @post.comments.create(params[:comment].permit(:message))
+			@comment.user_id = current_user.id
 
-		if @comment.save
-			redirect_to post_path(@post)
-		else
-			render 'new'
+			if @comment.save
+				redirect_to post_path(@post)
+			else
+				render 'new'
+			end
 		end
 	end	
 
 	def destroy
-		@comment.destroy
-		redirect_to post_path(@post)
+		if user_signed_in?
+			if @comment.user_id == current_user.id
+				@comment.destroy
+				redirect_to post_path(@post)
+			else
+				render 'new'
+			end
+		end
 	end
 
 	def edit

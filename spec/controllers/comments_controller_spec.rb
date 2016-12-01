@@ -2,26 +2,63 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
 
-  # describe "GET #index" do
-  #   it "returns http success" do
-  #     get :index
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "Commentaires" do
+    login_user
 
-  # describe "GET #index" do
-  #   it "is possible to edit a comment" do
-  #     comment = Comment.create(user_id: "1", post_id: "2", message: "Hello message")
-  #     comment.save!
+    it "user can't post if not logged in" do
+      user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
+      user.save!
 
-  #     patch :update, id: comment.id, comment: {user_id: "1", post_id: "2", message: "New comment content"}
-  #     comment.save!
+      post = Post.create(title: "Titre", content: "contenu", category_id: 1, url: "https://www.google.fr/" , user_id: user.id)
+      post.save!
 
-  #     my_last_comment = Comment.last
+      comment = Comment.create(message: "Hello premier com", post_id: post.id)
+      expect(Comment.last.message).to eq("Hello premier com")
 
-  #     comment.reload
-  #     expect(comment.message).to eq("New comment content")
-  #   end
-  # end
+      session.delete(subject.current_user.id)
+
+      comment_after_logout = Comment.create(message: "Hello mon 2éme commentaire", post_id: post.id)
+      expect(Comment.last.message).to eq("Hello mon 2éme commentaire")
+    end
+
+    it "user can only edit their own comments" do
+      user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
+      user.save!
+
+      post = Post.create(title: "Titre", content: "contenu", category_id: 1, url: "https://www.google.fr/" , user_id: user.id)
+      post.save!
+
+      comment = Comment.create(message: "Hello premier com", post_id: post.id)
+      comment.save!
+      expect(comment.message).to eq("Hello premier com")
+
+      # patch :update, { params: { id: comment.id, comment: {message: "Ceci est mon commentaire modifié" } } }
+      # comment_updated = Comment.last
+      # comment.reload
+      # expect(comment_updated.message).to eq("Ceci est mon commentaire modifié")
+    end
+
+    it "comments can be deleted" do
+      user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
+      user.save!
+
+      post = Post.create(title: "Titre", content: "contenu", category_id: 1, url: "https://www.google.fr/" , user_id: user.id)
+      post.save!
+
+      comment = Comment.create(message: "Hello premier com", post_id: post.id, user_id: user.id)
+      comment.save!
+
+      expect(Comment.last.message).to eq("Hello premier com")
+
+      Comment.last.destroy
+      expect(Comment.find_by_id(comment.id)).to eq(nil)
+
+      other_comment = Comment.create(message: "Hello premier com", post_id: post.id, user_id: 12)
+      other_comment.save!
+
+      Comment.last.destroy
+      expect(Comment.find_by_id(other_comment.id).message).to eq("Hello premier com")
+    end
+  end
 
 end
