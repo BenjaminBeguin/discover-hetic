@@ -12,7 +12,7 @@
 
 # 10.times do
 # 	Post.create(
-# 		user_id: rand(20),
+# 		user_id: User.order("RANDOM()").first.id,
 # 		category_id: Category.order("RANDOM()").first.id,
 # 		title: Faker::Lorem.sentence,
 # 		url: Faker::Internet.url('example.com'),
@@ -20,10 +20,12 @@
 # 	)
 # end
 
-# 10.times do
-# 	Comment.create(
-# 		post_id: Post.order("RANDOM()").first.id,
-# 		user_id: User.order("RANDOM()").first.id,
-# 		message: Faker::Lorem.sentence(7, true)
-# 	)
-# end
+Comment.delete_all
+100.times do
+
+	Comment.create(
+		post_id: Post.order("RANDOM()").first.id,
+		user_id: User.order("RANDOM()").first.id,
+		message: Faker::Lorem.sentence(7, true)
+	)
+end

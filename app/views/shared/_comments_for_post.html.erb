@@ -1,6 +1,6 @@
 <% @comments.find_each do |comment| %>
 	<div class="comment">
-		<p class="comment__datas"><strong><%= @post.user.name %></strong> commented on <i><%= comment.created_at %></i></p>
+		<p class="comment__datas"><strong><%= comment.user.name %></strong> commented on <i><%= comment.created_at %></i></p>
 		
 		<div class="comment__content">
 			<%= comment.message %>
