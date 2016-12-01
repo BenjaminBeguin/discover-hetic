@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 	belongs_to :user
 	belongs_to :category
-	has_many :comments
+	has_many :comments 
 	cattr_accessor :current_user, :already_voted
 
 	validates :user_id, presence: true
