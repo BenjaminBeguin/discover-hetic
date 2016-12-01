@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  	has_many :posts, :dependent => :destroy
 	validates :name, presence: true, uniqueness: true
 	validates :slug, uniqueness: true
 	validates :email, presence: true, format: { with: /\w*@\w*\.\w*/ }, uniqueness: true
