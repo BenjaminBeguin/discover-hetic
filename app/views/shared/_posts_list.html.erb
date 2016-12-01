@@ -1,15 +1,12 @@
-<% @posts.find_each do |post| %>
+<% @posts.each do |post| %>
 	<div><%= link_to "Link", post_path(:id => post.id), method: :get  %> </div>
 
-	<div>voted? : <%= post.already_voted %></div>
-	<div>Published : <%= post.published %></div>
-	
+	<div>time : <%= hours = distance_of_time_in_words_to_now(post.created_at) %></div>	
 	<div>Title : <%= post.title %></div>
 	<div>Content : <%= post.content %></div>
 	<div>url : <%= post.url %></div>
 	<div>id : <%= post.id %></div>
 	<div>vote : <%= post.vote  %></div>
-	<div>created : <%= post.created_at  %></div>
 	<div>author : <%
 		if post.user.name
 			concat post.user.name

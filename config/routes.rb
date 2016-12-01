@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     post 'posts/vote/:id' => "posts#vote", :as => :posts_add_vote
 
     get 'posts/index'
-    get 'category/:slug' => "posts#category"
+    get 'category/:slug' => "posts#category", :as => :category
 
     resources :posts do
         resources :comments, :only => [:create, :destroy, :update, :edit]

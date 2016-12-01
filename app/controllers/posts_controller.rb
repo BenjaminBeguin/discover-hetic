@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
     def index
-        @posts = Post.paginate(:page => params[:page], :per_page => 6)
+        if params[:orderby] == 'newest'
+            @posts = Post.paginate(:page => params[:page], :per_page => 2).order('created_at DESC')
+        else
+            @posts = Post.paginate(:page => params[:page], :per_page => 2).order('vote DESC')
+        end
         @post_voted = post_like_unlike
+
+        # render json: @posts
 
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
@@ -28,9 +34,9 @@ class PostsController < ApplicationController
 
         if  @category.present?
             if params[:orderby] == 'top'
-                @posts = Post.where(category_id: @category.id).order(vote: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => 2).where(category_id: @category.id).order(vote: :desc)
             else
-                @posts = Post.where(category_id: @category.id).order(created_at: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => 2).where(category_id: @category.id).order(created_at: :desc)
             end
             post_like_unlike
             #--- get the first by vote --#
