@@ -1,4 +1,6 @@
 <% @posts.each do |post| %>
+	<div><%= link_to "Link", post_path(:id => post.id), method: :get  %> </div>
+
 	<div>Published : <%= post.published %></div>
 	<div>Title : <%= post.title %></div>
 	<div>Content : <%= post.content %></div>
@@ -27,7 +29,7 @@
 		<%	end %>
 	<% end %>
 
-	<% if @connected %>
+	<% if user_signed_in? %>
 	  	<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
 	<% end %>
 

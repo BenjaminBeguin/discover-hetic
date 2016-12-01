@@ -2,36 +2,35 @@ class PostsController < ApplicationController
     def index
         @connected = user_signed_in?
         @posts = Post.paginate(:page => params[:page], :per_page => 6)
-          @day = Time.now
-        @post = top_of_the_day(@day);
+        @day = Time.now
+        @top_post = top_of_the_day(@day);
+    end
+    
+    def top_of_the_day(date)
+        @top_post = Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first
     end
 
     def show
         @connected = user_signed_in?
-        @post = Post.find_by_id(params[:id])
+        @post = Post.find_by_id(params[:id]) or not_found
         @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
-
-      
     end
-
-    def top_of_the_day(date)
-        @connected = user_signed_in?
-        @post_first = Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first
-    end
-
 
     #------------------ filter and order -----------------#
     def category
         @category_slug = params[:slug];
-        if Category.where(slug: @category_slug).first
-            @category = Category.where(slug: @category_slug).first;
+        @category = Category.where(slug: @category_slug).first
+
+        if  !@category.blank?
+
             if params[:orderby] == 'top'
                 @posts = Post.where(category_id: @category.id).order(vote: :desc)
             else
                 @posts = Post.where(category_id: @category.id).order(created_at: :desc)
             end
+
             #--- get the first by vote --#
-            @post_first = Post.where(category_id: @category.id).order(vote: :desc).first
+            @top_post = Post.where(category_id: @category.id).order(vote: :desc).first
         else
             redirect_to action: "index"
         end
@@ -132,10 +131,11 @@ class PostsController < ApplicationController
                     url: params[:post][:url],
                     content: params[:post][:content]
                     )
-                if @post.valid?
-                    @post.save
+                if @post.save                    
+                    render json: @post
+                else
+                  
                 end
-                render json: @post 
             else
                 redirect_to new_user_session_path 
             end
@@ -148,6 +148,7 @@ class PostsController < ApplicationController
   #---------------- Function ------------------#
 
    def not_found
-        render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
+        redirect_to root_path
+       # render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
     end
 end
