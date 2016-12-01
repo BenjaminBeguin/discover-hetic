@@ -16,7 +16,7 @@ var gulp         = require('gulp'),
 
 
 gulp.task('sass', function () {
-    return      gulp.src('vendor/assets/styles/**/*.scss')
+    return      gulp.src('./public/assets/styles/**/*.scss')
         .pipe(plumber({
             errorHandler: function (error) {
                 console.log(error.message);
@@ -27,34 +27,34 @@ gulp.task('sass', function () {
             indentedSyntax: false
         }))
         .pipe(autoprefixer())
-        .pipe(gulp.dest('./app/assets/stylesheets'))
+        .pipe(gulp.dest('./public/assets/dist/styles'))
 });
 
 gulp.task('js_libs', function() {
-    return      gulp.src('./vendor/assets/scripts/libs/**/*.js')
+    return      gulp.src('./public/assets/scripts/libs/**/*.js')
         .pipe(concat('libs.js'))
-        .pipe(gulp.dest('./app/assets/javascripts'))
+        .pipe(gulp.dest('./public/assets/dist/scripts'))
         .pipe(uglify())
-        .pipe(gulp.dest('./app/assets/javascripts'))
+        .pipe(gulp.dest('./public/assets/dist/scripts'))
         .pipe(notify({ message: 'Vendor scripts task complete', onLast: true }));
 });
 
 gulp.task('js_app', function() {
-    return      gulp.src('./vendor/assets/scripts/custom/*.js')
+    return      gulp.src('./public/assets/scripts/custom/*.js')
         .pipe(concat('custom.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./app/assets/javascripts'))
+        .pipe(gulp.dest('./public/assets/scripts'))
         .pipe(notify({ message: 'Custom scripts task complete', onLast: true }));
 });
 
 gulp.task('images', function() {
 
 // Add the newer pipe to pass through newer images only
-    return  gulp.src(['./vendor/assets/images/raw/**/*.{png,jpg,gif}'])
-        .pipe(newer('./vendor/assets/images/'))
+    return  gulp.src(['./public/assets/images/raw/**/*.{png,jpg,gif}'])
+        .pipe(newer('./public/assets/images/'))
         .pipe(rimraf({ force: true }))
         .pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
-        .pipe(gulp.dest('./images/'))
+        .pipe(gulp.dest('./public/assets/images/'))
         .pipe( notify( { message: 'Images task complete', onLast: true } ) );
 });
 
@@ -84,7 +84,7 @@ gulp.task('default', ['sass', 'js_libs', 'js_app'], function () {
 
     });
 
-    gulp.watch('./vendor/assets/images/**/*', ['images']);
-    gulp.watch('./vendor/assets/styles/**/*.scss', ['sass', browserSync.reload]);
-    gulp.watch('./vendor/assets/scripts/**/*.js', ['js_app', browserSync.reload]);
+    gulp.watch('./public/assets/images/**/*', ['images']);
+    gulp.watch('./public/assets/styles/**/*.scss', ['sass', browserSync.reload]);
+    gulp.watch('./public/assets/scripts/**/*.js', ['js_app', browserSync.reload]);
 });

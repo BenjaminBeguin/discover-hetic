@@ -33,7 +33,8 @@ module BlogTp
     # config.generators do |g|
     #   g.assets false
     # end
-
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')  
+    config.assets.precompile += %w( .svg .eot .woff .ttf .otf)
 
 
   end
