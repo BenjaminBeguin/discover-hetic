@@ -3,7 +3,8 @@ class PostsController < ApplicationController
         @posts = Post.paginate(:page => params[:page], :per_page => 6)
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
-        @best_users = get_best_users
+        @best_users = Post.all
+        #@best_users = get_best_users
     end
     
     def top_of_the_day(date)
@@ -11,7 +12,15 @@ class PostsController < ApplicationController
     end
 
     def get_best_users
-        Post.select(:user_id, :vote).group(:user_id , :vote).order(:vote).limit(5)
+        @all_user = Post.group(:user_id).sum(:vote)
+
+        #render json: @all_user;
+
+       # Post.order(:vote).limit(5)
+        # Post.joins(:users)
+        #   .select("users.id, users.name, SUM(post.vote) as vote")
+        #   .group("users.id, users.name")
+        #   .order("users.id")
     end
 
     def show
@@ -21,7 +30,7 @@ class PostsController < ApplicationController
 
     #------------------ filter and order -----------------#
     def category
-        @user_slug = params[:slug];
+        @category_slug = params[:slug];
         @category = Category.where(slug: @category_slug).first
 
         if  @category.present?
@@ -31,10 +40,10 @@ class PostsController < ApplicationController
                 @posts = Post.where(category_id: @category.id).order(created_at: :desc)
             end
             #--- get the first by vote --#
-            day = Date.yesterday
+            date = Date.yesterday
             @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).first
         else
-            redirect_to action: "index"
+           # redirect_to action: "index"
         end
     end
 
@@ -86,13 +95,12 @@ class PostsController < ApplicationController
                 @post.update(vote: @post.vote + 1)
                 @post.save
                 @vote = Vote.create(user_id: current_user.id , post_id: @post.id)
-                @vote.save
 
                 redirect_to posts_path 
             else
                 @post.update(vote: @post.vote - 1)
                 @post.save
-                Vote.delete(@already_voted.first.id)
+                Vote.destroy(@already_voted.first.id)
                 
                 redirect_to posts_path 
             end

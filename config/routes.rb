@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     get 'posts' => "posts#index"
     get 'posts/new'
     patch 'posts/update/:id' => "posts#update", as: :posts_update
-    get 'posts/user/:slug' => "posts#by_user", as: :posts_by_user
     get 'posts/vote'
     post 'posts/post_comment'
 
@@ -61,6 +60,7 @@ Rails.application.routes.draw do
     get 'users/' => 'users#index'
     get 'users/posts' => 'users#get_user_post'
     get 'users/posts/:id' => 'users#edit_user_post' , :as => :users_posts_id 
+    get 'users/:slug' => "posts#by_user", as: :posts_by_user
 
 
 
