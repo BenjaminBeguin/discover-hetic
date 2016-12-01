@@ -52,4 +52,8 @@ class Post < ApplicationRecord
 	def published?
 		return self.published
 	end
+
+	def self.search(search)
+		where("title ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%") 
+	end
 end

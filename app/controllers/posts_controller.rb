@@ -7,8 +7,6 @@ class PostsController < ApplicationController
         end
         @post_voted = post_like_unlike
 
-        # render json: @posts
-
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
         @best_users = get_best_users
@@ -25,6 +23,24 @@ class PostsController < ApplicationController
     def show
         @post = Post.find_by_id(params[:id]) or not_found
         @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
+    end
+
+    def search
+        if params[:q]
+            if params[:orderby] == 'newest'
+                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => 2).order('created_at DESC')
+            else
+                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => 2).order('vote DESC')
+            end
+        else
+            if params[:orderby] == 'newest'
+                @posts = Post.paginate(:page => params[:page], :per_page => 2).order('created_at DESC')
+            else
+                @posts = Post.paginate(:page => params[:page], :per_page => 2).order('vote DESC')
+            end
+        end
+        @post_voted = post_like_unlike
+        
     end
 
     #------------------ filter and order -----------------#
@@ -139,6 +155,8 @@ class PostsController < ApplicationController
         end
 
     end
+
+
 
     def create
         @connected = user_signed_in?

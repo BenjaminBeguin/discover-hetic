@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get 'posts/new'
     patch 'posts/update/:id' => "posts#update", as: :posts_update
     get 'posts/vote'
+    get 'search' => "posts#search", as: :posts_search
     post 'posts/post_comment'
 
     post 'posts/unpublish/:id' => "posts#unpublish!", :as => :posts_unpublished 

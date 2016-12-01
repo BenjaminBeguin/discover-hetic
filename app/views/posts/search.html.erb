@@ -1,0 +1,20 @@
+<section>
+		<br><br>
+	<h1>All post</h1>
+
+	<%= link_to "Newest", root_path %>
+	<%= link_to "Top", root_path(:orderby => "top" ) %>
+
+	<% if @posts.present? %>
+		<%= render "shared/posts_list" %>
+	<% else %>
+	  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+	<% end %>
+
+	<%= will_paginate @posts %>
+
+	
+</section>
+
+
+

@@ -12,6 +12,13 @@
 </head>
 <body>
 
+<section>
+	
+	<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :q, params[:q], placeholder: "Search" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+</section>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
@@ -23,6 +30,7 @@
 <%= link_to "all post", posts_path, method: :get %> <br>
 <%= link_to "your post ", users_posts_path, method: :get %> <br>
 <%= link_to "new post ", posts_new_path, method: :get %> <br>
+
 
 
 <%= yield %>
