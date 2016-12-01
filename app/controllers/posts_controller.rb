@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
     def index
-        @connected = user_signed_in?
         @posts = Post.paginate(:page => params[:page], :per_page => 6)
-        @day = Time.now
+        @day = Date.yesterday
         @top_post = top_of_the_day(@day);
     end
     
@@ -11,32 +10,43 @@ class PostsController < ApplicationController
     end
 
     def show
-        @connected = user_signed_in?
         @post = Post.find_by_id(params[:id]) or not_found
         @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
     end
 
     #------------------ filter and order -----------------#
     def category
-        @category_slug = params[:slug];
+        @user_slug = params[:slug];
         @category = Category.where(slug: @category_slug).first
 
-        if  !@category.blank?
-
+        if  @category.present?
             if params[:orderby] == 'top'
                 @posts = Post.where(category_id: @category.id).order(vote: :desc)
             else
                 @posts = Post.where(category_id: @category.id).order(created_at: :desc)
             end
-
             #--- get the first by vote --#
-            @top_post = Post.where(category_id: @category.id).order(vote: :desc).first
+            day = Date.yesterday
+            @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).first
         else
             redirect_to action: "index"
         end
     end
 
+    def by_user
+        @user_slug = params[:slug];
+        @user = User.where(slug: @user_slug).first
 
+        if  @user.present?
+            if params[:orderby] == 'top'
+                @posts = Post.where(user_id: @user.id).order(vote: :desc)
+            else
+                @posts = Post.where(user_id: @user.id).order(created_at: :desc)
+            end
+        else
+            redirect_to action: "index"
+        end
+    end
 
     #------------------ SECURE BY USER LOGIN -----------------#
 
@@ -45,8 +55,6 @@ class PostsController < ApplicationController
         if @post_to_update.user_id = current_user.id
             @post_to_update.published = false
             @post_to_update.save!
-            #render :json => @post_to_update 
-            #render :nothing => true
             redirect_to action: "index"
         else
             redirect_to new_user_session_path 
@@ -58,8 +66,6 @@ class PostsController < ApplicationController
         if @post_to_update.user_id = current_user.id
             @post_to_update.published = true
             @post_to_update.save!
-            #render :json => @post_to_update 
-            #render :nothing => true
             redirect_to action: "index"
         else
             redirect_to new_user_session_path 
@@ -92,30 +98,32 @@ class PostsController < ApplicationController
 
     def new
         @connected = user_signed_in?
+        date = Time.now;
         if @connected
-            @post = Post.new
-            @categories = Category.all;
+            #@has_voted = Post.where(created_at: date.midnight..date.end_of_day, user_id: current_user.id).first
+            if @has_voted.blank?
+                @post = Post.new
+                @categories = Category.all;
+            else
+                render json: @has_voted;
+            end
         else
             flash[:error] = 'You need to be login to post'
             redirect_to action: "index"
         end
+
     end
 
     def create
         @connected = user_signed_in?
         if @connected
-            @post = Post.new(
-                title: params[:post][:title],
-                user_id: current_user.id,
-                category_id: params[:post][:category_id],
-                url: params[:post][:url],
-                content: params[:post][:content]
-            )
-            if @post.save
-                @post.validate!   
+            @post = Post.new(params.require(:post).permit(:title, :category_id, :url, :content));
+            @post.user_id = current_user.id 
+            if @post.save 
                 redirect_to action: "index"
             else
-                @post.validate!   
+                @categories = Category.all;
+                render :new  
             end
         end
     end
@@ -125,6 +133,8 @@ class PostsController < ApplicationController
         if @connected
             @post = Post.find(params[:post][:id])
             if @post.user_id = current_user.id
+                @post.update(params.require(:post).permit(:title, :category_id, :url, :content));
+                
                 @post.update(
                     title: params[:post][:title],
                     category_id: params[:post][:category_id],
@@ -132,9 +142,9 @@ class PostsController < ApplicationController
                     content: params[:post][:content]
                     )
                 if @post.save                    
-                    render json: @post
+                    redirect_to users_posts_path
                 else
-                  
+                    
                 end
             else
                 redirect_to new_user_session_path 
