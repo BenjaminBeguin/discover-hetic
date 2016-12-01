@@ -3,10 +3,15 @@ class PostsController < ApplicationController
         @posts = Post.paginate(:page => params[:page], :per_page => 6)
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
+        @best_users = get_best_users
     end
     
     def top_of_the_day(date)
-        @top_post = Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first
+        Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first
+    end
+
+    def get_best_users
+        Post.select(:user_id, :vote).group(:user_id , :vote).order(:vote).limit(5)
     end
 
     def show

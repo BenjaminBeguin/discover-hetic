@@ -25,8 +25,9 @@
 	 %>	 	
 	</div>
 
-
-	<div>category : <%= post.category.label %></div>
+	<% if  post.category %>
+		<div>category : <%= post.category.label %></div>
+	<% end %>
 	<br>
 
 	<%	if post.is_my_post? %>
