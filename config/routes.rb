@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
 
+    #-------------- Vote -------------#
 
-  get 'votes/index'
+    get 'votes/index'
 
-  get 'votes/new'
+    get 'votes/new'
 
-  get 'categories/'  => "categories#index"
-  post 'categories/create'
 
-  get 'categories/new'
+    #-------------- Categorie -------------#
+
+    get 'categories/'  => "categories#index"
+    post 'categories/create'
+
+    get 'categories/new'
 
     root 'posts#index' #home
 
@@ -29,6 +33,7 @@ Rails.application.routes.draw do
     get 'posts' => "posts#index"
     get 'posts/new'
     patch 'posts/update/:id' => "posts#update", as: :posts_update
+    get 'posts/user/:slug' => "posts#by_user", as: :posts_by_user
     get 'posts/vote'
     post 'posts/post_comment'
 
@@ -62,6 +67,6 @@ Rails.application.routes.draw do
 
     #----------------------------------#
 
-    get "*path" => redirect("/")
+   # get "*path" => redirect("/")
 
 end
