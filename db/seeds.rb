@@ -6,22 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# 5.times do
-# 	Category.create(label: Faker::Team.sport)
-# end
+Category.delete_all
 
-# 10.times do
-# 	Post.create(
-# 		user_id: User.order("RANDOM()").first.id,
-# 		category_id: Category.order("RANDOM()").first.id,
-# 		title: Faker::Lorem.sentence,
-# 		url: Faker::Internet.url('example.com'),
-# 		content: Faker::Lorem.sentence(7, true)
-# 	)
-# end
+5.times do
+	Category.create(label: Faker::Team.sport)
+end
+
+Post.delete_all
+
+10.times do
+	Post.create(
+		user_id: User.order("RANDOM()").first.id,
+		category_id: Category.order("RANDOM()").first.id,
+		title: Faker::Lorem.sentence,
+		url: Faker::Internet.url('example.com'),
+		content: Faker::Lorem.sentence(7, true)
+	)
+end
 
 Comment.delete_all
-100.times do
+20.times do
 
 	Comment.create(
 		post_id: Post.order("RANDOM()").first.id,
