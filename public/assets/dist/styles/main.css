@@ -82,51 +82,140 @@ section {
   margin-bottom: 50px;
   padding: 60px; }
 
+.clear {
+  clear: both; }
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none; }
+
 /* @group FOOTER */
 /* @endgroup FOOTER */
 /* @group HEADER */
 header {
-  padding: 0 80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 60px;
-  border: 1px solid #efefef;
-  border-left: none;
-  border-right: none; }
-  header .logo {
-    margin-right: auto;
-    text-decoration: none;
-    line-height: 60px; }
-    header .logo span {
-      font-size: 20px;
-      font-weight: 400;
-      color: #8362c6; }
-  header .search-form {
-    width: 60px;
+  padding: 0 80px; }
+  header .header-main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 60px;
     border: 1px solid #efefef;
-    border-top: none;
-    position: relative;
-    -webkit-transition: width 0.3s ease;
-    transition: width 0.3s ease; }
-    header .search-form img {
-      display: inline-block;
-      position: absolute; }
-    header .search-form form {
+    border-left: none;
+    border-right: none; }
+    header .header-main .logo {
+      margin-right: auto;
+      text-decoration: none;
+      line-height: 60px; }
+      header .header-main .logo span {
+        font-size: 20px;
+        font-weight: 400;
+        color: #8362c6; }
+    header .header-main .search-form {
       width: 60px;
-      overflow: hidden;
-      position: absolute;
+      height: 60px;
+      border: 1px solid #efefef;
+      border-top: none;
+      position: relative;
+      -webkit-transition: width 0.3s ease;
+      transition: width 0.3s ease; }
+      header .header-main .search-form img {
+        display: inline-block;
+        position: absolute; }
+      header .header-main .search-form form {
+        width: 60px;
+        overflow: hidden;
+        position: absolute;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center; }
+        header .header-main .search-form form input {
+          float: left; }
+        header .header-main .search-form form input[type="text"] {
+          width: 70%;
+          height: 58px;
+          border: none;
+          outline: none;
+          font-family: 'discover-light';
+          font-size: 14px;
+          width: 0; }
+        header .header-main .search-form form button {
+          display: block;
+          width: 60px;
+          height: 58px;
+          background: none;
+          border: none;
+          line-height: 58px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+          -webkit-box-pack: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          outline: none;
+          cursor: pointer; }
+      header .header-main .search-form.active {
+        width: 200px; }
+        header .header-main .search-form.active form {
+          width: 100%; }
+          header .header-main .search-form.active form input[type="text"] {
+            width: 70%;
+            padding-left: 20px; }
+          header .header-main .search-form.active form button {
+            width: 28%; }
+    header .header-main .connect {
+      padding: 0 20px; }
+      header .header-main .connect a {
+        font-size: 16px;
+        color: #202121;
+        text-decoration: none;
+        font-family: 'discover-light'; }
+        header .header-main .connect a:hover {
+          text-decoration: underline; }
+  header .header-second {
+    height: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    header .header-second ul {
+      width: 70%;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -139,56 +228,39 @@ header {
               justify-content: space-between;
       -webkit-box-align: center;
           -ms-flex-align: center;
-              align-items: center; }
-      header .search-form form input {
+              align-items: center;
+      margin-right: 80px; }
+      header .header-second ul li {
         float: left; }
-      header .search-form form input[type="text"] {
-        width: 70%;
-        height: 58px;
-        border: none;
-        outline: none;
-        font-family: 'discover-light';
-        font-size: 14px;
-        width: 0; }
-      header .search-form form button {
-        display: block;
-        width: 60px;
-        height: 58px;
-        background: none;
-        border: none;
-        line-height: 58px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-        outline: none;
-        cursor: pointer; }
-    header .search-form.active {
-      width: 200px; }
-      header .search-form.active form {
-        width: 100%; }
-        header .search-form.active form input[type="text"] {
-          width: 70%;
-          padding-left: 20px; }
-        header .search-form.active form button {
-          width: 28%; }
-  header .connect {
-    padding: 0 20px; }
-    header .connect a {
-      font-size: 16px;
-      color: #202121;
-      text-decoration: none; }
-      header .connect a:hover {
-        text-decoration: underline; }
+        header .header-second ul li a {
+          color: rgba(32, 33, 33, 0.5);
+          text-decoration: none;
+          font-family: 'discover-light';
+          position: relative;
+          padding: 10px 20px; }
+          header .header-second ul li a:after {
+            position: absolute;
+            bottom: -1px;
+            content: "";
+            left: 20px;
+            display: block;
+            width: calc(100% - 40px);
+            height: 2px;
+            background: #8362c6; }
+        header .header-second ul li:first-child a {
+          padding-left: 0; }
+          header .header-second ul li:first-child a:after {
+            left: 0;
+            width: calc(100% - 20px); }
+    header .header-second button {
+      width: 157px;
+      height: 100%;
+      margin-left: auto;
+      border: none;
+      background: #8362c6;
+      font-size: 14px;
+      color: white;
+      font-family: 'discover-light'; }
 
 /* @endgroup HEADER */
 @font-face {

@@ -2,100 +2,159 @@
 
 	header {
 		padding: 0 80px;
-		display: flex;
-		flex-direction:row;
-		justify-content: flex-end;
-		align-items: center;
-		height: 60px;
-		border:1px solid $grey;
-		border-left:none;
-		border-right: none;
-		.logo{
-			margin-right: auto;
-			text-decoration: none;
-			line-height: 60px;
-			span{
-				font-size: 20px;
-				font-weight: 400;
-				color:$purple;
-			}
-		}
-		.search-form{
-			width:60px;
+		.header-main{
+			display: flex;
+			flex-direction:row;
+			justify-content: flex-end;
+			align-items: center;
 			height: 60px;
 			border:1px solid $grey;
-			border-top:none;
-			position: relative;
-			transition:width 0.3s ease;
+			border-left:none;
+			border-right: none;
 
-			img{
-				display: inline-block;
-				position: absolute;
+			.logo{
+				margin-right: auto;
+				text-decoration: none;
+				line-height: 60px;
+				span{
+					font-size: 20px;
+					font-weight: 400;
+					color:$purple;
+				}
 			}
-
-			form{
+			.search-form{
 				width:60px;
-				overflow: hidden;
-				position: absolute;
-				display: flex;
-				flex-direction:row;
-				justify-content: space-between;
-				align-items: center;
-				input{
-					float: left;
+				height: 60px;
+				border:1px solid $grey;
+				border-top:none;
+				position: relative;
+				transition:width 0.3s ease;
+
+				img{
+					display: inline-block;
+					position: absolute;
 				}
 
-				input[type="text"]{
-					width: 70%;
-					height: 58px;
-					border:none;
-					outline:none;
-					font-family:'discover-light';
-					font-size: 14px;
-					width:0;
-				}
-
-				button{
-					display: block;
+				form{
 					width:60px;
-					height:58px;
-					background: none;
-					border:none;
-					line-height: 58px;
+					overflow: hidden;
+					position: absolute;
 					display: flex;
-					flex-direction: row;
-					justify-content: center;
+					flex-direction:row;
+					justify-content: space-between;
 					align-items: center;
-					outline:none;
-					cursor:pointer;
+					input{
+						float: left;
+					}
+
+					input[type="text"]{
+						width: 70%;
+						height: 58px;
+						border:none;
+						outline:none;
+						font-family:'discover-light';
+						font-size: 14px;
+						width:0;
+					}
+
+					button{
+						display: block;
+						width:60px;
+						height:58px;
+						background: none;
+						border:none;
+						line-height: 58px;
+						display: flex;
+						flex-direction: row;
+						justify-content: center;
+						align-items: center;
+						outline:none;
+						cursor:pointer;
+					}
+				}
+
+				&.active{
+					width:200px;
+					form{
+						width:100%;
+						input[type="text"]{
+							width:70%;
+							padding-left:20px;
+						}
+						button{
+							width:28%;
+						}
+					}
 				}
 			}
+			.connect{
+				padding: 0 20px;
 
-			&.active{
-				width:200px;
-				form{
-					width:100%;
-					input[type="text"]{
-						width:70%;
-						padding-left:20px;
-					}
-					button{
-						width:28%;
+				a{
+					font-size: 16px;
+					color:$black;
+					text-decoration: none;	
+					font-family:'discover-light';
+					&:hover{
+						text-decoration: underline;
 					}
 				}
 			}
 		}
-		.connect{
-			padding: 0 20px;
 
-			a{
-				font-size: 16px;
-				color:$black;
-				text-decoration: none;	
-
-				&:hover{
-					text-decoration: underline;
+		.header-second{
+			height: 40px;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			ul{
+				width:70%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				margin-right: 80px;
+				li{
+					float: left;
+					a{
+						color:$black-opacity;
+						text-decoration:none;
+						font-family: 'discover-light';
+						position: relative;
+						padding: 10px 20px;
+						&:after{
+							position: absolute;
+							bottom: -1px;
+							content:"";
+							left:20px;
+							display: block;
+							width:calc(100% - 40px);
+							height: 2px;
+							background:$purple;
+						}
+					}
+					&:first-child{
+						a{
+							padding-left: 0;
+							&:after{
+								left: 0;
+								width:calc(100% - 20px);
+							}
+						}
+					}
 				}
+			}
+
+			button{
+				width:157px;
+				height: 100%;
+				margin-left: auto;
+				border:none;
+				background:$purple;
+				font-size: 14px;
+				color:white;
+				font-family:'discover-light';
 			}
 		}
 	}

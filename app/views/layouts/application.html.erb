@@ -15,29 +15,46 @@
 <body>
 
 <header>
-	<a href='<%= link_to "Home", root_path, method: :get %>' class="logo">
-		<span>Discover.</span>
-	</a>
-	<div class="search">
-		
-		<div class="search-form">
-			<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
-		    <%= text_field_tag :q, params[:q], placeholder: "Search" %>
-		    <%= button_tag( :class => "search-button") do %>
-		      <img src="/assets/images/icons/search.png" alt="">
-		    <% end %>
+	<div class="header-main">
+		<a href='/' class="logo">
+			<span>Discover.</span>
+		</a>
+
+		<div class="search">		
+			<div class="search-form">
+				<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
+			    <%= text_field_tag :q, params[:q], placeholder: "Search" %>
+			    <%= button_tag( :class => "search-button") do %>
+			      <img src="/assets/images/icons/search.png" alt="">
+			    <% end %>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="connect">
+			<% if !user_signed_in? %>
+				<%= link_to "Sign in", new_user_session_path, method: :get %>
+				<span>/</span>
+				<%= link_to "Sign up", new_user_registration_path, method: :get %>
+			<% else %>
+			  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 			<% end %>
 		</div>
 	</div>
-	<div class="connect">
-		<% if !user_signed_in? %>
-			<%= link_to "Sign in", new_user_session_path, method: :get %>
-			<span>/</span>
-			<%= link_to "Sign up", new_user_registration_path, method: :get %>
-		<% else %>
-		  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+	<div class="header-second">
+		<ul class="menu-cat">
+		<% @categories.each do |category| %>
+		  <li><%= link_to category.label, category_path(:slug => category.slug), method: :get  %> </li>
 		<% end %>
+		</ul>
+
+		<button>
+			SUBMIT
+		</button>
 	</div>
+
+	<div class="clear"></div>
 </header>
 
 <!-- 
