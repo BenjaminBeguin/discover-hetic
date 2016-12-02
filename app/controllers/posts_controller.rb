@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     end
     
     def top_of_the_day(date)
-        Post.where(created_at: date.midnight..date.end_of_day).order(vote: :desc).first
+        Post.where(created_at: date.midnight..date.end_of_day).order(vote_created: :desc).first
     end
 
     def get_best_users
