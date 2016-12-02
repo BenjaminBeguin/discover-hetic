@@ -20,7 +20,8 @@ Post.delete_all
 		category_id: Category.order("RANDOM()").first.id,
 		title: Faker::Lorem.sentence,
 		url: Faker::Internet.url('example.com'),
-		content: Faker::Lorem.sentence(7, true)
+		content: Faker::Lorem.sentence(7, true),
+		asset: Faker::Placeholdit.image("600x400")
 	)
 end
 

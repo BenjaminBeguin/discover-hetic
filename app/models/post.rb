@@ -16,9 +16,9 @@ class Post < ApplicationRecord
 					  	:medium => "300x300>", 
 					  	:thumb => "100x100#" 
 				  	  },
-					  :default_url => "/images/:style/missing.png"
+					  :default_url => ""
   	validates_attachment :asset,
-  		content_type: { content_type: ["image/jpeg", "image/jpeg", "image/gif", "image/png"] }
+  		content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"] }
 	validates_attachment_content_type :asset, :content_type => /\Aimage\/.*\Z/
 
 	before_post_process :check_file_size
