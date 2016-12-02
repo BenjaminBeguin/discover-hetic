@@ -122,12 +122,20 @@ class PostsController < ApplicationController
             if @already_voted.empty?
                 @post.update(vote: @post.vote + 1)
                 @post.save
+                if @post.created_at.to_date ==  Date.current
+                    @post.update(vote_created: @post.vote_created + 1)
+                    @post.save
+                end
                 @vote = Vote.create(user_id: current_user.id , post_id: @post.id)
 
                 redirect_to posts_path 
             else
                 @post.update(vote: @post.vote - 1)
                 @post.save
+                if @post.created_at.to_date ==  Date.current
+                    @post.update(vote_created: @post.vote_created - 1)
+                    @post.save
+                end
                 Vote.destroy(@already_voted.first.id)
                 
                 redirect_to posts_path 
