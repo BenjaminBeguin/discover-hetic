@@ -244,6 +244,47 @@ header {
     display: block;
     margin-top: 15px; }
 
+.field .file-input-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.field .file-input {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100px;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #ededed; }
+  .field .file-input input {
+    position: absolute;
+    display: block;
+    left: 50%;
+    bottom: 10px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  .field .file-input label {
+    padding: 60px;
+    color: #9c9c9c; }
+
+.field .current-image {
+  min-width: 20%;
+  max-width: 50%;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat; }
+
 /* @endgroup POST */
 h1 {
   font-size: 25px; }

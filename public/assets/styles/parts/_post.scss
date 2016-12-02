@@ -34,4 +34,47 @@
 		}
 	}
 
+	.field {
+
+		.file-input-field {
+			display: -webkit-flex;
+			display: flex;
+		}
+	
+		.file-input {
+			position: relative;
+			display: -webkit-flex;
+					display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: 1;
+			height: 100px;
+			margin-right: 20px;
+			padding: 20px;
+			background-color: #ededed;
+
+			input {
+				position: absolute;
+				display: block;
+				left: 50%;
+				bottom: 10px;
+				transform: translateX(-50%);
+			}
+
+			label {
+				padding: 60px;
+				color: #9c9c9c;
+			}
+		}
+
+		.current-image {
+			min-width: 20%;
+			max-width: 50%;
+			-webkit-background-size: contain;
+			background-size: contain;
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+	}
+
 /* @endgroup POST */

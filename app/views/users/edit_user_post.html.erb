@@ -5,34 +5,43 @@
 <%= @post.title %>
 
 <%= form_for @post , :url => posts_update_path(id: @post.id) do |f| %>
- <div class="field">
-         <%= f.label :title %><br />
-         <%= f.text_field :title, autofocus: true %>
-     </div>
-
-     <div class="field">
-         <%= f.label :content %><br />
-         <%= f.text_field :content, autofocus: true %>
-     </div>
-
-     <div class="field">
-        <%= f.label :asset %><br />
-        <%= f.file_field :asset, autofocus: true %>
+    <%= @post.errors.full_messages.join(",") %>
+    
+    <div class="field">
+        <%= f.label :title, 'Discover title' %><br />
+        <%= f.text_field :title, autofocus: true %>
     </div>
 
-     <div class="field">
-         <%= f.label "category" %><br />
-         <%= f.collection_select :category_id, @categories, :id, :label  %>
-     </div>
+    <div class="field">
+        <%= f.label :content, 'Description' %><br />
+        <%= f.text_field :content, autofocus: true %>
+    </div>
 
-     <div class="field">
-         <%= f.label :url %><br />
-         <%= f.text_field :url, autofocus: true %>
-     </div>
+    <div class="field">
+        <p>Upload an image</p>
+        <div class="file-input-field">
+            <div class="file-input">
+                <%= f.label :asset, 'Drag and drop your file or click to upload' %>
+                <%= f.file_field :asset, autofocus: true %>
+            </div>
 
-     <div class="field">
-         <%= f.hidden_field :id  %>
-     </div>
+            <span class="current-image" style="background-image: url(<%= @post.asset.url%>);"></span>
+        </div>
+    </div>
+
+    <div class="field">
+        <%= f.label "category", 'Theme' %><br />
+        <%= f.collection_select :category_id, @categories, :id, :label  %>
+    </div>
+
+    <div class="field">
+        <%= f.label :url, 'Website Url' %><br />
+        <%= f.text_field :url, autofocus: true %>
+    </div>
+
+    <div class="field">
+        <%= f.hidden_field :id  %>
+    </div>
 
   <%= f.submit %>
  <% end %>
