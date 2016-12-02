@@ -5,6 +5,8 @@
 <%= @post.title %>
 
 <%= form_for @post , :url => posts_update_path(id: @post.id) do |f| %>
+    <%= @post.errors.full_messages.join(",") %>
+    
     <div class="field">
         <%= f.label :title, 'Discover title' %><br />
         <%= f.text_field :title, autofocus: true %>
