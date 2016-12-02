@@ -1,30 +1,49 @@
 
 <% if  @top_post %>
-	<div>Title : <%= @top_post.title %></div>
-	<div>Content : <%= @top_post.content %></div>
-	<div>url : <%= @top_post.url %></div>
-	<div>vote : <%= @top_post.vote %></div>
-	<div>author : <%
-		if @top_post.user
-			concat @top_post.user.name
-		else
-			concat "user deleted"
-		end
-	 %>
-	 	
-	</div>
-	<div>category : <%= @top_post.category.label %></div>
-	<%	if @top_post.is_my_post? %>
-	<%= link_to "Edit", users_posts_id_path(:id => @top_post.id), method: :get  %> 
-	<% end %>	
-	<% if user_signed_in? %>
-	  	<%= button_to "LIKE", posts_add_vote_path(id: @top_post.id ), method: :post, :remote=>true %>
-	<% end %>
+	
+	<div class="post-single top-post">
+		<div class="post-picture">
+			<%= image_tag @top_post.asset.url(:medium) %>
+		</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
+		<a href="#" class="post-likes">
+			<img src="/assets/images/icons/like_inactive.png" alt="">
+			<%= @top_post.vote %>
+		</a>
+
+		<div class="post-content">
+			<span class="post-cat"><%= @top_post.category.label %></span>
+			<h2 class="post-title"><%= @top_post.title %></h2>
+			<a href="<%= @top_post.url %>" target="_blank" class="post-link">
+				<img src="/assets/images/icons/link.png" alt="">
+			</a>
+			<p class="post-desc">
+				<%= truncate(strip_tags(@top_post.content), :length=>200)%>
+			</p>
+		</div>
+
+		<div class="post-author">
+			<%
+				if @top_post.user %>
+					<img src="<%= @top_post.user.avatar %>" >
+					<span><%= @top_post.user.name %></span>					
+			<%
+				else
+					concat "user deleted"
+				end
+			 %>
+		</div>
+	</div>
+
+
+<%	if @top_post.is_my_post? %>
+<%= link_to "Edit", users_posts_id_path(:id => @top_post.id), method: :get  %> 
+<% end %>	
+<% if user_signed_in? %>
+  	<%= button_to "LIKE", 	posts_add_vote_path(id: @top_post.id ), method: :post, :remote=>true %>
+<% end %>
+
+
 <% else %>	
 	Pas de post du jour pour le moment, revenez plus tard
 <% end %>

@@ -2,6 +2,7 @@
 
 	header {
 		padding: 0 80px;
+		border-bottom:1px solid $grey;
 		.header-main{
 			display: flex;
 			flex-direction:row;
@@ -123,6 +124,7 @@
 						font-family: 'discover-light';
 						position: relative;
 						padding: 10px 20px;
+						transition:color 0.2s ease;
 						&.active{
 							&:after{
 								position: absolute;
@@ -134,6 +136,10 @@
 								height: 2px;
 								background:$purple;
 							}
+						}
+
+						&:hover{
+							color:$black;
 						}
 					}
 					&:first-child{

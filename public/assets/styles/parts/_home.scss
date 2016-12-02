@@ -1,7 +1,26 @@
 /* @group HOME */
 
-	.main-home {
-		
+	main{
+		.posts-list{
+			position: relative;
+			.sort-by{
+				position: absolute;
+				right: 15px;
+				top: 3px;
+				color:$black-opacity;
+				font-size: 14px;
+				a{
+					text-decoration: none;
+					color:$black-opacity;
+					&:hover{
+						text-decoration: underline;
+					}
+					&.active{
+						color:$black;
+					}
+				}
+			}
+		}
 	}
 
 /* @endgroup HOME */
