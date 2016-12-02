@@ -12,6 +12,7 @@ rerun.txt
 pickle-email-*.html
 /node_modules
 /app/assets
+/public/system
 
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
