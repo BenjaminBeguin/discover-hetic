@@ -238,7 +238,7 @@ header {
           font-family: 'discover-light';
           position: relative;
           padding: 10px 20px; }
-          header .header-second ul li a:after {
+          header .header-second ul li a.active:after {
             position: absolute;
             bottom: -1px;
             content: "";
@@ -260,7 +260,11 @@ header {
       background: #8362c6;
       font-size: 14px;
       color: white;
-      font-family: 'discover-light'; }
+      font-family: 'discover-light';
+      -webkit-transition: background 0.2s ease;
+      transition: background 0.2s ease; }
+      header .header-second button:hover {
+        background: rgba(131, 98, 198, 0.9); }
 
 /* @endgroup HEADER */
 @font-face {
