@@ -1,0 +1,1 @@
+$(document).ready(function(){console.log("echp"),$(".search-button").on("click",function(){var e=$(".search-form");console.log("echo"),e.hasClass("active")||(event.preventDefault(),console.log("clicked"))})});

@@ -4,6 +4,8 @@
   <title>TP2</title>
 
    <%= javascript_include_tag "application" %>
+   <%= javascript_include_tag "libs" %>
+   <%= javascript_include_tag "custom" %>
   
   <link rel="stylesheet" href="/assets/dist/styles/main.css">
   <script href="/assets/dist/scripts/libs.js"></script>
@@ -12,28 +14,49 @@
 </head>
 <body>
 
-<section>
-	
-	<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :q, params[:q], placeholder: "Search" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
-</section>
+<header>
+	<a href='<%= link_to "Home", root_path, method: :get %>' class="logo">
+		<span>Discover.</span>
+	</a>
+	<div class="search">
+		
+		<div class="search-form">
+			<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
+		    <%= text_field_tag :q, params[:q], placeholder: "Search" %>
+		    <%= button_tag( :class => "search-button") do %>
+		      <img src="/assets/images/icons/search.png" alt="">
+		    <% end %>
+			<% end %>
+		</div>
+	</div>
+	<div class="connect">
+		<% if !user_signed_in? %>
+			<%= link_to "Sign in", new_user_session_path, method: :get %>
+			<span>/</span>
+			<%= link_to "Sign up", new_user_registration_path, method: :get %>
+		<% else %>
+		  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+		<% end %>
+	</div>
+</header>
+
+<!-- 
+<div class="main-menu">
+	<%= link_to "user edit", edit_user_registration_path, method: :get %>
+	<%= link_to "all user", user_registration_path, method: :get %>
+	<%= link_to "all post", posts_path, method: :get %>
+	<%= link_to "your post ", users_posts_path, method: :get %>
+	<%= link_to "new post ", posts_new_path, method: :get %>
+</div>
+ -->
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <p id="error"><%= flash[:error] %></p>
 
-
-<%= link_to "user edit", edit_user_registration_path, method: :get %> <br>
-<%= link_to "all user", user_registration_path, method: :get %> <br><br>
-<%= link_to "all post", posts_path, method: :get %> <br>
-<%= link_to "your post ", users_posts_path, method: :get %> <br>
-<%= link_to "new post ", posts_new_path, method: :get %> <br>
-
-
-
+<main>
 <%= yield %>
+</main>
 
 </body>
 </html>

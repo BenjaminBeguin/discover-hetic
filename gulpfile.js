@@ -33,9 +33,9 @@ gulp.task('sass', function () {
 gulp.task('js_libs', function() {
     return      gulp.src('./public/assets/scripts/libs/**/*.js')
         .pipe(concat('libs.js'))
-        .pipe(gulp.dest('./public/assets/dist/scripts'))
+        .pipe(gulp.dest('./app/assets/javascripts'))
         .pipe(uglify())
-        .pipe(gulp.dest('./public/assets/dist/scripts'))
+        .pipe(gulp.dest('./app/assets/javascripts'))
         .pipe(notify({ message: 'Vendor scripts task complete', onLast: true }));
 });
 
@@ -43,7 +43,7 @@ gulp.task('js_app', function() {
     return      gulp.src('./public/assets/scripts/custom/*.js')
         .pipe(concat('custom.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./public/assets/scripts'))
+        .pipe(gulp.dest('./app/assets/javascripts/'))
         .pipe(notify({ message: 'Custom scripts task complete', onLast: true }));
 });
 
