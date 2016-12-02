@@ -25,7 +25,9 @@ Post.delete_all
 		title: Faker::Lorem.sentence,
 		url: Faker::Internet.url('example.com'),
 		content: Faker::Lorem.sentence(7, true),
-		asset: Faker::Placeholdit.image("600x400")
+		asset: Faker::Placeholdit.image("600x400"),
+		vote: rand(1000),
+		vote_created: rand(300)
 	)
 end
 
