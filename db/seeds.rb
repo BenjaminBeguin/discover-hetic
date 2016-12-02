@@ -14,8 +14,9 @@ end
 
 Post.delete_all
 
-10.times do
+20.times do
 	Post.create(
+		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
 		user_id: User.order("RANDOM()").first.id,
 		category_id: Category.order("RANDOM()").first.id,
 		title: Faker::Lorem.sentence,
