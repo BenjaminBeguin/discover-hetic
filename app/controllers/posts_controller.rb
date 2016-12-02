@@ -40,7 +40,6 @@ class PostsController < ApplicationController
             end
         end
         @post_voted = post_like_unlike
-        
     end
 
     #------------------ filter and order -----------------#
@@ -55,6 +54,7 @@ class PostsController < ApplicationController
                 @posts = Post.paginate(:page => params[:page], :per_page => 10).where(category_id: @category.id).order(created_at: :desc)
             end
             post_like_unlike
+
             #--- get the first by vote --#
             date = Date.yesterday
             @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).first
@@ -70,7 +70,6 @@ class PostsController < ApplicationController
             posts_voted.each do |post_voted|
                 @post_voted << post_voted.post_id
             end
-
             @post_voted            
         end
     end
@@ -153,10 +152,7 @@ class PostsController < ApplicationController
             flash[:error] = 'You need to be login to post'
             redirect_to action: "index"
         end
-
     end
-
-
 
     def create
         @connected = user_signed_in?
@@ -177,15 +173,7 @@ class PostsController < ApplicationController
         if @connected
             @post = Post.find(params[:post][:id])
             if @post.user_id = current_user.id
-                @post.update(params.require(:post).permit(:title, :category_id, :url, :content));
-                
-                @post.update(
-                    title: params[:post][:title],
-                    category_id: params[:post][:category_id],
-                    url: params[:post][:url],
-                    content: params[:post][:content],
-                    asset: params[:post][:asset]
-                    )
+                @post.update(params.require(:post).permit(:title, :category_id, :url, :content , :asset));
                 if @post.save                    
                     redirect_to users_posts_path
                 else
