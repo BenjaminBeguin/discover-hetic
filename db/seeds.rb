@@ -8,9 +8,12 @@
 
 Category.delete_all
 
-5.times do
-	Category.create(label: Faker::Team.sport)
-end
+Category.create(label: "Lifestyle")
+Category.create(label: "Culture")
+Category.create(label: "Tech")
+Category.create(label: "Art")
+Category.create(label: "Nature")
+Category.create(label: "Society")
 
 Post.delete_all
 
