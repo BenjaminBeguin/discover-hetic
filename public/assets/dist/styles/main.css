@@ -1,4 +1,4 @@
-/* VARS */
+/* CONFIG */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -72,6 +72,34 @@ table {
   font-size: 12px;
   color: #202121;
   opacity: .5; }
+
+@font-face {
+  font-family: 'discover-semibold';
+  src: url("../../fonts/GTEestiProDisplay-Medium.eot");
+  src: url("../../fonts/GTEestiProDisplay-Medium.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'discover-regular';
+  src: url("../../fonts/GTEestiProDisplay-Regular.eot");
+  src: url("../../fonts/GTEestiProDisplay-Regular.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'discover-bold';
+  src: url("../../fonts/GTEestiProDisplay-Bold.eot");
+  src: url("../../fonts/GTEestiProDisplay-Bold.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'discover-light';
+  src: url("../../fonts/GTEestiProDisplay-Light.eot");
+  src: url("../../fonts/GTEestiProDisplay-Light.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
 
 /* IMPORT COMMONS */
 body {
@@ -338,34 +366,6 @@ header {
         background: rgba(131, 98, 198, 0.9); }
 
 /* @endgroup HEADER */
-@font-face {
-  font-family: 'discover-semibold';
-  src: url("../../fonts/GTEestiProDisplay-Medium.eot");
-  src: url("../../fonts/GTEestiProDisplay-Medium.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'discover-regular';
-  src: url("../../fonts/GTEestiProDisplay-Regular.eot");
-  src: url("../../fonts/GTEestiProDisplay-Regular.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'discover-bold';
-  src: url("../../fonts/GTEestiProDisplay-Bold.eot");
-  src: url("../../fonts/GTEestiProDisplay-Bold.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'discover-light';
-  src: url("../../fonts/GTEestiProDisplay-Light.eot");
-  src: url("../../fonts/GTEestiProDisplay-Light.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal; }
-
 /* IMPORT PARTIALS */
 /* @group HOME */
 main .posts-list {
@@ -438,7 +438,31 @@ main .posts-list {
   .post-single.top-post .post-author {
     position: absolute;
     bottom: 0;
-    left: 340px; }
+    left: 340px;
+    text-decoration: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .post-single.top-post .post-author:hover span.user-name {
+      text-decoration: underline; }
+    .post-single.top-post .post-author img {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px; }
+    .post-single.top-post .post-author span {
+      color: #202121;
+      margin-left: 15px;
+      font-family: 'discover-regular'; }
 
 .comment {
   display: block;

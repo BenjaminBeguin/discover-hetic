@@ -6,10 +6,17 @@
 			<%= image_tag @top_post.asset.url(:medium) %>
 		</div>
 
-		<a href="#" class="post-likes">
-			<img src="/assets/images/icons/like_inactive.png" alt="">
-			<%= @top_post.vote %>
-		</a>
+		<% if user_signed_in? %>
+			<%= link_to posts_add_vote_path(id: @top_post.id ), method: :post,  :remote => true, :class => "post-likes" do %>
+				<% if @post_voted.include?(@top_post.id) %>
+        	<img src='/assets/images/icons/like_active.png' alt="">
+        <% else %>
+        	<img src='/assets/images/icons/like_inactive.png' alt="">
+       	<% end %>
+
+        <%= @top_post.vote %>
+      <% end %>	
+		<% end %>
 
 		<div class="post-content">
 			<span class="post-cat"><%= @top_post.category.label %></span>
@@ -22,27 +29,18 @@
 			</p>
 		</div>
 
-		<div class="post-author">
+		<a href="/users/<%= @top_post.user.name %>" class="post-author">
 			<%
 				if @top_post.user %>
-					<img src="<%= @top_post.user.avatar %>" >
-					<span><%= @top_post.user.name %></span>					
+					<img src="<%= @top_post.user.avatar.url(:thumb) %>">
+					<span class="user-name"><%= @top_post.user.name %></span>					
 			<%
 				else
-					concat "user deleted"
+					%><span>User doesn't exist</span><%
 				end
 			 %>
-		</div>
+		</a>
 	</div>
-
-
-<%	if @top_post.is_my_post? %>
-<%= link_to "Edit", users_posts_id_path(:id => @top_post.id), method: :get  %> 
-<% end %>	
-<% if user_signed_in? %>
-  	<%= button_to "LIKE", 	posts_add_vote_path(id: @top_post.id ), method: :post, :remote=>true %>
-<% end %>
-
 
 <% else %>	
 	Pas de post du jour pour le moment, revenez plus tard

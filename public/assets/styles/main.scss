@@ -1,12 +1,12 @@
-/* VARS */
-@import 'parts/reset';
-@import 'parts/vars';
+/* CONFIG */
+@import 'config/reset';
+@import 'config/vars';
+@import 'config/fonts';
 
 /* IMPORT COMMONS */
 @import 'parts/ui';
 @import 'parts/footer';
 @import 'parts/header';
-@import 'parts/fonts';
 
 /* IMPORT PARTIALS */
 @import 'parts/home';
