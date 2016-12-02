@@ -1,6 +1,6 @@
 /* VARS */
-@import 'parts/vars';
 @import 'parts/reset';
+@import 'parts/vars';
 
 /* IMPORT COMMONS */
 @import 'parts/ui';
@@ -22,5 +22,9 @@ a{
 }
 
 body, a, p{
-	font-family: 'discover-semibold';
+	font-family: 'discover-regular';
+}
+
+body{
+	padding: 0px;
 }

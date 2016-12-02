@@ -1,0 +1,35 @@
+$purple: #8362c6;
+$black: #202121;
+$grey: #efefef;
+
+.font-title{
+	font-family: 'discover-semibold';
+	font-size: 30px;
+	color:$black;
+}
+
+.font-name{
+	font-family: 'discover-regular';
+	font-size: 16px;
+	color:$black;
+}
+
+.article-content{
+	font-family: 'discover-light';
+	font-size: 16px;
+	color:$black;
+}
+
+.font-time{
+	font-family: 'discover-light';
+	font-size: 14px;
+	color:$black;
+	opacity: .5;
+}
+
+.font-theme{
+	font-family: 'discover-light';
+	font-size: 12px;
+	color:$black;
+	opacity: .5;
+}
