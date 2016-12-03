@@ -37,6 +37,8 @@
 				<span>/</span>
 				<%= link_to "Sign up", new_user_registration_path, method: :get %>
 			<% else %>
+				<%= link_to "Profils", edit_user_registration_path, method: :get %>
+			  <span>/</span>
 			  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 			<% end %>
 		</div>
