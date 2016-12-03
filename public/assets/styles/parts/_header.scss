@@ -154,14 +154,17 @@
 				}
 			}
 
-			button{
+			.button {
 				width:157px;
 				height: 100%;
+				line-height: 40px;
 				margin-left: auto;
 				border:none;
 				background:$purple;
 				font-size: 14px;
 				color:white;
+				text-align: center;
+				text-decoration: none;
 				font-family:'discover-light';
 				transition:background 0.2s ease;
 				&:hover{

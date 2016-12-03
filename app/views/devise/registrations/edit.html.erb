@@ -21,8 +21,15 @@
     </div>
 
     <div class="field">
-        <%= f.label :avatar %><br />
-        <%= f.file_field :avatar, autofocus: true %>
+        <p>Upload an image as avatar</p>
+        <div class="file-input-field">
+            <div class="file-input">
+                <%= f.label :avatar, 'Drag and drop your file or click to upload' %>
+                <%= f.file_field :avatar, autofocus: true %>
+            </div>
+
+            <span class="current-image" style="background-image: url(<%= current_user.avatar %>);"></span>
+        </div>
     </div>
 
    

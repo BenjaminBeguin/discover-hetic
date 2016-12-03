@@ -351,18 +351,21 @@ header {
           header .header-second ul li:first-child a:after {
             left: 0;
             width: calc(100% - 20px); }
-    header .header-second button {
+    header .header-second .button {
       width: 157px;
       height: 100%;
+      line-height: 40px;
       margin-left: auto;
       border: none;
       background: #8362c6;
       font-size: 14px;
       color: white;
+      text-align: center;
+      text-decoration: none;
       font-family: 'discover-light';
       -webkit-transition: background 0.2s ease;
       transition: background 0.2s ease; }
-      header .header-second button:hover {
+      header .header-second .button:hover {
         background: rgba(131, 98, 198, 0.9); }
 
 /* @endgroup HEADER */
