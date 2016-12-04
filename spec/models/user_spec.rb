@@ -121,6 +121,12 @@ RSpec.describe "User", :type => :model do
     expect(userFromDB.slug).to eq("jean_pierre")
   end
 
+  it "can have a description" do
+    user = User.create(name: "Jean Pierre", email: "m@rshow.com" , password: "jesuislepassword", desc: "Lorem ipsum ma description")
+
+    expect(user.desc).to eq("Lorem ipsum ma description")
+  end
+
   it "no duplicated slug" do
     user = User.create(name: "Jéan Pierre", email: "m@rshow.com" , password: "jesuislepassword")
     userFromDB = User.last

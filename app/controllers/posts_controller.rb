@@ -79,10 +79,15 @@ class PostsController < ApplicationController
         @user = User.where(slug: @user_slug).first
 
         if  @user.present?
-            if params[:orderby] == 'top'
-                @posts = Post.where(user_id: @user.id).order(vote: :desc)
+            if params[:orderby] == 'voted'
+                # @user_votes = Vote.paginate(:page => params[:page], :per_page => 10).where(user_id: @user.id).order('created_at DESC')
+                # @posts = []
+                # @user_votes.each do |vote|
+                #     @posts.push(Post.where(user_id: vote.user_id))
+                # end
+                @posts = Post.paginate(:page => params[:page], :per_page => 10).where(user_id: @user.id).order('vote DESC')
             else
-                @posts = Post.where(user_id: @user.id).order(created_at: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => 10).where(user_id: @user.id).order('created_at DESC')
             end
             post_like_unlike
         else

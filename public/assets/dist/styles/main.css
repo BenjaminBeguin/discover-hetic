@@ -389,6 +389,31 @@ main .posts-list {
 
 /* @endgroup HOME */
 /* @group PROFILE */
+.user-profile-card {
+  position: relative;
+  margin-top: 40px;
+  padding-top: 0; }
+  .user-profile-card .edit-button {
+    position: absolute;
+    right: 40px;
+    top: 15px; }
+  .user-profile-card .profile-card-content {
+    text-align: center; }
+    .user-profile-card .profile-card-content .avatar {
+      display: block;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      margin-top: -60px;
+      border-radius: 60px;
+      background: #fafafa;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center; }
+    .user-profile-card .profile-card-content h1 {
+      margin-top: 10px;
+      font-size: 30px; }
+
 /* @endgroup PROFILE */
 /* @group POST */
 .post-single {

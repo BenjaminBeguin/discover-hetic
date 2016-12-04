@@ -4,4 +4,39 @@
 
 	}
 
+	.user-profile-card {
+		position: relative;
+		margin-top: 40px;
+		padding-top: 0;
+
+		.edit-button {
+			position: absolute;
+			right: 40px;
+			top: 15px;
+		}
+
+		.profile-card-content {
+			text-align: center;
+
+			.avatar {
+				display: block;
+				width: 120px;
+				height: 120px;
+				margin: 0 auto;
+				margin-top: -60px;
+				border-radius: 60px;
+				background: $grey-light;
+				-webkit-background-size: cover;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+
+			h1 {
+				margin-top: 10px;
+				font-size: 30px;
+			}
+		}
+	}
+
 /* @endgroup PROFILE */
