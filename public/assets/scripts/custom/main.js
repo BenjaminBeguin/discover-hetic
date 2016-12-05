@@ -16,4 +16,13 @@ $(document).ready(function(){
 		}
 	})
 
+	$('#user_avatar').on('change', function (e) {
+		
+		$val = $(e.target).val();
+
+		if($val) {
+			$('.upload-avatar-check').show();
+		}
+	});
+
 });

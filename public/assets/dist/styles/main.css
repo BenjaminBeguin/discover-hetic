@@ -75,29 +75,29 @@ table {
 
 @font-face {
   font-family: 'discover-semibold';
-  src: url("../../fonts/GTEestiProDisplay-Medium.eot");
-  src: url("../../fonts/GTEestiProDisplay-Medium.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Medium.ttf") format("truetype");
+  src: url("../fonts/GTEestiProDisplay-Medium.eot");
+  src: url("../fonts/GTEestiProDisplay-Medium.woff") format("woff"), url("../fonts/GTEestiProDisplay-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal; }
 
 @font-face {
   font-family: 'discover-regular';
-  src: url("../../fonts/GTEestiProDisplay-Regular.eot");
-  src: url("../../fonts/GTEestiProDisplay-Regular.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Regular.ttf") format("truetype");
+  src: url("../fonts/GTEestiProDisplay-Regular.eot");
+  src: url("../fonts/GTEestiProDisplay-Regular.woff") format("woff"), url("../fonts/GTEestiProDisplay-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'discover-bold';
-  src: url("../../fonts/GTEestiProDisplay-Bold.eot");
-  src: url("../../fonts/GTEestiProDisplay-Bold.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Bold.ttf") format("truetype");
+  src: url("../fonts/GTEestiProDisplay-Bold.eot");
+  src: url("../fonts/GTEestiProDisplay-Bold.woff") format("woff"), url("../fonts/GTEestiProDisplay-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal; }
 
 @font-face {
   font-family: 'discover-light';
-  src: url("../../fonts/GTEestiProDisplay-Light.eot");
-  src: url("../../fonts/GTEestiProDisplay-Light.woff") format("woff"), url("../../fonts/GTEestiProDisplay-Light.ttf") format("truetype");
+  src: url("../fonts/GTEestiProDisplay-Light.eot");
+  src: url("../fonts/GTEestiProDisplay-Light.woff") format("woff"), url("../fonts/GTEestiProDisplay-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal; }
 
@@ -184,12 +184,11 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  height: 100px;
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
   margin-right: 20px;
-  padding: 20px;
+  padding: 10px;
   background-color: #ededed; }
   .field .file-input input {
     position: absolute;
@@ -197,10 +196,21 @@ section {
     left: 50%;
     bottom: 10px;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%); }
+            transform: translateX(-50%);
+    opacity: 0; }
   .field .file-input label {
-    padding: 60px;
+    padding: 45px 0 10px 0;
+    text-align: center;
     color: #9c9c9c; }
+  .field .file-input .upload-avatar-check {
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    /*display: none;*/
+    color: #27ae60;
+    font-size: 40px; }
 
 .field .current-image {
   min-width: 20%;

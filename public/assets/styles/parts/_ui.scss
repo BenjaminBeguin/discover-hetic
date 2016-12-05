@@ -92,10 +92,11 @@ section{
 				display: flex;
 		justify-content: center;
 		align-items: center;
-		flex: 1;
-		height: 100px;
+		height: 130px;
+		width: 130px;
+		border-radius: 50%;
 		margin-right: 20px;
-		padding: 20px;
+		padding: 10px;
 		background-color: #ededed;
 
 		input {
@@ -104,11 +105,23 @@ section{
 			left: 50%;
 			bottom: 10px;
 			transform: translateX(-50%);
+			opacity: 0;
 		}
 
 		label {
-			padding: 60px;
+			padding: 45px 0 10px 0;
+			text-align: center;
 			color: #9c9c9c;
+		}
+
+		.upload-avatar-check {
+			position: absolute;
+			left: 50%;
+			top: 25px;
+			transform: translateX(-50%);
+			/*display: none;*/
+			color: $green;
+			font-size: 40px;
 		}
 	}
 

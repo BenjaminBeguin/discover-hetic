@@ -30,6 +30,8 @@
             <div class="file-input">
                 <%= f.label :avatar, 'Drag and drop your file or click to upload' %>
                 <%= f.file_field :avatar, autofocus: true %>
+
+                <i class="fa fa-check-circle upload-avatar-check" aria-hidden="true"></i>
             </div>
 
             <span class="current-image" style="background-image: url(<%= current_user.avatar %>);"></span>
