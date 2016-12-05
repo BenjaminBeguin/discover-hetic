@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
     def index
         if params[:orderby] == 'top'
-            @posts = Post.paginate(:page => params[:page], :per_page => 10).order('vote DESC')
+            @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC')
         else
-            @posts = Post.paginate(:page => params[:page], :per_page => 10).order('id DESC')
+            @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('id DESC')
         end
         @post_voted = post_like_unlike
 
@@ -28,15 +28,15 @@ class PostsController < ApplicationController
     def search
         if params[:q]
             if params[:orderby] == 'newest'
-                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC')
             else
-                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => 10).order('vote DESC')
+                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC')
             end
         else
             if params[:orderby] == 'newest'
-                @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC')
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => 10).order('vote DESC')
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC')
             end
         end
         @post_voted = post_like_unlike
@@ -49,9 +49,9 @@ class PostsController < ApplicationController
 
         if  @category.present?
             if params[:orderby] == 'top'
-                @posts = Post.paginate(:page => params[:page], :per_page => 10).where(category_id: @category.id).order(vote: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(vote: :desc)
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => 10).where(category_id: @category.id).order(created_at: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(created_at: :desc)
             end
             post_like_unlike
 
@@ -80,9 +80,9 @@ class PostsController < ApplicationController
 
         if  @user.present?
             if params[:orderby] == 'top'
-                @posts = Post.paginate(:page => params[:page], :per_page => 10).where(user_id: @user.id).order('vote DESC')
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('vote DESC')
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => 10).where(user_id: @user.id).order('created_at DESC')
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC')
             end
             post_like_unlike
         else
