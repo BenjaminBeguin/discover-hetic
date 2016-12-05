@@ -1,28 +1,11 @@
-<section class="user-profile-card">
-
-	<% if @user.id == current_user.id %>
-		<%= link_to 'Edit', edit_user_registration_path, method: :get, :class=>'edit-button' %>
-	<% end %>
-	
-	<div class="profile-card-content">
-		<span class="avatar" style="background-image: url(<%= @user.avatar %>);"></span>
-		<h1><%= @user.name %></h1>
-		<p><%= @user.desc %></p>
-	</div>
-</section>
+<%= render "shared/user_info" %>
 
 <div class="posts-list">
 	<h2 class="title-second"><%= @user.name %>'s posts</h2>
 	<div class="sort-by">
-		<% if @user.id == current_user.id %>
-			<%= link_to "My posts", posts_by_user_path(:slug => @user.slug), :class=>"active" %>
-			<span>/</span>
-			<%= link_to "My likes", posts_by_user_path(:slug => @user.slug, :orderby => "voted" ) %>
-		<% else %>
-			<%= link_to "Posts published", posts_by_user_path(:slug => @user.slug), :class=>"active" %>
-			<span>/</span>
-			<%= link_to "Posts liked", posts_by_user_path(:slug => @user.slug, :orderby => "voted" ) %>
-		<% end %>
+		<%= link_to "NEWEST", posts_by_user_path, :class=>"active" %>
+		<span>/</span>
+		<%= link_to "TOP", posts_by_user_path(:orderby => "top" ) %>
 	</div>
 	<section>
 		<%= render "shared/posts_list" %>

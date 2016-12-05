@@ -1,59 +1,63 @@
-<% @posts.each do |post| %>
-	<div><%= link_to "Link", post_path(:id => post.id), method: :get  %> </div>
+<% if @posts.present? %>	
+	<% @posts.each do |post| %>
+		<div><%= link_to "Link", post_path(:id => post.id), method: :get  %> </div>
 
-	<div>time : <%= hours = distance_of_time_in_words_to_now(post.created_at) %></div>	
-	<div>Title : <%= post.title %></div>
-	<div>Content : <%= post.content %></div>
-	<div>url : <%= post.url %></div>
-	<div>id : <%= post.id %></div>
-	<div>vote_created : <%= post.vote_created  %></div>
-	<div>vote : <%= post.vote  %></div>
-	<div>author : <%
-		if post.user.name
-			concat post.user.name
-		else
-			concat "user deleted"
-		end
-	 %>	 	
-	</div>
-	
-	image : <%=  post.asset.url %>
-	<%= image_tag post.asset.url %>
-
-	<div>author : <%
-		if post.user.slug
-			concat post.user.slug
-		else
-			concat "no slug"
-		end
-	 %>	 	
-	</div>
-
-	<% if  post.category %>
-		<div>category : <%= post.category.label %></div>
-	<% end %>
-	<br>
-
-	<%	if post.is_my_post? %>
-		<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br>
+		<div>time : <%= hours = distance_of_time_in_words_to_now(post.created_at) %></div>	
+		<div>Title : <%= post.title %></div>
+		<div>Content : <%= post.content %></div>
+		<div>url : <%= post.url %></div>
+		<div>id : <%= post.id %></div>
+		<div>vote_created : <%= post.vote_created  %></div>
+		<div>vote : <%= post.vote  %></div>
+		<div>author : <%
+			if post.user.name
+				concat post.user.name
+			else
+				concat "user deleted"
+			end
+		 %>	 	
+		</div>
 		
-		<%	if post.published? %>
-			<%= button_to 'Unpublish', posts_unpublished_path(id: post.id ), method: :post, :remote=>true %>
-		<%	else %>
-			<%= button_to 'Publish', posts_published_path(id: post.id ), method: :post, :remote=>true %>
-		<%	end %>
-	<% end %>
+		image : <%=  post.asset.url %>
+		<%= image_tag post.asset.url %>
 
-	<% if user_signed_in? %>
-		<% if @post_voted.include?(post.id) %>
-	  		<%= button_to "UNLIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
-		<% else %>
-	  		<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+		<div>author : <%
+			if post.user.slug
+				concat post.user.slug
+			else
+				concat "no slug"
+			end
+		 %>	 	
+		</div>
 
+		<% if  post.category %>
+			<div>category : <%= post.category.label %></div>
 		<% end %>
-	<% end %>
+		<br>
 
-	<br><br>
+		<%	if post.is_my_post? %>
+			<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br>
+			
+			<%	if post.published? %>
+				<%= button_to 'Unpublish', posts_unpublished_path(id: post.id ), method: :post, :remote=>true %>
+			<%	else %>
+				<%= button_to 'Publish', posts_published_path(id: post.id ), method: :post, :remote=>true %>
+			<%	end %>
+		<% end %>
+
+		<% if user_signed_in? %>
+			<% if @post_voted.include?(post.id) %>
+		  		<%= button_to "UNLIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+			<% else %>
+		  		<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+
+			<% end %>
+		<% end %>
+
+		<br><br>
+	<% end %>
+<% else %>
+  <p>There are no posts.</p>
 <% end %>
 
 
