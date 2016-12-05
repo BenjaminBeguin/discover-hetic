@@ -118,4 +118,24 @@ section{
 	}
 }
 
+.pagination{
+	margin-top: 15px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	.previous_page, .next_page{
+		display: none;
+	}
+	.current, a{
+			font-family: 'discover-regular';
+			font-size: 16px;
+			color:$black;
+			margin:0 5px;
+	}
+	a{
+		opacity:.5;
+	}
+}
+
 

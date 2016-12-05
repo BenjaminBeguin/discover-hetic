@@ -21,23 +21,8 @@
 				.post-desc{
 					font-family: 'discover-light';
 				}
-
 			}
-			.post-likes{
-				position: absolute;
-				right: 0;
-				top: 0;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				text-decoration: none;
-				color:$black;
-				img{
-					margin-bottom: 10px;
-				}
-			}
-
+			
 			.post-author{
 				position: absolute;
 				bottom: 0;
@@ -48,11 +33,6 @@
 				justify-content: space-between;
 				align-items: center;
 
-				&:hover{
-					span.user-name{
-						text-decoration: underline;
-					}
-				}
 				img{
 					border-radius:50%;
 					width: 50px;
@@ -71,6 +51,10 @@
 
 			&:first-child {
 				padding-top: 0;
+
+				.post-likes{
+					top:0;
+				}
 			}
 
 			&:after {
@@ -82,15 +66,59 @@
 				height: 1px;
 				background-color: $grey;
 			}
+
+			.post-head-datas{
+				margin-bottom: 15px;
+				.post-author{
+					margin-top:15px;
+
+					.author-name{
+						a{
+							font-size: 16px;
+						}
+					}
+
+					.author-postDate{
+						margin-left: 10px;
+						color:$black-opacity;
+						font-family: 'discover-light';
+						font-size: 14px;
+					}
+				}
+			}
+
+			.post-likes{
+				top:40px;
+			}
+
+			.post-content{
+				.post-thumbnail{
+					width: 100%;
+					height:200px;
+				}
+
+				.post-description{
+					margin-top: 20px;
+					font-family: 'discover-light';
+				}
+			}
 		}
 
 		.post-title{
 			font-size: 24px;
 			font-family: 'discover-semibold';
 			display: inline-block;
-			margin: 15px 0 10px 0;
+			margin-top: 20px;
 			text-decoration: none;
 			color: $black;
+		}
+
+		.post-author{
+			&:hover{
+				span.user-name{
+					text-decoration: underline;
+				}
+			}
 		}
 
 		.post-cat {
@@ -98,6 +126,21 @@
 			font-size: 12px;
 			text-transform: uppercase;
 			display: block;
+		}
+
+		.post-likes{
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			color:$black;
+			img{
+				margin-bottom: 10px;
+			}
 		}
 
 		&__avatar {

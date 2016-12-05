@@ -10,21 +10,19 @@
 				<% if  post.category %>
 					<span class="post-cat"><%= post.category.label %></span>
 				<% end %>
-				<div>
-					<span class="post-author">
+				<div class="post-author">
+					<span class="user-name">
 						<% if post.user.name %>
 							<%= link_to post.user.name, posts_by_user_path(:slug => post.user.slug) %>
 						<% else %>
 							concat "user deleted"
 						<% end %>
 					</span>
-					<span><%= hours = distance_of_time_in_words_to_now(post.created_at) %></span>
+					<span class="author-postDate"><%= hours = distance_of_time_in_words_to_now(post.created_at) %> ago</span>
 				</div>
 				<%= link_to post.title, post_path(:id => post.id), method: :get, :class => "post-title"  %>
 
-				<div>vote_created : <%= post.vote_created  %></div>
-				<div>vote : <%= post.vote  %></div>	
-
+<!--  
 				<%	if post.is_my_post? %>
 					<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br>
 					
@@ -35,21 +33,26 @@
 					<%	end %>
 				<% end %>
 
+-->
 				<% if user_signed_in? %>
-					<% if @post_voted.include?(post.id) %>
-				  		<%= button_to "UNLIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
-					<% else %>
-				  		<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+					<%= link_to posts_add_vote_path(id: @top_post.id ), method: :post,  :remote => true, :class => "post-likes" do %>
+						<% if @post_voted.include?(@top_post.id) %>
+		        	<img src='/assets/images/icons/like_active.png' alt="">
+		        <% else %>
+		        	<img src='/assets/images/icons/like_inactive.png' alt="">
+		       	<% end %>
 
-					<% end %>
+		        <%= @top_post.vote %>
+		      <% end %>	
 				<% end %>
+
 			</div>
 
 			<div class="post-content">
 				<% if post.asset.present? %>
-					<%= image_tag post.asset.url %>
+					<div class="post-thumbnail" style='background:url("<%= post.asset.url %>"); background-size:cover; background-position:center center;'></div>
 				<% end %>
-				<p><%= post.content %></p>
+				<p class="post-description"><%= post.content %></p>
 			</div>
 		</div>
 	</div>
