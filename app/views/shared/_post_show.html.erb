@@ -16,22 +16,18 @@
 		<div class="post-metadatas">
 			<div class="post-link">
 				<a href="<%= @post.url %>" target="_blank" class="post-link">
-					<img src="/assets/images/icons/link.png" alt="">
+					<img src="/assets/images/icons/link.svg" alt="">
 					<span>Discover</span>
 				</a>
 			</div>
 			<div class="post-comments">
-				<a href="<%= @post.url %>" target="_blank" class="post-link">
-					<img src="/assets/images/icons/link.png" alt="">
-					<span>Discover</span>
+				<a href="#comments" class="post-comments">
+					<img src="/assets/images/icons/comment.svg" alt="">
+					<span><%= @post.comments.count %></span>
 				</a>
 			</div>
-			<div class="post-likes-single">
-				<a href="<%= @post.url %>" target="_blank" class="post-link">
-					<img src="/assets/images/icons/link.png" alt="">
-					<span>Discover</span>
-				</a>
-			</div>
+
+			
 			
 		</div>
 	</div>

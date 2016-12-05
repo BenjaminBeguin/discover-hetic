@@ -10,6 +10,7 @@
 
 <div class="col-70 posts-list">
 	<h1 class="title-second">Les posts</h1>
+	<% #params[:orderby] == "top" %>
 	<div class="sort-by">
 		<%= link_to "NEWEST", root_path, :class=>"active" %>
 		<span>/</span>
