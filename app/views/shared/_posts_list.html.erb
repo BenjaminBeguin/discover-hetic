@@ -35,14 +35,13 @@
 
 -->
 				<% if user_signed_in? %>
-					<%= link_to posts_add_vote_path(id: @top_post.id ), method: :post,  :remote => true, :class => "post-likes" do %>
-						<% if @post_voted.include?(@top_post.id) %>
+					<%= link_to posts_add_vote_path(id: post.id ), method: :post,  :remote => true, :class => "post-likes" do %>
+						<% if @post_voted.include?(post.id) %>
 		        	<img src='/assets/images/icons/like_active.png' alt="">
 		        <% else %>
 		        	<img src='/assets/images/icons/like_inactive.png' alt="">
 		       	<% end %>
-
-		        <%= @top_post.vote %>
+		        <%= post.vote %>
 		      <% end %>	
 				<% end %>
 

@@ -1,7 +1,8 @@
 <section class="user-profile-card">
-
-	<% if @user.id == current_user.id %>
-		<%= link_to 'Edit', edit_user_registration_path, method: :get, :class=>'edit-button' %>
+	<% if current_user %>
+		<% if @user.id == current_user.id %>
+			<%= link_to 'Edit', edit_user_registration_path, method: :get, :class=>'edit-button' %>
+		<% end %>
 	<% end %>
 	
 	<div class="profile-card-content">
