@@ -46,8 +46,15 @@
 
 	<div class="header-second">
 		<ul class="menu-cat">
+		
 		<% @categories.each do |category| %>
-		  <li><%= link_to category.label, category_path(:slug => category.slug), method: :get  %> </li>
+			<% if params[:slug] == category.slug %>
+		  		<li><%= link_to category.label, category_path(:slug => category.slug), method: :get, :class=>"active"  %> </li>
+				
+			<% else %>
+		  		<li><%= link_to category.label, category_path(:slug => category.slug), method: :get  %> </li>
+				
+			<% end %>
 		<% end %>
 		</ul>
 
