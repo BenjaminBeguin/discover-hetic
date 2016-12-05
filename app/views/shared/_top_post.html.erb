@@ -29,7 +29,7 @@
 			</p>
 		</div>
 
-		<a href="/users/<%= @top_post.user.name %>" class="post-author">
+		<a href="/users/<%= @top_post.user.slug %>" class="post-author">
 			<%
 				if @top_post.user %>
 					<img src="<%= @top_post.user.avatar.url(:thumb) %>">
