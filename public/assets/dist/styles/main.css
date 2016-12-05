@@ -262,6 +262,12 @@ section {
       -webkit-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
 
+.paragraph {
+  display: block;
+  margin-bottom: 40px;
+  color: rgba(32, 33, 33, 0.5);
+  line-height: 28px; }
+
 /* @group FOOTER */
 footer {
   display: -moz-flex;
