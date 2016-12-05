@@ -58,4 +58,9 @@ Rails.application.routes.draw do
 
    # get "*path" => redirect("/")
 
+   #-------------- Static Pages -------------#
+
+   get '/legal-mentions' => 'pages#legal_mentions'
+   get '/about' => 'pages#about'
+
 end
