@@ -166,6 +166,60 @@
 		}
 	}
 
+	.post-single-view{
+		flex-flow:wrap;
+		.post-datas{
+			display: flex;
+			flex-direction: row;
+
+			width:100%;
+			.post-author{
+				display: flex;
+				flex-direction: row;
+				img{
+					width:70px;
+					height: 70px;
+					border-radius:50%;
+				}
+				.author-data{
+					padding-top: 10px;
+					margin-left: 15px;
+
+					.user-name{
+						font-family: 'discover-regular';
+						color:$black;
+					}
+				}
+			}	
+			.post-metadatas{
+				margin-right: auto;
+				display: flex;
+				flex-direction: row;
+				& > div > a{
+					margin:0 30px;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					img{
+						width:25px;
+					}
+					span{
+						font-family: 'discover-light';
+						font-family: 14px;
+						color:$black;
+						margin-top: 10px;
+					}
+				}
+				.post-link{
+
+					img, span{
+					}
+				}
+			}
+		}
+	}
+
 	.comment {
 		display: block;
 		background-color: #dedede;

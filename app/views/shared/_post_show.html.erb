@@ -1,5 +1,42 @@
-
-	<div>Title : <%= @post.title %></div>
+<section class="post-single post-single-view">
+	<div class="post-datas">
+		<a href="/users/<%= @post.user.slug %>" class="post-author">
+			<%
+				if @post.user %>
+					<img src="<%= @post.user.avatar.url(:thumb) %>">
+					<div class="author-data">
+						<span class="user-name"><%= @post.user.name %></span>					
+					</div>
+			<%
+				else
+					%><span>User doesn't exist</span><%
+				end
+			 %>
+		</a>
+		<div class="post-metadatas">
+			<div class="post-link">
+				<a href="<%= @post.url %>" target="_blank" class="post-link">
+					<img src="/assets/images/icons/link.png" alt="">
+					<span>Discover</span>
+				</a>
+			</div>
+			<div class="post-comments">
+				<a href="<%= @post.url %>" target="_blank" class="post-link">
+					<img src="/assets/images/icons/link.png" alt="">
+					<span>Discover</span>
+				</a>
+			</div>
+			<div class="post-likes-single">
+				<a href="<%= @post.url %>" target="_blank" class="post-link">
+					<img src="/assets/images/icons/link.png" alt="">
+					<span>Discover</span>
+				</a>
+			</div>
+			
+		</div>
+	</div>
+	<h1 class="post-title"><%= @post.title %></h1>
+</section>
 
 	<%= image_tag @post.asset.url %>
 
