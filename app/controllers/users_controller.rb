@@ -12,7 +12,12 @@ class UsersController < ApplicationController
 
     def get_user_post
         if user_signed_in?
-            @posts = Post.where(user_id: current_user.id);
+            if params[:orderby] == 'liked'
+                @posts = Post.where(user_id: current_user.id);
+            else
+                @posts = Post.where(user_id: current_user.id);
+            end
+            
             post_like_unlike
         else
             redirect_to new_user_session_path 
