@@ -274,7 +274,8 @@ header {
       transition: width 0.3s ease; }
       header .header-main .search-form img {
         display: inline-block;
-        position: absolute; }
+        position: absolute;
+        width: 16px; }
       header .header-main .search-form form {
         width: 60px;
         overflow: hidden;
@@ -645,7 +646,8 @@ main .posts-list {
             -ms-flex-align: center;
                 align-items: center; }
         .post-single-view .post-datas .post-metadatas > div > a img {
-          width: 25px; }
+          width: 25px;
+          fill: rgba(32, 33, 33, 0.5); }
         .post-single-view .post-datas .post-metadatas > div > a span {
           font-family: 'discover-light';
           font-family: 14px;
