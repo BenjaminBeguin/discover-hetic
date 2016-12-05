@@ -1,59 +1,59 @@
 <% @posts.each do |post| %>
-	<div><%= link_to "Link", post_path(:id => post.id), method: :get  %> </div>
 
-	<div>time : <%= hours = distance_of_time_in_words_to_now(post.created_at) %></div>	
-	<div>Title : <%= post.title %></div>
-	<div>Content : <%= post.content %></div>
-	<div>url : <%= post.url %></div>
-	<div>id : <%= post.id %></div>
-	<div>vote_created : <%= post.vote_created  %></div>
-	<div>vote : <%= post.vote  %></div>
-	<div>author : <%
-		if post.user.name
-			concat post.user.name
-		else
-			concat "user deleted"
-		end
-	 %>	 	
-	</div>
 	
-	image : <%=  post.asset.url %>
-	<%= image_tag post.asset.url %>
-
-	<div>author : <%
-		if post.user.slug
-			concat post.user.slug
-		else
-			concat "no slug"
-		end
-	 %>	 	
-	</div>
-
-	<% if  post.category %>
-		<div>category : <%= post.category.label %></div>
-	<% end %>
-	<br>
-
-	<%	if post.is_my_post? %>
-		<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br>
+	<div class="post-single regular-post">
 		
-		<%	if post.published? %>
-			<%= button_to 'Unpublish', posts_unpublished_path(id: post.id ), method: :post, :remote=>true %>
-		<%	else %>
-			<%= button_to 'Publish', posts_published_path(id: post.id ), method: :post, :remote=>true %>
-		<%	end %>
-	<% end %>
+		<div class="post-single__avatar" style="background-image: url(<%= post.user.avatar %>)">
+		</div>
+		<div class="post-single__content">
+			
+			<div class="post-head-datas">
+				<% if  post.category %>
+					<span class="post-cat"><%= post.category.label %></span>
+				<% end %>
+				<div>
+					<span class="post-author">
+						<% if post.user.name %>
+							<%= link_to post.user.name, posts_by_user_path(:slug => post.user.slug) %>
+						<% else %>
+							concat "user deleted"
+						<% end %>
+					</span>
+					<span><%= hours = distance_of_time_in_words_to_now(post.created_at) %></span>
+				</div>
+				<%= link_to post.title, post_path(:id => post.id), method: :get, :class => "post-title"  %>
 
-	<% if user_signed_in? %>
-		<% if @post_voted.include?(post.id) %>
-	  		<%= button_to "UNLIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
-		<% else %>
-	  		<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+				<div>vote_created : <%= post.vote_created  %></div>
+				<div>vote : <%= post.vote  %></div>	
 
-		<% end %>
-	<% end %>
+				<%	if post.is_my_post? %>
+					<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br>
+					
+					<%	if post.published? %>
+						<%= button_to 'Unpublish', posts_unpublished_path(id: post.id ), method: :post, :remote=>true %>
+					<%	else %>
+						<%= button_to 'Publish', posts_published_path(id: post.id ), method: :post, :remote=>true %>
+					<%	end %>
+				<% end %>
 
-	<br><br>
+				<% if user_signed_in? %>
+					<% if @post_voted.include?(post.id) %>
+				  		<%= button_to "UNLIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+					<% else %>
+				  		<%= button_to "LIKE", posts_add_vote_path(id: post.id ), method: :post, :remote=>true %>
+
+					<% end %>
+				<% end %>
+			</div>
+
+			<div class="post-content">
+				<% if post.asset.present? %>
+					<%= image_tag post.asset.url %>
+				<% end %>
+				<p><%= post.content %></p>
+			</div>
+		</div>
+	</div>
 <% end %>
 
 
