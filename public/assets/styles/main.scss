@@ -12,13 +12,14 @@
 @import 'parts/home';
 @import 'parts/profile';
 @import 'parts/post';
+@import 'parts/connexion';
 
 h1{
 	font-size: 25px;
 }
 
 a{
-	color:blue;
+	text-decoration: none;
 }
 
 body, a, p{

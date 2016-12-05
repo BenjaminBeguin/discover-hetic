@@ -1,0 +1,83 @@
+.login_wrapper{
+	display: flex;
+	justify-content: center;
+
+	.field{
+		margin-bottom: 20px;
+
+		&:nth-child(4) {
+			margin-bottom: 0px;
+		}
+	}
+
+	.remember_me{
+		margin-top: 5px;
+
+		input[type=checkbox]{
+			cursor: pointer;
+		}
+
+		.remember_title{
+			color: rgba(32, 33, 33, 0.5);
+			font-size: 12px;
+			font-family: 'discover-regular';
+		}
+	}
+
+	.actions{
+		margin-top: 30px;
+		
+		input[type=submit]{
+			background-color: #fff;
+			padding: 10px 40px;
+			border: 1px solid $purple;
+			font-family: 'discover-regular';
+			font-size: 14px;
+			color: $purple;
+			cursor: pointer;
+			transition: all 0.3s ease;
+
+			&:hover{
+				background-color: $purple;
+				color: #fff;
+				transition: all 0.2s ease-out;
+			}
+		}
+	}
+
+	.additional_links{
+		margin-top: 10px;
+
+		a{
+			font-size: 12px;
+			color: $purple;
+
+		}
+		a:first-child:before{
+			content:"You ";
+			color: rgba(0,0,0,0.7);
+			font-family: 'discover-light';
+			cursor: text;
+
+		}
+
+		a:last-child{
+			&:before{
+				content: "Or you want to ";
+				color: rgba(0,0,0,0.7);
+				font-family: 'discover-light';
+				cursor: text;
+				text-decoration: none;
+			}
+			&:after{
+				content: " ?";
+				color: rgba(0,0,0,0.7);
+				font-family: 'discover-light';
+				cursor: text;
+				text-decoration: none;
+			}
+		}
+
+	}
+
+}
