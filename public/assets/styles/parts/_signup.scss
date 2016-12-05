@@ -1,0 +1,41 @@
+.signup_wrapper{
+	display: flex;
+	justify-content: center;
+
+	.field{
+		margin-bottom: 20px;
+
+	}
+
+	.form_left, .form_right{
+		margin-bottom: 10px;
+	}
+
+	.form_left{
+		float: left;
+		margin-right: 50px;
+	}
+
+	.form_right{
+		float: right;
+	}
+
+	.additionnals_links{
+		margin-top: 10px;
+
+		a{
+			font-size: 12px;
+			color: $purple;
+
+			&:before{
+				content:"If you already have an account you might want to ";
+				color: rgba(0,0,0,0.7);
+				font-family: 'discover-light';
+				cursor: text;
+
+			}
+
+		}
+
+	}
+}

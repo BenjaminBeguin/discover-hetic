@@ -103,7 +103,8 @@ table {
 
 /* IMPORT COMMONS */
 body {
-  padding: 50px; }
+  padding: 50px;
+  background: #fafafa; }
 
 .clear {
   clear: both; }
@@ -114,7 +115,6 @@ button {
   outline: none; }
 
 main {
-  background: #fafafa;
   padding: 60px 80px; }
 
 .title-main {
@@ -157,10 +157,12 @@ section {
   height: 40px;
   background-color: #fcfcfc;
   border: solid 0.5px #efefef;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.5);
   font-family: 'discover-regular';
   font-size: 14px;
   padding-left: 10px; }
+  .field .form_input::-webkit-input-placeholder {
+    opacity: 0.4; }
 
 .field .form_submit {
   width: 150px;
@@ -232,12 +234,31 @@ section {
   .pagination a {
     opacity: .5; }
 
+.actions {
+  margin-top: 30px; }
+  .actions input[type=submit] {
+    background-color: #fff;
+    padding: 10px 40px;
+    border: 1px solid #8362c6;
+    font-family: 'discover-regular';
+    font-size: 14px;
+    color: #8362c6;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    .actions input[type=submit]:hover {
+      background-color: #8362c6;
+      color: #fff;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out; }
+
 /* @group FOOTER */
 /* @endgroup FOOTER */
 /* @group HEADER */
 header {
   padding: 0 80px;
-  border-bottom: 1px solid #efefef; }
+  border-bottom: 1px solid #efefef;
+  background: #fff; }
   header .header-main {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -253,9 +274,7 @@ header {
         -ms-flex-align: center;
             align-items: center;
     height: 60px;
-    border: 1px solid #efefef;
-    border-left: none;
-    border-right: none; }
+    border-bottom: 1px solid #efefef; }
     header .header-main .logo {
       margin-right: auto;
       text-decoration: none;
@@ -691,23 +710,6 @@ main .posts-list {
       color: rgba(32, 33, 33, 0.5);
       font-size: 12px;
       font-family: 'discover-regular'; }
-  .login_wrapper .actions {
-    margin-top: 30px; }
-    .login_wrapper .actions input[type=submit] {
-      background-color: #fff;
-      padding: 10px 40px;
-      border: 1px solid #8362c6;
-      font-family: 'discover-regular';
-      font-size: 14px;
-      color: #8362c6;
-      cursor: pointer;
-      -webkit-transition: all 0.3s ease;
-      transition: all 0.3s ease; }
-      .login_wrapper .actions input[type=submit]:hover {
-        background-color: #8362c6;
-        color: #fff;
-        -webkit-transition: all 0.2s ease-out;
-        transition: all 0.2s ease-out; }
   .login_wrapper .additional_links {
     margin-top: 10px; }
     .login_wrapper .additional_links a {
@@ -730,6 +732,33 @@ main .posts-list {
       font-family: 'discover-light';
       cursor: text;
       text-decoration: none; }
+
+.signup_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .signup_wrapper .field {
+    margin-bottom: 20px; }
+  .signup_wrapper .form_left, .signup_wrapper .form_right {
+    margin-bottom: 10px; }
+  .signup_wrapper .form_left {
+    float: left;
+    margin-right: 50px; }
+  .signup_wrapper .form_right {
+    float: right; }
+  .signup_wrapper .additionnals_links {
+    margin-top: 10px; }
+    .signup_wrapper .additionnals_links a {
+      font-size: 12px;
+      color: #8362c6; }
+      .signup_wrapper .additionnals_links a:before {
+        content: "If you already have an account you might want to ";
+        color: rgba(0, 0, 0, 0.7);
+        font-family: 'discover-light';
+        cursor: text; }
 
 h1 {
   font-size: 25px; }

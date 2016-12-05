@@ -1,5 +1,6 @@
 body {
 	padding : 50px;
+	background:$grey-light;
 }
 
 .clear{
@@ -13,7 +14,6 @@ button{
 }
 
 main{
-	background:$grey-light;
 	padding: 60px 80px;
 }
 
@@ -66,10 +66,14 @@ section{
 		height: 40px;
 		background-color: #fcfcfc;
 		border: solid 0.5px #efefef;
-		color: rgba(0,0,0,0.8);
+		color: rgba(0,0,0,0.5);
 		font-family: 'discover-regular';
 		font-size: 14px;
 		padding-left: 10px;
+		
+		&::-webkit-input-placeholder{
+			opacity: 0.4;
+		}
 	}
 
 	.form_submit{
@@ -135,6 +139,28 @@ section{
 	}
 	a{
 		opacity:.5;
+	}
+}
+
+.actions{
+	margin-top: 30px;
+		
+	input[type=submit]{
+		background-color: #fff;
+		padding: 10px 40px;
+		border: 1px solid $purple;
+		font-family: 'discover-regular';
+		font-size: 14px;
+		color: $purple;
+		cursor: pointer;
+		transition: all 0.3s ease;
+
+		&:hover{
+			background-color: $purple;
+			color: #fff;
+			transition: all 0.2s ease-out;
+		}
+
 	}
 }
 
