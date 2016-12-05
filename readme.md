@@ -30,9 +30,6 @@ Start rails server
 $ rails s
 ```
 
-```
-$ git checkout dev
-```
 
 ## Install Front Workflow
 
