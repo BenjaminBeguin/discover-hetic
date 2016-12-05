@@ -1,0 +1,12 @@
+<section class="user-profile-card">
+
+	<% if @user.id == current_user.id %>
+		<%= link_to 'Edit', edit_user_registration_path, method: :get, :class=>'edit-button' %>
+	<% end %>
+	
+	<div class="profile-card-content">
+		<span class="avatar" style="background-image: url(<%= @user.avatar %>);"></span>
+		<h1><%= @user.name %></h1>
+		<p><%= @user.desc %></p>
+	</div>
+</section>

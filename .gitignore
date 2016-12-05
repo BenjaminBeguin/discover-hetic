@@ -11,7 +11,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 /node_modules
-/app/assets
+/app/assets/stylesheets
 /public/system
 
 

@@ -6,6 +6,10 @@ class User < ApplicationRecord
 	validates :slug, uniqueness: true
 	validates :email, presence: true, format: { with: /\w*@\w*\.\w*/ }, uniqueness: true
 
+	has_many :votes
+	has_many :voted_posts, :through => :votes, :source => :post
+
+
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

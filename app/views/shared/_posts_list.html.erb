@@ -1,6 +1,5 @@
-<% @posts.each do |post| %>
-
-	
+<% if @posts.present? %>
+	<% @posts.each do |post| %>
 	<div class="post-single regular-post">
 		
 		<div class="post-single__avatar" style="background-image: url(<%= post.user.avatar %>)">
@@ -54,6 +53,9 @@
 			</div>
 		</div>
 	</div>
+	<% end %>
+<% else %>
+  <p>There are no posts.</p>
 <% end %>
 
 

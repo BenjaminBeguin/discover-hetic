@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
   before_filter :all_categories
 
+  POST_PER_PAGE = 10;
+
   def all_categories
     @categories = Category.all
   end

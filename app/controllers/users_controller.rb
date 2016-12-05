@@ -10,9 +10,22 @@ class UsersController < ApplicationController
     	@users = User.all
     end
 
+    # @user_votes = Vote.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC')
+    # @posts = []
+    # @user_votes.each do |vote|
+    #     @posts.push(Post.where(user_id: vote.user_id))
+    # end
+
     def get_user_post
         if user_signed_in?
-            @posts = Post.where(user_id: current_user.id);
+            @user = User.find(current_user.id)
+
+            if params[:mypost] == 'voted'
+                @posts = User.find(current_user.id).voted_posts.paginate(:page => params[:page], :per_page => POST_PER_PAGE);
+            else
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: current_user.id).order('created_at DESC');
+            end
+            
             post_like_unlike
         else
             redirect_to new_user_session_path 
