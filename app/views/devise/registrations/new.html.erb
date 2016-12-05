@@ -1,49 +1,41 @@
-<h2>Sign up</h2>
+<h2 class="title-second">Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<section class="signup_wrapper">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
-    </div>
+        <div class="form_left">
+            <div class="field">
+                <%= f.label :email, :class => "form_title" %>
+                <%= f.email_field :email, autofocus: true, :class => "form_input", placeholder: "beagle@dog.com" %>
+            </div>
 
-    <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %>
-    </div>
+            <div class="field">
+                <%= f.label :name, :class => "form_title" %>
+                <%= f.text_field :name, autofocus: true, :class => "form_input", placeholder: "Beagle" %>
+            </div>
+        </div>
+        <div class="form_right">
+            <div class="field">
+                <% if @minimum_password_length %>
+                    <%= f.label :password, :class => "form_title"   %>
+                <% end %>
+                <%= f.password_field :password, autocomplete: "off", :class => "form_input", placeholder: "#{@minimum_password_length} characters minimum" %>
+            </div>
 
-    <div class="field">
-        <%= f.label :url %><br />
-        <%= f.text_field :url, autofocus: true %>
-    </div>
+            <div class="field">
+                <%= f.label :password_confirmation, :class => "form_title" %>
+                <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form_input"%>
+            </div>
+        </div>
 
-    <div class="field">
-        <%= f.label :desc %><br />
-        <%= f.text_area :desc, size: '100x20' %>
-    </div>
+        <div class="actions">
+            <%= f.submit "Sign up", :class => "form_submit" %>
+        </div>
 
-    <div class="field">
-        <%= f.label :avatar %><br />
-        <%= f.file_field :avatar, autofocus: true %>
-    </div>
+        <div class="additionnals_links">
+            <%= render "devise/shared/links" %>
+        </div>
+    <% end %>
+</section>
 
-    <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="actions">
-        <%= f.submit "Sign up" %>
-    </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
