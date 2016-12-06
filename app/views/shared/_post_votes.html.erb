@@ -10,6 +10,6 @@
 <% else %>
     <%= link_to new_user_session_path(id: post.id ), method: :post, :class => "post-likes" do %>
         <img src='/assets/images/icons/like_inactive.svg' alt="">
+        <%= post.vote %>  
     <% end %>
-    <%= post.vote %>  
 <% end %>
