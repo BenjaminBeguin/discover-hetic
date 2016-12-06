@@ -18,8 +18,7 @@
 				<%= truncate(strip_tags(@top_post.content), :length=>200)%>
 			</p>
 		</div>
-
-		<a href="/users/<%= @top_post.user.slug %>" class="post-author">
+		<%= link_to posts_by_user_path(slug: @top_post.user.slug ), method: :get do %>
 			<%
 				if @top_post.user %>
 					<img src="<%= @top_post.user.avatar.url(:thumb) %>">
@@ -29,7 +28,8 @@
 					%><span>User doesn't exist</span><%
 				end
 			 %>
-		</a>
+		<% end %>
+
 	</div>
 
 <% else %>	
