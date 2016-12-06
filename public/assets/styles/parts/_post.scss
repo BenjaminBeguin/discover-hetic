@@ -131,6 +131,9 @@
 			display: block;
 			a{
 				color:$black-opacity;
+				&:hover{
+					text-decoration: underline;
+				}
 			}
 		}
 

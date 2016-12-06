@@ -143,9 +143,6 @@ section {
 .col-30 {
   width: 30%; }
 
-a:hover {
-  text-decoration: underline; }
-
 .field .form_title {
   color: #585858;
   font-family: 'discover-regular';
@@ -637,6 +634,8 @@ main .posts-list {
     display: block; }
     .post-single .post-cat a {
       color: rgba(32, 33, 33, 0.5); }
+      .post-single .post-cat a:hover {
+        text-decoration: underline; }
   .post-single .post-likes {
     position: absolute;
     right: 0;
@@ -922,7 +921,8 @@ main .posts-list {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    padding: 40px;
+    padding: 40px 40px 0 40px;
+    margin-bottom: 0;
     background: none;
     position: relative; }
     .post-single-comments .comment .comment-content {
