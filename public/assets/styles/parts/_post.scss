@@ -119,7 +119,7 @@
 
 		.post-author{
 			&:hover{
-				span.user-name{
+				span.user-name a{
 					text-decoration: underline;
 				}
 			}

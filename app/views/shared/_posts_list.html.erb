@@ -13,9 +13,13 @@
 				<div class="post-author">
 					<span class="user-name">
 						<% if post.user.name %>
-							<%= link_to post.user.name, posts_by_user_path(:slug => post.user.slug) %>
+							<% if params[:slug] == post.user.slug %>
+								post.user.name
+							<% else %>	
+								<%= link_to post.user.name, posts_by_user_path(:slug => post.user.slug) %>
+							<% end %>
 						<% else %>
-							concat "user deleted"
+							user deleted
 						<% end %>
 					</span>
 					<span class="author-postDate"><%= distance_of_time_in_words_to_now(post.created_at) %> ago</span>

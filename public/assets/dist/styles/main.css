@@ -626,7 +626,7 @@ main .posts-list {
     text-decoration: none;
     color: #202121;
     width: 90%; }
-  .post-single .post-author:hover span.user-name {
+  .post-single .post-author:hover span.user-name a {
     text-decoration: underline; }
   .post-single .post-cat {
     font-size: 12px;
