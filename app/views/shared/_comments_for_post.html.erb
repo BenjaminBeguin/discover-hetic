@@ -1,6 +1,6 @@
 <% @comments.find_each do |comment| %>
 	<div class="comment">
-		<%= image_tag current_user.avatar, class:"comments-avatar" %>
+		<%= image_tag comment.user.avatar, class:"comments-avatar" %>
 		<div class="comment-content">
 			<span class="comment-datas"><strong><%= comment.user.name %></strong><i> | <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</i></span>
 			<p class="comment-text">
