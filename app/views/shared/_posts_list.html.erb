@@ -14,7 +14,7 @@
 					<span class="user-name">
 						<% if post.user.name %>
 							<% if params[:slug] == post.user.slug %>
-								post.user.name
+								<%= post.user.name %>
 							<% else %>	
 								<%= link_to post.user.name, posts_by_user_path(:slug => post.user.slug) %>
 							<% end %>
