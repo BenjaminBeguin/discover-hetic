@@ -22,6 +22,7 @@ class User < ApplicationRecord
   	validates_attachment :avatar,
   		content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"] }
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+	validates_with AttachmentSizeValidator, attributes: :asset, less_than: 2.megabytes
 
 	before_post_process :check_file_size
 	def check_file_size
