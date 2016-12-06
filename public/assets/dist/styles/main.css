@@ -126,7 +126,7 @@ main {
 
 .title-second {
   color: #8362c6;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'discover-regular';
   margin-left: 15px;
   margin-bottom: 15px; }
@@ -168,6 +168,25 @@ section {
   width: 150px;
   height: 40px; }
 
+.field #post_category_id {
+  display: block;
+  width: 300px;
+  height: 40px;
+  background-color: #fcfcfc;
+  border: solid 0.5px #efefef;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: 'discover-regular';
+  font-size: 14px;
+  padding-left: 15px;
+  background-image: url("/assets/images/icons/arrowdown.svg");
+  background-repeat: no-repeat;
+  background-size: 23px 23px;
+  background-position: 96% 50%;
+  cursor: pointer; }
+
 .field .file-input-field {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -175,6 +194,7 @@ section {
 
 .field .file-input {
   position: relative;
+<<<<<<< Updated upstream
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,6 +210,24 @@ section {
   margin-right: 20px;
   padding: 10px;
   background-color: #ededed; }
+=======
+  height: 100px;
+  background-color: #fcfcfc;
+  background-image: url("/assets/images/icons/dragndrop.svg");
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 50% 36%;
+  border: solid 0.5px #efefef;
+  color: rgba(0, 0, 0, 0.3);
+  font-family: 'discover-regular';
+  font-size: 12px;
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+>>>>>>> Stashed changes
   .field .file-input input {
     position: absolute;
     display: block;
@@ -197,6 +235,7 @@ section {
     bottom: 10px;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
+<<<<<<< Updated upstream
     opacity: 0; }
   .field .file-input label {
     padding: 45px 0 10px 0;
@@ -211,6 +250,22 @@ section {
     /*display: none;*/
     color: #27ae60;
     font-size: 40px; }
+=======
+    opacity: 0;
+    cursor: pointer; }
+  .field .file-input label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 128px;
+    cursor: pointer; }
+
+.field .file-input-hover {
+  background-color: #efefef;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  border: solid 0.5px #ccc; }
+>>>>>>> Stashed changes
 
 .field .current-image {
   min-width: 20%;
@@ -248,7 +303,7 @@ section {
   margin-top: 30px; }
   .actions input[type=submit] {
     background-color: #fff;
-    padding: 10px 40px;
+    padding: 12px 40px;
     border: 1px solid #8362c6;
     font-family: 'discover-regular';
     font-size: 14px;
@@ -830,12 +885,10 @@ main .posts-list {
   .signup_wrapper .field {
     margin-bottom: 20px; }
   .signup_wrapper .form_left, .signup_wrapper .form_right {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    float: left; }
   .signup_wrapper .form_left {
-    float: left;
     margin-right: 50px; }
-  .signup_wrapper .form_right {
-    float: right; }
   .signup_wrapper .additionnals_links {
     margin-top: 10px; }
     .signup_wrapper .additionnals_links a {
@@ -847,6 +900,7 @@ main .posts-list {
         font-family: 'discover-light';
         cursor: text; }
 
+<<<<<<< Updated upstream
 .post-single-comments {
   padding: 0 50px; }
   .post-single-comments .comments-avatar {
@@ -950,6 +1004,45 @@ main .posts-list {
 .search .sort-by {
   top: 40px !important;
   right: 40px !important; }
+=======
+.newpost_title:after {
+  content: " Fill the form";
+  color: rgba(131, 98, 198, 0.7);
+  font-family: "discover-light";
+  font-size: 14px; }
+
+.asterisk:after {
+  content: " *";
+  color: #8362c6;
+  font-family: "discover-regular";
+  font-size: 18px; }
+
+.asterisk_explanation {
+  color: rgba(131, 98, 198, 0.6);
+  font-family: "discover-regular";
+  font-size: 12px;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  font-style: normal; }
+
+.newpost_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .newpost_wrapper .new_post {
+    margin-left: 30px;
+    width: 100%; }
+  .newpost_wrapper .field {
+    margin-bottom: 20px; }
+  .newpost_wrapper input[type=file] {
+    z-index: -1; }
+  .newpost_wrapper #newpost_form_title, .newpost_wrapper #newpost_form_url, .newpost_wrapper #newpost_form_content {
+    display: block;
+    max-width: 600px;
+    width: 100%; }
+  .newpost_wrapper #newpost_form_content {
+    height: 130px; }
+>>>>>>> Stashed changes
 
 h1 {
   font-size: 25px; }

@@ -16,6 +16,7 @@ $(document).ready(function(){
 		}
 	})
 
+<<<<<<< Updated upstream
 	$('#user_avatar').on('change', function (e) {
 		
 		$val = $(e.target).val();
@@ -24,5 +25,9 @@ $(document).ready(function(){
 			$('.upload-avatar-check').show();
 		}
 	});
+=======
+	// Activate newpost's JS 
+	new Newpost();
+>>>>>>> Stashed changes
 
 });

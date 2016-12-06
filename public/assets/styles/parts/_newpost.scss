@@ -1,0 +1,55 @@
+.newpost_title{
+	&:after{
+		content:" Fill the form";
+		color: rgba(131,98,198,0.7);
+		font-family: "discover-light";
+		font-size: 14px;
+	}
+}
+
+.asterisk{
+	&:after{
+		content:" *";
+		color: rgb(131,98,198);
+		font-family: "discover-regular";
+		font-size: 18px;
+	}
+}
+
+.asterisk_explanation{
+	color: rgba(131,98,198,0.6);
+	font-family: "discover-regular";
+	font-size: 12px;
+	padding-bottom: 5px;
+	padding-top: 10px;
+	font-style: normal;
+}
+
+.newpost_wrapper{
+	display: flex;
+
+	.new_post{
+		margin-left: 30px;
+		width: 100%;
+	}
+
+	.field{
+		margin-bottom: 20px;
+
+	}
+
+	input[type=file]{
+		z-index: -1;
+	}
+	
+	#newpost_form_title, #newpost_form_url, #newpost_form_content{
+		display: block;
+		max-width: 600px;
+		width: 100%;
+	}
+
+	#newpost_form_content{
+		height: 130px;
+	}
+
+}
