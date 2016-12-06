@@ -17,7 +17,7 @@ Category.create(label: "Society")
 
 Post.delete_all
 
-20.times do
+5.times do
 	Post.create(
 		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
 		user_id: User.order("RANDOM()").first.id,
@@ -26,6 +26,44 @@ Post.delete_all
 		url: Faker::Internet.url('example.com'),
 		content: Faker::Lorem.sentence(7, true),
 		asset: Faker::Placeholdit.image("600x400"),
+		vote: rand(1000),
+		vote_created: rand(300)
+	)
+end
+
+5.times do
+Post.create(
+		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
+		user_id: User.order("RANDOM()").first.id,
+		category_id: Category.order("RANDOM()").first.id,
+		title: Faker::Lorem.sentence,
+		url: Faker::Internet.url('example.com'),
+		content: Faker::Lorem.sentence(7, true),
+		vote: rand(1000),
+		vote_created: rand(300)
+	)
+end
+
+5.times do
+Post.create(
+		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
+		user_id: User.order("RANDOM()").first.id,
+		category_id: Category.order("RANDOM()").first.id,
+		title: Faker::Lorem.sentence,
+		url: Faker::Internet.url('example.com'),
+		asset: Faker::Placeholdit.image("600x400"),
+		vote: rand(1000),
+		vote_created: rand(300)
+	)
+end
+
+5.times do
+Post.create(
+		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
+		user_id: User.order("RANDOM()").first.id,
+		category_id: Category.order("RANDOM()").first.id,
+		title: Faker::Lorem.sentence,
+		content: Faker::Lorem.sentence(7, true),
 		vote: rand(1000),
 		vote_created: rand(300)
 	)
