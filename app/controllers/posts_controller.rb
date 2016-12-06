@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     def show
         @post = Post.find_by_id(params[:id]) or not_found
         @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
+        post_like_unlike
     end
 
     def search
@@ -158,7 +159,7 @@ class PostsController < ApplicationController
             end
         else
             flash[:error] = 'You need to be login to post'
-            redirect_to action: "index"
+            redirect_to new_user_session_path 
         end
     end
 
