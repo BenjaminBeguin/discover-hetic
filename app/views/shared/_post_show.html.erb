@@ -1,6 +1,7 @@
+<span class="single-post-cat">Discover | <%= link_to @post.category.label, category_path(:slug => @post.category.slug), method: :get %></span>
 <section class="post-single post-single-view">
 	<div class="post-datas">
-		<a href="/users/<%= @post.user.slug %>" class="post-author">
+		<%= link_to posts_by_user_path(slug: @post.user.slug ), class:"post-author", method: :get do %>
 			<%
 				if @post.user %>
 					<img src="<%= @post.user.avatar.url(:thumb) %>">
@@ -11,8 +12,7 @@
 				else
 					%><span>User doesn't exist</span><%
 				end
-			 %>
-		</a>
+		end %>
 		<div class="post-metadatas">
 			<div class="post-link">
 				<a href="<%= @post.url %>" target="_blank" class="post-link">
@@ -26,30 +26,28 @@
 					<span><%= @post.comments.count %></span>
 				</a>
 			</div>
+			<div class="post-votes">
+				<%= render "shared/post_votes",  :post => @post %>
+			</div>
 
 			
 			
 		</div>
 	</div>
+	<div class="post-thumbnail" style='background:url("<%= @post.asset.url %>")no-repeat; background-size:auto 100%; background-position:left center;'></div>
+	<div class="post-content">
 	<h1 class="post-title"><%= @post.title %></h1>
+	<p class="post-desc"><%= @post.content %></p>
+	</div>
 </section>
 
-	<%= image_tag @post.asset.url %>
-
-	<div>Content : <%= @post.content %></div>
-	<div>url : <%= @post.url %></div>
-	<div>author : <%
-		if @post.user
-			concat @post.user.name
-		else
-			concat "user deleted"
-		end
-	 %>
-	 	
-	</div>
-	<div>category : <%= @post.category.label %></div>
+<div class="post-single-comments">
+	<%= render 'shared/comments_create' %>
+	<%= render "shared/comments_for_post" %>
+</div>
+	
 	<%	if @post.is_my_post? %>
 	<%= link_to "Edit", users_posts_id_path(:id => @post.id), method: :get  %> <br><br>
 	<% end %>
 	
-	<%= render 'shared/comments_create' %>
+	
