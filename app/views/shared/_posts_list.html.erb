@@ -18,7 +18,7 @@
 							concat "user deleted"
 						<% end %>
 					</span>
-					<span class="author-postDate"><%= hours = distance_of_time_in_words_to_now(post.created_at) %> ago</span>
+					<span class="author-postDate"><%= distance_of_time_in_words_to_now(post.created_at) %> ago</span>
 				</div>
 				<%= link_to post.title, post_path(:id => post.id), method: :get, :class => "post-title"  %>
 

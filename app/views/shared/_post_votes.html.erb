@@ -5,11 +5,11 @@
         <% else %>
             <img src='/assets/images/icons/like_inactive.svg' alt="">
         <% end %> 
-        <%= post.vote %>  
+        <p><%= post.vote %></p>  
     <% end %> 
 <% else %>
     <%= link_to new_user_session_path(:error => "You need to be sign up to vote" ), method: :get, :class => "post-likes" do %>
         <img src='/assets/images/icons/like_inactive.svg' alt="">
-        <%= post.vote %>  
+        <p><%= post.vote %></p>  
     <% end %>
 <% end %>

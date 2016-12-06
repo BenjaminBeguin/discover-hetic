@@ -1,4 +1,5 @@
 <span class="single-post-cat">Discover | <%= link_to @post.category.label, category_path(:slug => @post.category.slug), method: :get %></span>
+<% end %>
 <section class="post-single post-single-view">
 	<div class="post-datas">
 		<%= link_to posts_by_user_path(slug: @post.user.slug ), class:"post-author", method: :get do %>
@@ -46,8 +47,6 @@
 	<%= render "shared/comments_for_post" %>
 </div>
 	
-	<%	if @post.is_my_post? %>
-	<%= link_to "Edit", users_posts_id_path(:id => @post.id), method: :get  %> <br><br>
-	<% end %>
+
 	
 	

@@ -138,8 +138,14 @@
 			top: 0;
 			text-decoration: none;
 			color:$black;
+			display: flex;
+			flex-direction: column;
+			p{
+				text-align: center;
+			}
 			img{
 				margin-bottom: 10px;
+				width:25px;
 			}
 		}
 

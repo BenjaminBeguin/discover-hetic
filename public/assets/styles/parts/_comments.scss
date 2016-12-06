@@ -23,23 +23,69 @@
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;
-			width:100%;
 			padding-left: 30px;
 			textarea{
-				width:70%;
+				width:calc(100% - 60px);
 				border:1px solid $grey;
-				height:30px;
+				border-right:none;
+				height:20px;
 				outline:none;
-				padding: 20px;
+				padding: 19px;
 				font-size: 'discover-light';
 				font-size: 18px;
 				color:$black-opacity;
 				resize:none;
 			}
-			input[type='submit']{
-				width:20%;
+			button{
+				width:60px;
+				height: 60px;
 				display: block;
 				border:none;
+				background: white;
+				border:1px solid $grey;
+				img{
+					width: 25px;
+					transform:rotate(15deg);
+				}
+			}
+		}
+	}
+
+	.comment{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		padding:40px;
+		background: none;
+		position: relative;
+		.comment-content{
+			margin-top: 15px;
+			margin-left: 15px;
+			.comment-datas{
+				margin-bottom: 15px;
+				strong{
+					font-family: "discover-bold";
+					font-size: 16px;
+					
+				}
+				i{
+					opacity:.5;
+					font-size: 14px;
+				}
+			}
+			.comment-text{
+				margin-top: 12px;
+				font-family: 'discover-light';
+			}
+		}
+		.comment-userActions{
+			position: absolute;
+			right: 40px;
+			top: 40px;
+			img{
+				height: 20px;
+				margin-left: 10px;
 			}
 		}
 	}
