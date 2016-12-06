@@ -1,10 +1,11 @@
 <% if user_signed_in? %>
-	<%= image_tag current_user.avatar, class:"comments-avatar" %>
-	<%= form_for([@post, @post.comments.build]) do |f| %>
-	 	<div class="field">
-        <%= f.text_area :message, size: "24x6" %>
-    </div>
-
-	 	<%= f.submit "Create" %>
-	<% end %>
+	<div class="comments-create">
+		<%= image_tag current_user.avatar, class:"comments-avatar" %>
+		<%= form_for([@post, @post.comments.build]) do |f| %>
+		 	<div class="form-fields">
+	        <%= f.text_area :message, size: "24x6" %>
+	        <%= f.submit "Create" %>
+	    </div>
+		<% end %>
+	</div>
 <% end %>

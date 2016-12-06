@@ -5,4 +5,42 @@
 		height: 70px;
 		border-radius: 50%;
 	}
+
+	.comments-create{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		.comments-avatar{
+
+		}
+		form{
+			width:calc(100% - 70px);
+		}
+		.form-fields{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			width:100%;
+			padding-left: 30px;
+			textarea{
+				width:70%;
+				border:1px solid $grey;
+				height:30px;
+				outline:none;
+				padding: 20px;
+				font-size: 'discover-light';
+				font-size: 18px;
+				color:$black-opacity;
+				resize:none;
+			}
+			input[type='submit']{
+				width:20%;
+				display: block;
+				border:none;
+			}
+		}
+	}
 }

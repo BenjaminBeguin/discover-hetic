@@ -624,7 +624,8 @@ main .posts-list {
     display: inline-block;
     margin-top: 20px;
     text-decoration: none;
-    color: #202121; }
+    color: #202121;
+    width: 90%; }
   .post-single .post-author:hover span.user-name {
     text-decoration: underline; }
   .post-single .post-cat {
@@ -839,6 +840,53 @@ main .posts-list {
     width: 70px;
     height: 70px;
     border-radius: 50%; }
+  .post-single-comments .comments-create {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .post-single-comments .comments-create form {
+      width: calc(100% - 70px); }
+    .post-single-comments .comments-create .form-fields {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      width: 100%;
+      padding-left: 30px; }
+      .post-single-comments .comments-create .form-fields textarea {
+        width: 70%;
+        border: 1px solid #efefef;
+        height: 30px;
+        outline: none;
+        padding: 20px;
+        font-size: 'discover-light';
+        font-size: 18px;
+        color: rgba(32, 33, 33, 0.5);
+        resize: none; }
+      .post-single-comments .comments-create .form-fields input[type='submit'] {
+        width: 20%;
+        display: block;
+        border: none; }
 
 h1 {
   font-size: 25px; }
