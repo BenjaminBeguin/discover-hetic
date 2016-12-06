@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Post", :type => :model do
+RSpec.describe "A post", :type => :model do
 	
-	it "Post need a title, a user, a category and one (url or image or description)" do
+	it "- Require a title, a user, a category and one other field(url or image or description)" do
 		post = Post.create(title: "Titre")
 		expect(post.valid?).to eq(false)
 
@@ -28,7 +28,7 @@ RSpec.describe "Post", :type => :model do
 		expect(post.valid?).to eq(false)
 	end
 
-	it "verify the file format should be an image" do
+	it " - The file should be a image format" do
 	  post = Post.new(title: "Mon joli post", user_id: 1 , category_id: 1, content: "Un joli message")
 	  expect(post.valid?).to eq(true)
 

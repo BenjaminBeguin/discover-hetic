@@ -4,7 +4,7 @@ RSpec.describe Vote, type: :model do
 
 
 
-    it "add vote and count plus one for user" do
+    it " - create a vote have to increment vote_count for user" do
       	user = User.create(name: "Author", email: "jean@gmail.com", password: "password")
       	user_2 = User.create(name: "Celui qui a voter", email: "qsdsjean@gmail.com", password: "password")
 
@@ -26,7 +26,7 @@ RSpec.describe Vote, type: :model do
 
     end
 
-    it "add vote and count minus one for user" do
+    it " - destroye a vote have to decrement vote_count for user" do
       	user = User.create(name: "Author", email: "jean@gmail.com", password: "password")
       	user_2 = User.create(name: "Celui qui a voter", email: "qsdsjean@gmail.com", password: "password")
 
