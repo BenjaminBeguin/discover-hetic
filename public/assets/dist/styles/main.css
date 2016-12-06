@@ -194,23 +194,6 @@ section {
 
 .field .file-input {
   position: relative;
-<<<<<<< Updated upstream
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 130px;
-  width: 130px;
-  border-radius: 50%;
-  margin-right: 20px;
-  padding: 10px;
-  background-color: #ededed; }
-=======
   height: 100px;
   background-color: #fcfcfc;
   background-image: url("/assets/images/icons/dragndrop.svg");
@@ -227,7 +210,6 @@ section {
   text-align: center;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; }
->>>>>>> Stashed changes
   .field .file-input input {
     position: absolute;
     display: block;
@@ -235,24 +217,17 @@ section {
     bottom: 10px;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
-<<<<<<< Updated upstream
-    opacity: 0; }
-  .field .file-input label {
-    padding: 45px 0 10px 0;
-    text-align: center;
-    color: #9c9c9c; }
-  .field .file-input .upload-avatar-check {
-    position: absolute;
-    left: 50%;
-    top: 25px;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    /*display: none;*/
-    color: #27ae60;
-    font-size: 40px; }
-=======
     opacity: 0;
     cursor: pointer; }
+    .field .file-input input .upload-avatar-check {
+      position: absolute;
+      left: 50%;
+      top: 25px;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      /*display: none;*/
+      color: #27ae60;
+      font-size: 40px; }
   .field .file-input label {
     display: block;
     width: 100%;
@@ -265,7 +240,6 @@ section {
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   border: solid 0.5px #ccc; }
->>>>>>> Stashed changes
 
 .field .current-image {
   min-width: 20%;
@@ -900,7 +874,6 @@ main .posts-list {
         font-family: 'discover-light';
         cursor: text; }
 
-<<<<<<< Updated upstream
 .post-single-comments {
   padding: 0 50px; }
   .post-single-comments .comments-avatar {
@@ -1004,7 +977,7 @@ main .posts-list {
 .search .sort-by {
   top: 40px !important;
   right: 40px !important; }
-=======
+
 .newpost_title:after {
   content: " Fill the form";
   color: rgba(131, 98, 198, 0.7);
@@ -1042,7 +1015,6 @@ main .posts-list {
     width: 100%; }
   .newpost_wrapper #newpost_form_content {
     height: 130px; }
->>>>>>> Stashed changes
 
 h1 {
   font-size: 25px; }

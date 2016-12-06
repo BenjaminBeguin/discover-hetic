@@ -109,18 +109,6 @@ section{
 
 	.file-input {
 		position: relative;
-<<<<<<< Updated upstream
-		display: -webkit-flex;
-				display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 130px;
-		width: 130px;
-		border-radius: 50%;
-		margin-right: 20px;
-		padding: 10px;
-		background-color: #ededed;
-=======
 		height: 100px;
 		background-color: #fcfcfc;
 		background-image: url('/assets/images/icons/dragndrop.svg');
@@ -136,7 +124,7 @@ section{
 		width: 100%;
 		text-align: center;
 		transition: all 0.3s ease;
->>>>>>> Stashed changes
+
 
 		input {
 			position: absolute;
@@ -145,26 +133,17 @@ section{
 			bottom: 10px;
 			transform: translateX(-50%);
 			opacity: 0;
-<<<<<<< Updated upstream
-		}
-
-		label {
-			padding: 45px 0 10px 0;
-			text-align: center;
-			color: #9c9c9c;
-		}
-
-		.upload-avatar-check {
-			position: absolute;
-			left: 50%;
-			top: 25px;
-			transform: translateX(-50%);
-			/*display: none;*/
-			color: $green;
-			font-size: 40px;
-		}
-=======
 			cursor: pointer;
+
+			.upload-avatar-check {
+				position: absolute;
+				left: 50%;
+				top: 25px;
+				transform: translateX(-50%);
+				/*display: none;*/
+				color: $green;
+				font-size: 40px;
+			}
 		}
 
 		label{
@@ -182,7 +161,7 @@ section{
 		background-color: #efefef;
 		transition: all 0.2s ease-out;
 		border: solid 0.5px #ccc;
->>>>>>> Stashed changes
+
 	}
 
 	.current-image {
