@@ -5,7 +5,7 @@ RSpec.describe CommentsController, type: :controller do
   describe "Commentaires" do
     login_user
 
-    it "user can't post if not logged in" do
+    it "- user can't comment if not logged in" do
       user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
       user.save!
 
@@ -21,7 +21,7 @@ RSpec.describe CommentsController, type: :controller do
       expect(Comment.last.message).to eq("Hello mon 2éme commentaire")
     end
 
-    it "user can only edit their own comments" do
+    it "- user can only edit their own comments" do
       user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
       user.save!
 
@@ -38,7 +38,7 @@ RSpec.describe CommentsController, type: :controller do
       expect(comment_updated.message).to eq("Ceci est mon commentaire modifié")
     end
 
-    it "comments can be deleted" do
+    it "- comments can be deleted" do
       user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
       user.save!
 

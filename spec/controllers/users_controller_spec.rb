@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe UsersController do
 
-	it "Can link a post to a user" do
+	it "- Can link a post to a user" do
 	  user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
 	  user.save!
 	  post = Post.create(title: "Titre", content: "contenu", category_id: 1 , url: "https://www.google.fr/" , user_id: user.id)
@@ -18,7 +18,7 @@ describe UsersController do
 	  expect(found_post.content).to eq("contenu")
 	end
 
-	it "a not login user cant edit a post" do
+	it "- a not login user cant edit a post" do
 	  user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
 	  user.save!
 	  post = Post.create(title: "Titre", content: "contenu", category_id: 1, url: "https://www.google.fr/" , user_id: user.id)
@@ -41,7 +41,7 @@ describe UsersController do
 
 	login_user
 
-	it "a login user can edit him post" do
+	it "- a login user can edit him post" do
 		post = Post.create(title: "Titre", content: "contenu", category_id: 1,url: "https://www.google.fr/" , user_id: subject.current_user.id)
 		post.save!
 
@@ -58,7 +58,7 @@ describe UsersController do
 		expect(response).to have_http_status(:success)
 	end
 
-	it "a login user can not edit not him post" do
+	it "- a login user can not edit not him post" do
 		post = Post.create(title: "Titre", content: "contenu", category_id: 1, url: "https://www.google.fr/" , user_id: subject.current_user.id + 1)
 		post.save!
 
@@ -75,12 +75,7 @@ describe UsersController do
 	end
 
 
-  	
-
-	it "should have a current_user" do
-		# note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
-		expect(subject.current_user).to_not eq(nil)
-	end
+  
 
 	it "should get index" do
 		# Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session

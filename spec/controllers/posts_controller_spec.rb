@@ -13,7 +13,7 @@ RSpec.describe PostsController, type: :controller do
   	render_views
 
 
-	    it "is possible to edit a post" do
+	    it "- is possible to edit a post" do
 			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1, user_id: subject.current_user.id)
 			post.save!
 
@@ -29,7 +29,7 @@ RSpec.describe PostsController, type: :controller do
 
 	    end
 
-	    it "Post are published by default" do
+	    it "- Post are published by default" do
 			post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
 			post.save!
 
@@ -37,7 +37,7 @@ RSpec.describe PostsController, type: :controller do
 			
 	    end
 
-	    it "Post can be unpublish" do
+	    it "- Post can be unpublish" do
 			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , category_id: 1, user_id: subject.current_user.id)
 			my_post.save!
 
@@ -52,7 +52,7 @@ RSpec.describe PostsController, type: :controller do
 		
 	    end
 
-	    it "Post can be unpublish and published again" do
+	    it "- Post can be unpublish and published again" do
 			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
 			my_post.save!
 
@@ -73,7 +73,7 @@ RSpec.describe PostsController, type: :controller do
 	
 	    end
 
-	    it "Post can be unpublish and published again if user connected and only his post" do
+	    it "- Post can be unpublish and published again if user connected and only his post" do
 			my_post = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" , category_id: 1, user_id: subject.current_user.id)
 			my_post.save!
 
@@ -97,7 +97,7 @@ RSpec.describe PostsController, type: :controller do
 
 	    end
 
-	     it "Can show all post for one user" do
+	     it "- Can show all post for one user" do
 			user = User.create(name: "Jean", email: "jean@gmail.com", password: "password")
 		  	post = Post.create(title: "Titre", content: "contenu", category_id: 1 , url: "https://www.google.fr/" , user_id: user.id)
 
@@ -119,7 +119,7 @@ RSpec.describe PostsController, type: :controller do
 
 		login_user
 
-	    it "test multiple vote on post" do
+	    it " - We can only vote once for a post, he we have already voted, that will unvote" do
 			post1 = Post.create(title: "Titre", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
 			post2 = Post.create(title: "Titre2", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
 			post3 = Post.create(title: "Titre3", content: "contenu", url: "https://www.google.fr/" ,category_id: 1 , user_id: subject.current_user.id)
