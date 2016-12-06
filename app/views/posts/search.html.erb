@@ -1,9 +1,11 @@
-<section>
-		<br><br>
-	<h1>All post</h1>
+<section class="posts-list search">
+	<h1>Search post : "<%= params[:q] %>"</h1>
 
-	<%= link_to "Newest", root_path %>
-	<%= link_to "Top", root_path(:orderby => "top" ) %>
+	<div class="sort-by">
+		<%= link_to "NEWEST", root_path, :class=>"active" %>
+		<span>/</span>
+		<%= link_to "TOP", root_path(:orderby => "top" ) %>
+	</div>
 
 	<% if @posts.present? %>
 		<%= render "shared/posts_list" %>

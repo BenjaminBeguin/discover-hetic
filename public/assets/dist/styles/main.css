@@ -947,6 +947,10 @@ main .posts-list {
         height: 20px;
         margin-left: 10px; }
 
+.search .sort-by {
+  top: 40px !important;
+  right: 40px !important; }
+
 h1 {
   font-size: 25px; }
 
