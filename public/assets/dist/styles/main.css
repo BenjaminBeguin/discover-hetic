@@ -143,6 +143,9 @@ section {
 .col-30 {
   width: 30%; }
 
+a:hover {
+  text-decoration: underline; }
+
 .field .form_title {
   color: #585858;
   font-family: 'discover-regular';
@@ -629,10 +632,11 @@ main .posts-list {
   .post-single .post-author:hover span.user-name {
     text-decoration: underline; }
   .post-single .post-cat {
-    color: rgba(32, 33, 33, 0.5);
     font-size: 12px;
     text-transform: uppercase;
     display: block; }
+    .post-single .post-cat a {
+      color: rgba(32, 33, 33, 0.5); }
   .post-single .post-likes {
     position: absolute;
     right: 0;

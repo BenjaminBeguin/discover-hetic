@@ -9,7 +9,7 @@
 		<%= render "shared/post_votes",  :post => @top_post %>
 
 		<div class="post-content">
-			<span class="post-cat"><%= @top_post.category.label %></span>
+			<span class="post-cat"><%= link_to @top_post.category.label, category_path(:slug => @top_post.category.slug), method: :get %></span>
 			<%= link_to @top_post.title, post_path(:id => @top_post.id), method: :get, :class => "post-title"  %>
 			<a href="<%= @top_post.url %>" target="_blank" class="post-link">
 				<img src="/assets/images/icons/link.svg" alt="">

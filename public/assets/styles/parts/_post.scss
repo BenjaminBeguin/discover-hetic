@@ -126,10 +126,12 @@
 		}
 
 		.post-cat {
-			color:$black-opacity;
 			font-size: 12px;
 			text-transform: uppercase;
 			display: block;
+			a{
+				color:$black-opacity;
+			}
 		}
 
 		.post-likes{

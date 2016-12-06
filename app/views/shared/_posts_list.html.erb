@@ -8,7 +8,7 @@
 			
 			<div class="post-head-datas">
 				<% if  post.category %>
-					<span class="post-cat"><%= post.category.label %></span>
+					<span class="post-cat"><%= link_to post.category.label, category_path(:slug => post.category.slug), method: :get %></span>
 				<% end %>
 				<div class="post-author">
 					<span class="user-name">
