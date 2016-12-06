@@ -166,7 +166,7 @@ class PostsController < ApplicationController
     def create
         @connected = user_signed_in?
         if @connected
-            @post = Post.new(params.require(:post).permit(:title, :category_id, :url, :content));
+            @post = Post.new(params.require(:post).permit(:title, :category_id, :url, :content, :asset));
             @post.user_id = current_user.id 
             if @post.save 
                 redirect_to action: "index"
