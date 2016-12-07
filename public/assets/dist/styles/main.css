@@ -138,10 +138,18 @@ main {
   margin-bottom: 15px; }
 
 section {
+  position: relative;
   padding: 40px;
   background: white;
   border: 1px solid #efefef;
   margin-bottom: 40px; }
+  section .link-back {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    color: #8362c6; }
+    section .link-back:hover {
+      color: rgba(32, 33, 33, 0.5); }
 
 .col-70 {
   width: 70%; }

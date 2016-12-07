@@ -42,10 +42,22 @@ main{
 }
 
 section{
+	position: relative;
 	padding: 40px;
 	background:white;
 	border:1px solid $grey;
 	margin-bottom: 40px;
+
+	.link-back {
+		position: absolute;
+		right: 40px;
+		top: 40px;
+		color: $purple;
+
+		&:hover {
+			color: $black-opacity;
+		}
+	}
 }
 
 .col-70{

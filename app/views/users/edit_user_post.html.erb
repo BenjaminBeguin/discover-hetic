@@ -1,53 +1,52 @@
-<h1>Form for edit a post</h1>
+<h2 class="title-second newpost_title">Edit your post "<%= @post.title %>" | </h2>
 
-<h3>Is secure, you can only modifie your post or u ll be redirect</h3>
+<section class="newpost_wrapper">
 
-<%= @post.title %>
-
-<%= form_for @post , :url => posts_update_path(id: @post.id) do |f| %>
-    <%= @post.errors.full_messages.join(",") %>
-    
-    <div class="field">
-        <%= f.label :title, 'Discover title' %><br />
-        <%= f.text_field :title, autofocus: true %>
-    </div>
-
-    <div class="field">
-        <%= f.label :content, 'Description' %><br />
-        <%= f.text_field :content, autofocus: true %>
-    </div>
-
-    <div class="field">
-        <p>Upload an image</p>
-        <div class="file-input-field">
-            <div class="file-input">
-                <%= f.label :asset, 'Drag and drop your file or click to upload' %>
-                <%= f.file_field :asset, autofocus: true %>
-            </div>
-
-            <span class="current-image" style="background-image: url(<%= @post.asset.url%>);"></span>
+    <%= form_for @post , :url => posts_update_path(id: @post.id) do |f| %>
+        <%= @post.errors.full_messages.join(",") %>
+        
+        <div class="field">
+            <%= f.label :title, 'Discover title', :class => "form_title asterisk" %><br />
+            <%= f.text_field :title, :class => "form_input",autofocus: true %>
         </div>
-    </div>
 
-    <div class="field">
-        <%= f.label "category", 'Theme' %><br />
-        <%= f.collection_select :category_id, @categories, :id, :label  %>
-    </div>
+        <div class="field">
+            <%= f.label :content, 'Description', :class => "form_title" %><br />
+            <%= f.text_field :content, :class => "form_input",autofocus: true %>
+        </div>
 
-    <div class="field">
-        <%= f.label :url, 'Website Url' %><br />
-        <%= f.text_field :url, autofocus: true %>
-    </div>
+        <div class="field">
+            <p class="form_title">Upload an image</p>
+            <div class="file-input-field">
+                <div class="file-input">
+                    <%= f.label :asset, 'Drag and drop your file or click to upload', :id=> "newpost_form_file" %>
+                    <%= f.file_field :asset, autofocus: true %>
+                </div>
 
-    <div class="field">
-        <%= f.hidden_field :id  %>
-    </div>
+                <span class="current-image" style="background-image: url(<%= @post.asset.url%>);"></span>
+            </div>
+        </div>
 
-  <%= f.submit %>
- <% end %>
+        <div class="field">
+            <%= f.label "category", 'Theme', :class => "form_title asterisk" %><br />
+            <%= f.collection_select :category_id, @categories, :id, :label  %>
+        </div>
 
+        <div class="field">
+            <%= f.label :url, 'Website Url', :class => "form_title" %><br />
+            <%= f.text_field :url, :class => "form_input",autofocus: true %>
+        </div>
 
+        <div class="field">
+            <%= f.hidden_field :id  %>
+        </div>
 
+        <div class="actions">
+            <h4 class="asterisk_explanation">* Fields required</h4>
+            <%= f.submit "Update" %>
+        </div>
+     <% end %>
 
+    <%= link_to "Back", :back, :class => "link-back" %>
 
-<%= link_to "Back", :back %>
+</section>
