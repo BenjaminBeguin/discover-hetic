@@ -1041,13 +1041,14 @@ main .posts-list {
   .update_user_wrapper #avatar_input {
     width: 120px;
     height: 120px;
-    border-radius: 50%; }
+    border-radius: 50%;
+    background-position: 50% 30%; }
     .update_user_wrapper #avatar_input label {
       font-size: 11px;
       width: 120px;
-      height: 33%;
-      line-height: 14px;
-      padding-top: 55px; }
+      height: 30%;
+      line-height: 13px;
+      padding-top: 58px; }
   .update_user_wrapper #update_form_new_password:after {
     content: " Leave it blank if you don't want to change it";
     color: rgba(131, 98, 198, 0.7);
