@@ -28,7 +28,7 @@
 				display: inline-block;
 				height: 100%;
 				padding: 0 10px;
-				color: $black;
+				color: $black-opacity;
 				opacity: 1;
 				transition: .3s ease;
 
@@ -43,7 +43,7 @@
 					top: 20px;
 					bottom: 20px;
 					width: 1px;
-					background-color: $black;
+					background-color: $black-opacity;
 				}
 
 				&:last-child {

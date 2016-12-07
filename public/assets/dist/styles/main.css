@@ -335,7 +335,7 @@ footer {
       display: inline-block;
       height: 100%;
       padding: 0 10px;
-      color: #202121;
+      color: rgba(32, 33, 33, 0.5);
       opacity: 1;
       -webkit-transition: .3s ease;
       transition: .3s ease; }
@@ -348,7 +348,7 @@ footer {
         top: 20px;
         bottom: 20px;
         width: 1px;
-        background-color: #202121; }
+        background-color: rgba(32, 33, 33, 0.5); }
       footer .links a:last-child:after {
         display: none; }
   footer .socials a {
