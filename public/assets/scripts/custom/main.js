@@ -28,4 +28,13 @@ $(document).ready(function(){
 	new Newpost();
 
 
+	var makerLink = $('.maker-link');
+	var audio = new Audio('assets/sound/waf.wav');
+
+	makerLink.on('mouseover', function (e) {
+		audio.pause();
+		audio.currentTime = 0;
+		audio.play();
+	});
+
 });

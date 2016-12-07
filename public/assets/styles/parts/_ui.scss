@@ -15,6 +15,14 @@ button{
 
 main{
 	padding: 60px 80px;
+
+	@media (max-width: 1280px) {
+		padding: 40px 40px;
+	}
+
+	@media (max-width: 768px) {
+		padding: 30px 20px;
+	}
 }
 
 .title-main{
@@ -216,11 +224,6 @@ section{
 	}
 }
 
-.paragraph {
-	display: block;
-	margin-bottom: 40px;
-	color:$black-opacity;
-	line-height: 28px;
-}
+
 
 
