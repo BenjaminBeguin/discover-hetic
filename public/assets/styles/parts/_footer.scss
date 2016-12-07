@@ -12,6 +12,14 @@
 		padding: 0 80px;
 		background-color: #fff;
 
+		@media (max-width: 1280px) {
+			padding: 0 40px;
+		}
+
+		@media (max-width: 768px) {
+			padding: 0 20px;
+		}
+
 		.links {
 			line-height: 60px;
 	
@@ -46,8 +54,18 @@
 			}
 		}
 
-		.social {
+		.socials {
+			a {
+				display: inline-block;
+				padding: 0 10px;
+				line-height: 60px;
+				font-size: 22px;
+				color: $black-opacity;
 
+				&:hover {
+					color:$black;
+				}
+			}
 		}
 	}
 

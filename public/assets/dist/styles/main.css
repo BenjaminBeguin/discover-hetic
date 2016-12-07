@@ -312,6 +312,12 @@ footer {
   height: 60px;
   padding: 0 80px;
   background-color: #fff; }
+  @media (max-width: 1280px) {
+    footer {
+      padding: 0 40px; } }
+  @media (max-width: 768px) {
+    footer {
+      padding: 0 20px; } }
   footer .links {
     line-height: 60px; }
     footer .links a {
@@ -335,6 +341,14 @@ footer {
         background-color: #202121; }
       footer .links a:last-child:after {
         display: none; }
+  footer .socials a {
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 60px;
+    font-size: 22px;
+    color: rgba(32, 33, 33, 0.5); }
+    footer .socials a:hover {
+      color: #202121; }
 
 /* @endgroup FOOTER */
 /* @group HEADER */
