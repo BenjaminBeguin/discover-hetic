@@ -83,9 +83,9 @@ class PostsController < ApplicationController
 
         if  @user.present?
             if params[:orderby] == 'top'
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('vote DESC')
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('vote DESC').order(created_at: :desc)
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC')
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC').order(created_at: :desc)
             end
             post_like_unlike
         else
@@ -146,13 +146,13 @@ class PostsController < ApplicationController
         @connected = user_signed_in?
         date = Time.now;
         if @connected
-            #@has_voted = Post.where(created_at: date.midnight..date.end_of_day, user_id: current_user.id).first
+            @has_voted = Post.where(created_at: date.midnight..date.end_of_day, user_id: current_user.id).first
             if @has_voted.blank?
                 @post = Post.new
                 @categories = Category.all;
             else
-                render json: @has_voted;
-            end
+                @message = "You have already post today ! "
+             end
         else
             flash[:error] = 'You need to be login to post'
             redirect_to new_user_session_path 
@@ -197,7 +197,7 @@ class PostsController < ApplicationController
   #---------------- Function ------------------#
 
    def not_found
-        redirect_to root_path
-       # render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
+        #redirect_to root_path
+       render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
     end
 end

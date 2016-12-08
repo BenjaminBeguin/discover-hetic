@@ -21,9 +21,9 @@ class UsersController < ApplicationController
             @user = User.find(current_user.id)
 
             if params[:mypost] == 'voted'
-                @posts = User.find(current_user.id).voted_posts.paginate(:page => params[:page], :per_page => POST_PER_PAGE);
+                @posts = User.find(current_user.id).voted_posts.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order(created_at: :desc);
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: current_user.id).order('created_at DESC');
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: current_user.id).order('created_at DESC').order(created_at: :desc);
             end
             
             post_like_unlike
