@@ -3,7 +3,7 @@
 	<div class="post-single regular-post">
 
 			<% if post.user.avatar.blank? %>
-				<span class="post-single__avatar" style="background-image: url(/images/original/missing<%= post.user.id.to_s.split('').last %>.png)"></span>
+				<span class="post-single__avatar" style="background-image: url(<%= set_random_avatar(post.user.id) %>)"></span>
 			<% else %>
 				<span class="post-single__avatar" style="background-image: url(<%= post.user.avatar %>)">
 				</span>

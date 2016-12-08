@@ -18,4 +18,8 @@ module PostsHelper
 			return "active"
 		end
 	end
+
+	def set_random_avatar(user_id)
+		return "/images/original/missing#{user_id.to_s.split('').last}.png"
+	end
 end

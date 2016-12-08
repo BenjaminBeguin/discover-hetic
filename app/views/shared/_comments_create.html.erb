@@ -1,6 +1,10 @@
 <% if user_signed_in? %>
 	<div class="comments-create">
-		<%= image_tag current_user.avatar, class:"comments-avatar" %>
+		<% if current_user.avatar.blank? %>
+			<%= image_tag set_random_avatar(current_user.id), class:"comments-avatar" %>
+		<% else %>
+			<%= image_tag current_user.avatar, class:"comments-avatar" %>
+		<% end %>
 		<%= form_for([@post, @post.comments.build]) do |f| %>
 		 	<div class="form-fields">
 	        <%= f.text_area :message, size: "24x6", placeholder: "Write a comment" %>
