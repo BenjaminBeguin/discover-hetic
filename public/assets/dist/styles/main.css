@@ -209,7 +209,8 @@ section {
   position: absolute;
   height: 100%;
   width: 40px;
-  display: none; }
+  display: none;
+  z-index: 10; }
   .hider.active {
     display: block; }
 
