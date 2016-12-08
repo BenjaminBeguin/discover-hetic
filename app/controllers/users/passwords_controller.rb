@@ -1,8 +1,9 @@
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  def new
+    super
+    flash[:error] = "You have successfully logged out."
+  end
 
   # POST /resource/password
   # def create
