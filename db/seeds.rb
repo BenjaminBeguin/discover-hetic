@@ -15,7 +15,7 @@ Category.create(label: "Art")
 Category.create(label: "Nature")
 Category.create(label: "Society")
 
-# User.delete_all
+User.delete_all
 
 10.times do
 	User.create(
