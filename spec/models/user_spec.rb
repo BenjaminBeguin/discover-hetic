@@ -56,7 +56,7 @@ RSpec.describe "A user", :type => :model do
     expect(user.valid?).to eq(true)
   end
 
-  it "- Cant have the same email as another user" do
+  it "- Can't have the same email as another user" do
     user = User.create(name: "Jean" , email: "m@rshow.com" , password: "jesuislepassword")
     expect(user.valid?).to eq(true)
 
@@ -64,7 +64,7 @@ RSpec.describe "A user", :type => :model do
     expect(other_user.valid?).to eq(false)
   end
 
-  it "- if he enter an url, have to be a real url" do
+  it "- has to enter a real and valid url" do
     user = User.create(name: "Jeaqcn" , email: "m@rshoqscqscw.com" , password: "jesuislepassword", url: "")
     expect(user.valid?).to eq(true)
 
@@ -76,7 +76,7 @@ RSpec.describe "A user", :type => :model do
 
   end
 
-   it "- Cant have the same pseudo as another usere" do
+   it "- Can't have the same pseudo as another usere" do
     user = User.create(name: "Jean" , email: "m@rshsscsow.com" , password: "jesuislepassword")
     expect(user.valid?).to eq(true)
 
@@ -96,7 +96,7 @@ RSpec.describe "A user", :type => :model do
     expect(userFromDB.password == user.password).to eq(false)
   end
 
-  it "- The file selected have to be a image format " do
+  it "- The file selected have to be an image" do
     user = User.new(name: "Jean Pierre", email: "m@rshow.com" , password: "jesuislepassword")
     expect(user.valid?).to eq(true)
 
