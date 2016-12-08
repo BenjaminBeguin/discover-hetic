@@ -6,9 +6,9 @@
 <div class="col-100 posts-list">
 	<h1 class="title-second">Les posts</h1>
 	<div class="sort-by">
-		<%= link_to "NEWEST", category_path, :class=>"active" %>
+		<%= link_to "NEWEST", category_path, class: order_by_class_for("") %>
 		<span>/</span>
-		<%= link_to "TOP", category_path(:orderby => "top" ) %>
+		<%= link_to "TOP", category_path(:orderby => "top" ), class: order_by_class_for("top") %>
 	</div>
 	<section>
 		<%= render "shared/posts_list" %>

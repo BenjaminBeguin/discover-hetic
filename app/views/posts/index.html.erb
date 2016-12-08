@@ -12,9 +12,9 @@
 	<h1 class="title-second">Posts</h1>
 	<% #params[:orderby] == "top" %>
 	<div class="sort-by">
-		<%= link_to "NEWEST", root_path, :class=>"active" %>
+		<%= link_to "NEWEST", root_path, :class=>"active", class: order_by_class_for("") %>
 		<span>/</span>
-		<%= link_to "TOP", root_path(:orderby => "top" ) %>
+		<%= link_to "TOP", root_path(:orderby => "top" ), class: order_by_class_for("top") %>
 	</div>
 	<section>
 		<%= render "shared/posts_list" %>
