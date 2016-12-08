@@ -205,6 +205,14 @@ section {
   .pagination a {
     opacity: .5; }
 
+.hider {
+  position: absolute;
+  height: 100%;
+  width: 40px;
+  display: none; }
+  .hider.active {
+    display: block; }
+
 /* @group FOOTER */
 footer {
   display: -moz-flex;
@@ -663,7 +671,11 @@ main .posts-list {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column; }
+            flex-direction: column;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
     .post-single .post-likes span {
       text-align: center;
       font-family: 'discover-light';

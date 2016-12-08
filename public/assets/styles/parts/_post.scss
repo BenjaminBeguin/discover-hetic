@@ -157,6 +157,7 @@
 			color:$black;
 			display: flex;
 			flex-direction: column;
+			user-select:none;
 			span{
 				text-align: center;
 				font-family: 'discover-light';

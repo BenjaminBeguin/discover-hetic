@@ -30,7 +30,7 @@ $(document).ready(function(){
 	function like_post(link){
 
 		var img = $(link).find('img');
-		var number = img.siblings('p');
+		var number = img.siblings('span');
 		var value = parseInt(number.text());
 		if(img.hasClass('active')){
 			img.removeClass('active');
@@ -47,7 +47,11 @@ $(document).ready(function(){
 	}
 
 	$('.post-likes').on('click', function(){
+		$('.hider').addClass('active');
 		like_post(this);
+		setTimeout(function(){
+			$('.hider').removeClass('active');
+		}, 1000);
 	});
 
 	//Publish toggle
