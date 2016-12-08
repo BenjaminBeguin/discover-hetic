@@ -46,7 +46,9 @@
 
 			<div class="post-content">
 				<% if post.asset.present? %>
-					<div class="post-thumbnail" style='background:url("<%= post.asset.url %>"); background-size:cover; background-position:center center;'></div>
+					<%= link_to post_path(:id => post.id), method: :get do %>
+						<div class="post-thumbnail" style='background:url("<%= post.asset.url %>"); background-size:cover; background-position:center center;'></div>
+					<% end %>
 				<% end %>
 				<p class="post-description"><%= post.content %></p>
 			</div>

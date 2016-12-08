@@ -2,9 +2,11 @@
 <% if @top_post %>
 	
 	<div class="post-single top-post">
-		<div class="post-picture">
-			<%= image_tag @top_post.asset.url(:medium) %>
-		</div>
+		<%= link_to post_path(:id => @top_post.id), method: :get do %>
+			<div class="post-picture">
+				<%= image_tag @top_post.asset.url(:medium) %>
+			</div>
+		<% end %>
 
 		<div class="post-metadatas">
 			<div class="post-link">
