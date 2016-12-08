@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 
 	var makerLink = $('.maker-link');
-	var audio = new Audio('assets/sound/waf.wav');
+	var audio = new Audio(BASE_URL+'assets/sound/waf.wav');
 
 	makerLink.on('mouseover', function (e) {
 		audio.pause();

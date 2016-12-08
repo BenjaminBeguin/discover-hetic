@@ -1,9 +1,13 @@
 <% if @posts.present? %>
 	<% @posts.each do |post| %>
 	<div class="post-single regular-post">
-		
-		<div class="post-single__avatar" style="background-image: url(<%= post.user.avatar %>)">
-		</div>
+
+			<% if post.user.avatar.blank? %>
+				<span class="post-single__avatar" style="background-image: url(/images/original/missing<%= post.user.id.to_s.split('').last %>.png)"></span>
+			<% else %>
+				<span class="post-single__avatar" style="background-image: url(<%= post.user.avatar %>)">
+				</span>
+			<% end %>
 		<div class="post-single__content">
 			
 			<div class="post-head-datas">

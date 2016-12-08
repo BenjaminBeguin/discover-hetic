@@ -6,7 +6,11 @@
 	<% end %>
 	
 	<div class="profile-card-content">
-		<span class="avatar" style="background-image: url(<%= @user.avatar %>);"></span>
+		<% if @user.avatar.blank? %>
+			<span class="avatar" style="background-image: url(/images/original/missing<%= @user.id.to_s.split('').last %>.png);"></span>
+		<% else %>
+			<span class="avatar" style="background-image: url(<%= @user.avatar %>);"></span>
+		<% end %>
 		<h1><%= @user.name %></h1>
 		<p><%= @user.desc %></p>
 	</div>

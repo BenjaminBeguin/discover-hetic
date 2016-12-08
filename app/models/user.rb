@@ -17,8 +17,7 @@ class User < ApplicationRecord
 					  :styles => { 
 					  	:medium => "300x300>", 
 					  	:thumb => "100x100#" 
-				  	  },
-					  :default_url => "/images/:style/missing#{rand(5)+1}.png"
+				  	  }
   	validates_attachment :avatar,
   		content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"] }
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
