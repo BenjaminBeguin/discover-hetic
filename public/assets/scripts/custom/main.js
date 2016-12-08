@@ -86,11 +86,20 @@ $(document).ready(function(){
 
 	var makerLink = $('.maker-link');
 	var audio = new Audio(BASE_URL+'assets/sound/waf.wav');
+	var audio2 = new Audio(BASE_URL+'assets/sound/dog-bark.mp3');
 
 	makerLink.on('mouseover', function (e) {
+
 		audio.pause();
+		audio2.pause();
 		audio.currentTime = 0;
-		audio.play();
+		audio2.currentTime = 0;
+
+		if($(e.target).hasClass('tp')) {
+			audio2.play();
+		} else {
+			audio.play();
+		}
 	});
 
 });

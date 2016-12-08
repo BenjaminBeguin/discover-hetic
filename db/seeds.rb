@@ -15,6 +15,15 @@ Category.create(label: "Art")
 Category.create(label: "Nature")
 Category.create(label: "Society")
 
+10.times do 
+	User.create(
+		name: Faker::Name.name,
+		email: Faker::Internet.url(),
+		password: 'testpassword',
+		url: Faker::Internet.url()
+	)
+end
+
 Post.delete_all
 
 5.times do
