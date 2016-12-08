@@ -1,7 +1,4 @@
-<section>
-	<h1>best user</h1>
-	<%= render "shared/aside_best_users" %>
-</section>
+
 
 <h1 class="title-main">Daily discover</h1>
 <section>
@@ -19,5 +16,12 @@
 	<section>
 		<%= render "shared/posts_list" %>
 		<%= will_paginate @posts %>
+	</section>
+</div>
+
+<div class="col-30 top-users">
+	<h1 class="title-second">Top 5 users</h1>
+	<section class="users-list">
+		<%= render "shared/aside_best_users" %>
 	</section>
 </div>

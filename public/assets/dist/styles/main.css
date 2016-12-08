@@ -170,10 +170,12 @@ section {
       color: rgba(32, 33, 33, 0.5); }
 
 .col-70 {
-  width: 70%; }
+  width: 70%;
+  float: left; }
 
 .col-30 {
-  width: 30%; }
+  width: 30%;
+  float: left; }
 
 .pagination {
   margin-top: 15px;
@@ -214,7 +216,8 @@ footer {
   position: relative;
   height: 60px;
   padding: 0 80px;
-  background-color: #fff; }
+  background-color: #fff;
+  width: 100%; }
   @media (max-width: 1280px) {
     footer {
       padding: 0 40px; } }
@@ -1332,6 +1335,65 @@ main .posts-list {
       color: #fff;
       -webkit-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
+
+.top-users {
+  padding-left: 30px; }
+  .top-users .user {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-bottom: 30px; }
+    .top-users .user:last-child {
+      margin-bottom: 0px; }
+    .top-users .user .user-avatar {
+      margin-right: 15px; }
+      .top-users .user .user-avatar img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%; }
+    .top-users .user .user-infos .user-name {
+      font-family: 'discover-regular';
+      color: #202121; }
+    .top-users .user .user-infos .user-palmares {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      margin-top: 20px; }
+      .top-users .user .user-infos .user-palmares > div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        margin-right: 20px; }
+        .top-users .user .user-infos .user-palmares > div img, .top-users .user .user-infos .user-palmares > div i {
+          margin-left: 10px; }
+      .top-users .user .user-infos .user-palmares img, .top-users .user .user-infos .user-palmares i {
+        height: 20px;
+        color: rgba(32, 33, 33, 0.5);
+        font-size: 20px; }
+      .top-users .user .user-infos .user-palmares p {
+        color: rgba(32, 33, 33, 0.5);
+        margin: 2px 0; }
 
 h1 {
   font-size: 25px; }
