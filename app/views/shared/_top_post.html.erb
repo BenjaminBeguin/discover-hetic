@@ -46,5 +46,10 @@
 	</div>
 
 <% else %>	
-	No post has won yet, come back later ;)
+	<div class="top-post-missing">
+		<img src="/assets/images/dog.png" alt="">
+		<h2>No Discover of the day yet !</h2>
+		<p>Try your luck today !</p>
+		<%= link_to "Submit a discover", posts_new_path %>
+	</div>
 <% end %>

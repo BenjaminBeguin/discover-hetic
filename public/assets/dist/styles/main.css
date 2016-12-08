@@ -383,7 +383,9 @@ header {
           header .header-main .search-form.active form button {
             width: 28%; }
     header .header-main .connect {
-      padding: 0 20px; }
+      padding: 0 20px;
+      width: 157px;
+      text-align: center; }
       header .header-main .connect a {
         font-size: 16px;
         color: #202121;
@@ -837,6 +839,48 @@ main .posts-list {
     display: block;
     margin-top: 15px; }
 
+.top-post-missing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%; }
+  .top-post-missing h2 {
+    font-size: 28px;
+    font-family: 'discover-bold';
+    margin-top: 15px; }
+  .top-post-missing p {
+    font-family: 'discover-light';
+    font-size: 16px;
+    margin-top: 15px; }
+  .top-post-missing a {
+    margin-top: 30px;
+    font-size: 18px;
+    font-family: 'discover-regular';
+    color: #8362c6;
+    position: relative;
+    display: block; }
+    .top-post-missing a:after {
+      content: "";
+      height: 1px;
+      display: block;
+      width: 90px;
+      background: #8362c6;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+
 /* @endgroup POST */
 .login_wrapper {
   display: -webkit-box;
@@ -1198,10 +1242,7 @@ main .posts-list {
 
 @media (max-width: 768px) {
   .on_submit_feedback {
-    margin: 30px 20px 0px 20px; } }
-
-.on_submit_feedback .notice, .on_submit_feedback .alert, .on_submit_feedback #error {
-  margin-top: 30px; }
+    margin: 0px 20px 0px 20px; } }
 
 .notice, .alert, #error {
   padding: 30px 0px 30px 70px;
@@ -1245,8 +1286,13 @@ main .posts-list {
 .fields_wrapper {
   padding: 60px 40px; }
 
-input, select {
+input, select, textarea {
   outline: none; }
+  input:focus, select:focus, textarea:focus {
+    border: 1px solid #8362c6 !important; }
+
+textarea {
+  padding-top: 10px; }
 
 .field.field-avatar .file-input {
   width: 120px;

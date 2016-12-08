@@ -2,8 +2,15 @@
 	padding: 60px 40px;
 }
 
-input, select{
+input, select, textarea{
 	outline: none;
+	&:focus{
+		border:1px solid $purple !important;
+	}
+}
+
+textarea{
+	padding-top: 10px;
 }
 
 .field {
