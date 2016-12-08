@@ -38,7 +38,7 @@
 										<div class="switch-button"></div>
 									</div>
 								</div>
-								<span>Unpublish</span>
+								<span class="publish-switch-txt">Unpublish</span>
 							<% end %>
 						<%	else %>
 							<%= link_to posts_published_path(id: post.id ), method: :post, :remote=>true do %>
@@ -47,7 +47,7 @@
 										<div class="switch-button"></div>
 									</div>
 								</div>
-								<span>Publish</span>
+								<span class="publish-switch-txt">Publish</span>
 							<% end %>
 						<%	end %>
 					</div>
