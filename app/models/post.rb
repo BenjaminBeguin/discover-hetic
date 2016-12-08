@@ -55,6 +55,17 @@ class Post < ApplicationRecord
 		@comments = Comment.where(post_id: @post).order('created_at DESC')
 	end
 
+	def increment
+		update(vote: vote + 1)
+
+	end
+
+
+	def decrement
+		update(vote: vote - 1)
+
+	end
+
 	def capitalize_title
 		if self.title
 	  		self.title = self.title.capitalize
@@ -69,6 +80,10 @@ class Post < ApplicationRecord
 
 	def published?
 		return self.published
+	end
+
+	def created_today?
+		created_at.to_date ==  Date.current
 	end
 
 	def self.search(search)
