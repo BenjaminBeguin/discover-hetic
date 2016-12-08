@@ -4,6 +4,22 @@
 
 .field {
 
+	&.field-avatar {
+		.file-input {
+			width: 120px;
+			height: 120px;
+			border-radius: 50%;
+
+			&:after {
+				border-radius: 50%;
+			}
+
+			label {
+				padding-top: 48px;
+			}
+		}
+	}
+
 	.form_title{
 		color: $form-title;
 		font-family: 'discover-regular';
@@ -89,7 +105,6 @@
 			top: 0;
 			width: 100%;
 			height: 100%;
-			border-radius: 50%;
 			background-color: $black-opacity;
 			transition: .3s;
 			z-index: 1;
@@ -121,7 +136,7 @@
 			display: block;
 			width: 100%;
 			height: 100%;
-			line-height: 100px;
+			padding-top: 40px;
 			cursor: pointer;
 			z-index: 2;
 		}

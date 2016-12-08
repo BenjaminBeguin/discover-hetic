@@ -21,21 +21,20 @@ $(document).ready(function(){
 		}
 	})
 
-	var $currentImage = $('#current-image');
+	$('#user_avatar').on('change', previewImageUploaded);
+	$('#post_asset').on('change', previewImageUploaded);
 
-	$('#user_avatar').on('change', function (e) {
+	function previewImageUploaded () {
 		
 		if(this.files && this.files[0]) {
 			var reader = new FileReader();
 
 			reader.onload = function(e) {
-				// $currentImage[0].src = e.target.result
-				$('#avatar_input').css('background-image', 'url('+e.target.result+')')
+				$('.image-input').css('background-image', 'url('+e.target.result+')')
 			}
 			reader.readAsDataURL(this.files[0]);
-			$currentImage.css('opacity', '1');
 		}
-	});
+	}
 
 	new Newpost();
 
