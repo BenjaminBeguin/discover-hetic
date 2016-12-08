@@ -665,7 +665,7 @@ main .posts-list {
       -ms-flex-direction: row;
           flex-direction: row; }
   .post-metadatas > div > a {
-    margin: 0 20px;
+    margin: 0 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -680,13 +680,19 @@ main .posts-list {
         -ms-flex-align: center;
             align-items: center; }
     .post-metadatas > div > a img {
-      height: 25px;
+      height: 18px;
       fill: rgba(32, 33, 33, 0.5); }
     .post-metadatas > div > a span {
       font-family: 'discover-light';
-      font-family: 14px;
-      color: #202121;
+      font-size: 12px;
+      color: rgba(32, 33, 33, 0.5);
       margin-top: 10px; }
+    .post-metadatas > div > a p {
+      font-family: 'discover-light';
+      font-size: 12px;
+      color: rgba(32, 33, 33, 0.5); }
+  .post-metadatas .publish-switch-txt {
+    margin-top: 8px; }
   .post-metadatas .post-votes .post-likes {
     position: static; }
     .post-metadatas .post-votes .post-likes p {
@@ -784,7 +790,7 @@ main .posts-list {
           justify-content: center; }
   .login_wrapper .field {
     margin-bottom: 20px; }
-    .login_wrapper .field:nth-child(4) {
+    .login_wrapper .field:nth-child(5) {
       margin-bottom: 0px; }
   .login_wrapper .remember_me {
     margin-top: 5px; }
@@ -819,17 +825,23 @@ main .posts-list {
       text-decoration: none; }
 
 .signup_wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+  padding: 0px;
+  position: relative; }
   .signup_wrapper .field {
     margin-bottom: 20px; }
-  .signup_wrapper .form_left, .signup_wrapper .form_right {
-    margin-bottom: 10px;
-    float: left; }
+  .signup_wrapper .fields_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .signup_wrapper .inputs_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
   .signup_wrapper .form_left {
     margin-right: 50px; }
   .signup_wrapper .additionnals_links {
@@ -994,23 +1006,23 @@ main .posts-list {
     height: 130px; }
 
 .update_user_wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-  .update_user_wrapper #edit_user {
-    padding-top: 30px; }
+  padding: 0px;
+  position: relative; }
   .update_user_wrapper .field {
     margin-bottom: 30px; }
-  .update_user_wrapper .inputs_wrapper {
+  .update_user_wrapper .fields_wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
+  .update_user_wrapper .inputs_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
     .update_user_wrapper .inputs_wrapper .form_left {
       margin-right: 50px; }
   .update_user_wrapper input[type=file] {
@@ -1089,8 +1101,8 @@ main .posts-list {
 /* @endgroup forgotten password */
 .publish-switch .switch-background {
   background: rgba(32, 33, 33, 0.5);
-  height: 25px;
-  width: 50px;
+  height: 20px;
+  width: 40px;
   border-radius: 50px;
   position: relative;
   -webkit-transition: all 0.3s ease;
@@ -1099,8 +1111,8 @@ main .posts-list {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 2px solid rgba(32, 33, 33, 0.5);
     background: #fff;
@@ -1115,19 +1127,7 @@ main .posts-list {
   right: 0; }
 
 .on_submit_feedback_forms, .on_submit_feedback {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   position: relative; }
-
-.on_submit_feedback_forms .dismiss {
-  right: 30px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%); }
 
 .on_submit_feedback_forms span {
   display: block;
@@ -1143,16 +1143,10 @@ main .posts-list {
   .on_submit_feedback {
     margin: 30px 20px 0px 20px; } }
 
-.on_submit_feedback .dismiss {
-  right: 30px;
-  top: 65%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%); }
-
-.on_submit_feedback .notice, .on_submit_feedback .alert, .on_submit_feedback .error {
+.on_submit_feedback .notice, .on_submit_feedback .alert, .on_submit_feedback #error {
   margin-top: 30px; }
 
-.notice, .alert, .error {
+.notice, .alert, #error {
   padding: 30px 0px 30px 70px;
   display: block;
   width: 100%;
@@ -1171,9 +1165,13 @@ main .posts-list {
   background-size: 15px 15px;
   cursor: pointer;
   position: absolute;
-  cursor: pointer; }
+  cursor: pointer;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); }
 
-.alert, .error {
+.alert, #error {
   background-color: #ef4444;
   background-image: url("/assets/images/icons/warning.svg");
   background-repeat: no-repeat;
@@ -1188,7 +1186,7 @@ main .posts-list {
   background-position: 30px 50%; }
 
 .fields_wrapper {
-  padding: 40px; }
+  padding: 60px 40px; }
 
 .field.field-avatar .file-input {
   width: 120px;

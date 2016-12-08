@@ -1,19 +1,20 @@
 .update_user_wrapper{
-	display: flex;
-	justify-content: center;
-
-	#edit_user{
-		padding-top: 30px;
-	}
+	padding: 0px;
+	position: relative;
 
 	.field{
 		margin-bottom: 30px;
 
 	}
 
-	.inputs_wrapper{
+	.fields_wrapper{
 		display: flex;
 		justify-content: center;
+	}
+
+	.inputs_wrapper{
+		display: flex;
+		flex-wrap: wrap;
 
 		.form_left{
 			margin-right: 50px;

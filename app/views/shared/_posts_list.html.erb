@@ -32,22 +32,22 @@
 					
 					<div class="post-published">
 						<%	if post.published? %>
-							<%= link_to posts_unpublished_path(id: post.id ), method: :post, :remote=>true do %>
+							<%= link_to posts_published_path(id: post.id ), method: :post, :remote=>true, link_unpublish: posts_unpublished_path(id: post.id), link_publish: posts_published_path(id: post.id) do %>
 								<div class="publish-switch active">
 									<div class="switch-background">
 										<div class="switch-button"></div>
 									</div>
 								</div>
-								<span>Unpublish</span>
+								<span class="publish-switch-txt">Unpublish</span>
 							<% end %>
 						<%	else %>
-							<%= link_to posts_published_path(id: post.id ), method: :post, :remote=>true do %>
+							<%= link_to posts_unpublished_path(id: post.id ), method: :post, :remote=>true, link_publish: posts_published_path(id: post.id), link_unpublish: posts_unpublished_path(id: post.id) do %>
 								<div class="publish-switch">
 									<div class="switch-background">
 										<div class="switch-button"></div>
 									</div>
 								</div>
-								<span>Publish</span>
+								<span class="publish-switch-txt">Publish</span>
 							<% end %>
 						<%	end %>
 					</div>
