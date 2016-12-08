@@ -1,15 +1,20 @@
 .signup_wrapper{
-	display: flex;
-	justify-content: center;
+	padding: 0px;
+	position: relative;
 
 	.field{
 		margin-bottom: 20px;
 
 	}
 
-	.form_left, .form_right{
-		margin-bottom: 10px;
-		float: left;
+	.fields_wrapper{
+		display: flex;
+		justify-content: center;
+	}
+
+	.inputs_wrapper{
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 	.form_left{
