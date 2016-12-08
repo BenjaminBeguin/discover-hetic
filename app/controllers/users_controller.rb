@@ -3,11 +3,11 @@ class UsersController < ApplicationController
 
     #------------------ SECURE BY USER LOGIN -----------------#
     def index
-    	@connected = user_signed_in?
-    	if !@connected  	
-    		redirect_to new_user_session_path
-    	end
-    	@users = User.all
+        @connected = user_signed_in?
+        if !@connected      
+            redirect_to new_user_session_path
+        end
+        @users = User.all
     end
 
     # @user_votes = Vote.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC')
@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     # @user_votes.each do |vote|
     #     @posts.push(Post.where(user_id: vote.user_id))
     # end
-
     def get_user_post
         if user_signed_in?
             @user = User.find(current_user.id)
