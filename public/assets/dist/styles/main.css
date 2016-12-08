@@ -484,10 +484,10 @@ main .posts-list {
   padding-top: 0; }
   .user-profile-card .edit-button {
     position: absolute;
-    right: 20px;
+    right: 48px;
     top: 20px; }
     .user-profile-card .edit-button img {
-      height: 25px; }
+      height: 18px; }
   .user-profile-card .profile-card-content {
     text-align: center; }
     .user-profile-card .profile-card-content .avatar {
