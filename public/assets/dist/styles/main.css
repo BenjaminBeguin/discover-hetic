@@ -588,7 +588,8 @@ main .posts-list {
       margin-top: 10px;
       font-size: 30px; }
     .user-profile-card .profile-card-content .paragraph {
-      margin-top: 20px; }
+      margin-top: 20px;
+      font-family: 'discover-light'; }
 
 /* @endgroup PROFILE */
 /* @group POST */
