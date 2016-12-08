@@ -27,11 +27,11 @@ $(document).ready(function(){
 
 
 	//Likes toggle
-	$('.post-likes').on('click', function(){
-		var img = $(this).find('img');
+	function like_post(link){
+
+		var img = $(link).find('img');
 		var number = img.siblings('p');
 		var value = parseInt(number.text());
-
 		if(img.hasClass('active')){
 			img.removeClass('active');
 			img.attr("src", '/assets/images/icons/like_inactive.svg');
@@ -43,7 +43,11 @@ $(document).ready(function(){
 			img.attr("src", '/assets/images/icons/like_active.svg');
 			value++;
 			number.text(value);
-		}
+		}	
+	}
+
+	$('.post-likes').on('click', function(){
+		like_post(this);
 	});
 
 	//Publish toggle
