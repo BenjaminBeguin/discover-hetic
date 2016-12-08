@@ -4,15 +4,20 @@ body {
 }
 
 a{
-	transition:color .3s ease;
+	transition:all .3s ease;
 	span{
-		transition:color .3s ease;
+		transition:all .3s ease;
 	}
 	&:hover{
 		text-decoration: none !important;
 		color:$purple !important;
 		span{
 			color:$purple !important;
+		}
+
+		&.button-submit{
+			color:white !important;
+			background:rgba($purple, 0.7);
 		}
 	}
 }

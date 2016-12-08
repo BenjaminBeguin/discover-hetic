@@ -2,6 +2,10 @@
 	padding: 60px 40px;
 }
 
+input, select{
+	outline: none;
+}
+
 .field {
 
 	&.field-avatar {

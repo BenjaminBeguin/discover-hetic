@@ -110,16 +110,19 @@ body {
   background: #fafafa; }
 
 a {
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease; }
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease; }
   a span {
-    -webkit-transition: color .3s ease;
-    transition: color .3s ease; }
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease; }
   a:hover {
     text-decoration: none !important;
     color: #8362c6 !important; }
     a:hover span {
       color: #8362c6 !important; }
+    a:hover.button-submit {
+      color: white !important;
+      background: rgba(131, 98, 198, 0.7); }
 
 .clear {
   clear: both; }
@@ -1189,6 +1192,9 @@ main .posts-list {
 
 .fields_wrapper {
   padding: 60px 40px; }
+
+input, select {
+  outline: none; }
 
 .field.field-avatar .file-input {
   width: 120px;
