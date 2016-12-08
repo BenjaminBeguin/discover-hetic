@@ -482,6 +482,41 @@ main .posts-list {
   position: relative;
   margin-top: 40px;
   padding-top: 0; }
+  .user-profile-card .user-palmares {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 20px; }
+    .user-profile-card .user-palmares div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin: 0 15px; }
+      .user-profile-card .user-palmares div img, .user-profile-card .user-palmares div i {
+        height: 20px;
+        font-size: 20px;
+        color: #ababab;
+        margin-left: 10px; }
   .user-profile-card .edit-button {
     position: absolute;
     right: 48px;
@@ -1417,7 +1452,7 @@ input, select {
           margin-left: 10px; }
       .top-users .user .user-infos .user-palmares img, .top-users .user .user-infos .user-palmares i {
         height: 20px;
-        color: rgba(32, 33, 33, 0.5);
+        color: #ababab;
         font-size: 20px; }
       .top-users .user .user-infos .user-palmares p {
         color: rgba(32, 33, 33, 0.5);

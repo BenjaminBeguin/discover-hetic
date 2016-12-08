@@ -9,6 +9,27 @@
 		margin-top: 40px;
 		padding-top: 0;
 
+		.user-palmares{
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin-top: 20px;
+			div{
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				margin:0 15px;
+				img,i{
+					height: 20px;
+					font-size: 20px;
+					color:#ababab;
+					margin-left:10px;
+				}
+			}
+		}
+
 		.edit-button {
 			position: absolute;
 			right: 48px;

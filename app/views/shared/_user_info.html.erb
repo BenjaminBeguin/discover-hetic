@@ -14,6 +14,15 @@
 			<span class="avatar" style="background-image: url(<%= @user.avatar %>);"></span>
 		<% end %>
 		<h1><%= @user.name %></h1>
-		<p><%= @user.desc %></p>
+		<div class="user-palmares">
+				<div class="user-likes">
+					<p><%= @user.vote_count %></p>
+					<img src='/assets/images/icons/like_inactive.svg' alt="">
+				</div>
+				<div class="user-posts">
+					<p><%= @user.posts.count %></p>
+					<i class="fa fa-file-text-o"></i>
+				</div>
+			</div>
 	</div>
 </section>
