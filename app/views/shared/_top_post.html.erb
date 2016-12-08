@@ -17,18 +17,18 @@
 			<p class="post-desc">
 				<%= truncate(strip_tags(@top_post.content), :length=>200)%>
 			</p>
+			<%= link_to posts_by_user_path(slug: @top_post.user.slug ), class:"post-author", method: :get do %>
+				<%
+					if @top_post.user %>
+						<img src="<%= @top_post.user.avatar.url(:thumb) %>">
+						<span class="user-name"><%= @top_post.user.name %></span>					
+				<%
+					else
+						%><span>User doesn't exist</span><%
+					end
+				 %>
+			<% end %>
 		</div>
-		<%= link_to posts_by_user_path(slug: @top_post.user.slug ), class:"post-author", method: :get do %>
-			<%
-				if @top_post.user %>
-					<img src="<%= @top_post.user.avatar.url(:thumb) %>">
-					<span class="user-name"><%= @top_post.user.name %></span>					
-			<%
-				else
-					%><span>User doesn't exist</span><%
-				end
-			 %>
-		<% end %>
 
 	</div>
 

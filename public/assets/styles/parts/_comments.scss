@@ -35,6 +35,10 @@
 				font-size: 18px;
 				color:$black-opacity;
 				resize:none;
+
+				&::placeholder{
+					font-family:'discover-light';
+				}
 			}
 			button{
 				width:60px;
