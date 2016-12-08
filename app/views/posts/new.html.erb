@@ -2,39 +2,51 @@
 
 <section class="newpost_wrapper">
     <%= form_for @post, url: {action: "create"} do |f| %>
-
-    <%= @post.errors.full_messages.join(",") %>
-        <div class="field">
-            <%= f.label :title, :class => "form_title asterisk"%>
-            <%= f.text_field :title, autofocus: true , :class => "form_input", :id => "newpost_form_title"%>
+        
+        <div class="on_submit_feedback_forms">
+            <% if !@post.errors.full_messages.blank? %>
+                <h2 class="alert">
+                    <% @post.errors.full_messages.each do |error| %>
+                        <span><%= error %></span>
+                    <% end %>
+                </h2>
+            <% end %>
+            <div class="dismiss"></div>
         </div>
 
-        <div class="field">
-            <%= f.label "Description", :class => "form_title"%>
-            <%= f.text_area :content, autofocus: true, :class => "form_input", :id => "newpost_form_content"%>
-        </div>
-
-        <div class="field">
-            <p class="form_title">Upload an image</p>
-            <div class="file-input">
-                <%= f.label :asset, 'Drag and drop your file or click to upload' , :id=> "newpost_form_file"%>
-                <%= f.file_field :asset, autofocus: true %>
+        <div class="fields_wrapper">
+            <div class="field">
+                <%= f.label :title, :class => "form_title asterisk"%>
+                <%= f.text_field :title, autofocus: true , :class => "form_input", :id => "newpost_form_title"%>
             </div>
-        </div>
 
-        <div class="field">
-            <%= f.label "category", :class => "form_title asterisk"%>
-            <%= f.collection_select :category_id, @categories, :id, :label %>
-        </div>
+            <div class="field">
+                <%= f.label "Description", :class => "form_title"%>
+                <%= f.text_area :content, autofocus: true, :class => "form_input", :id => "newpost_form_content"%>
+            </div>
 
-        <div class="field">
-            <%= f.label :url, :class => "form_title"%>
-            <%= f.text_field :url, autofocus: true, :class => "form_input", :id => "newpost_form_url"%>
-        </div>
-    
-        <div class="actions">
-            <h4 class="asterisk_explanation">* Fields required</h4>
-            <%= f.submit "Create" %>
+            <div class="field">
+                <p class="form_title">Upload an image</p>
+                <div class="file-input">
+                    <%= f.label :asset, 'Drag and drop your file or click to upload' , :id=> "newpost_form_file"%>
+                    <%= f.file_field :asset, autofocus: true %>
+                </div>
+            </div>
+
+            <div class="field">
+                <%= f.label "category", :class => "form_title asterisk"%>
+                <%= f.collection_select :category_id, @categories, :id, :label %>
+            </div>
+
+            <div class="field">
+                <%= f.label :url, :class => "form_title"%>
+                <%= f.text_field :url, autofocus: true, :class => "form_input", :id => "newpost_form_url"%>
+            </div>
+        
+            <div class="actions">
+                <h4 class="asterisk_explanation">* Fields required</h4>
+                <%= f.submit "Create" %>
+            </div>
         </div>
         
     <% end %>
