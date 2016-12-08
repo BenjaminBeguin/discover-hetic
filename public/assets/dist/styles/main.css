@@ -106,6 +106,18 @@ body {
   padding: 50px;
   background: #fafafa; }
 
+a {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease; }
+  a span {
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease; }
+  a:hover {
+    text-decoration: none !important;
+    color: #8362c6 !important; }
+    a:hover span {
+      color: #8362c6 !important; }
+
 .clear {
   clear: both; }
 
@@ -678,8 +690,9 @@ main .posts-list {
       margin-bottom: 15px; }
       .post-single.regular-post .post-head-datas .post-author {
         margin-top: 15px; }
-        .post-single.regular-post .post-head-datas .post-author .author-name a {
-          font-size: 16px; }
+        .post-single.regular-post .post-head-datas .post-author a {
+          font-size: 16px;
+          color: #202121; }
         .post-single.regular-post .post-head-datas .post-author .author-postDate {
           margin-left: 10px;
           color: rgba(32, 33, 33, 0.5);
@@ -687,7 +700,7 @@ main .posts-list {
           font-size: 14px; }
     .post-single.regular-post .post-likes {
       top: 40px; }
-      .post-single.regular-post .post-likes p {
+      .post-single.regular-post .post-likes span {
         font-family: 'discover-light'; }
     .post-single.regular-post .post-content .post-thumbnail {
       width: 100%;
@@ -703,16 +716,12 @@ main .posts-list {
     text-decoration: none;
     color: #202121;
     width: 90%; }
-  .post-single .post-author:hover span.user-name a {
-    text-decoration: underline; }
   .post-single .post-cat {
     font-size: 12px;
     text-transform: uppercase;
     display: block; }
     .post-single .post-cat a {
       color: rgba(32, 33, 33, 0.5); }
-      .post-single .post-cat a:hover {
-        text-decoration: underline; }
   .post-single .post-likes {
     position: absolute;
     right: 0;
@@ -726,9 +735,10 @@ main .posts-list {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column; }
-    .post-single .post-likes p {
+    .post-single .post-likes span {
       text-align: center;
-      font-family: 'discover-light'; }
+      font-family: 'discover-light';
+      margin-top: 0; }
     .post-single .post-likes img {
       margin-bottom: 10px;
       width: 25px; }
@@ -753,8 +763,6 @@ main .posts-list {
   .single-post-cat a {
     font-size: 16px;
     color: #a899c6; }
-    .single-post-cat a:hover {
-      text-decoration: underline; }
 
 .post-metadatas {
   margin-left: auto;

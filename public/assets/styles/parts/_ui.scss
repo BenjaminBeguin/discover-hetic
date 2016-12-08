@@ -3,6 +3,20 @@ body {
 	background:$grey-light;
 }
 
+a{
+	transition:color .3s ease;
+	span{
+		transition:color .3s ease;
+	}
+	&:hover{
+		text-decoration: none !important;
+		color:$purple !important;
+		span{
+			color:$purple !important;
+		}
+	}
+}
+
 .clear{
 	clear: both;
 }

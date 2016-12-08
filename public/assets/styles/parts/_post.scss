@@ -96,11 +96,9 @@
 				margin-bottom: 15px;
 				.post-author{
 					margin-top:15px;
-
-					.author-name{
-						a{
-							font-size: 16px;
-						}
+					a{
+						font-size: 16px;
+						color:$black;
 					}
 
 					.author-postDate{
@@ -114,7 +112,7 @@
 
 			.post-likes{
 				top:40px;
-				p{
+				span{
 					font-family:'discover-light';
 				}
 			}
@@ -142,23 +140,12 @@
 			width:90%;
 		}
 
-		.post-author{
-			&:hover{
-				span.user-name a{
-					text-decoration: underline;
-				}
-			}
-		}
-
 		.post-cat {
 			font-size: 12px;
 			text-transform: uppercase;
 			display: block;
 			a{
 				color:$black-opacity;
-				&:hover{
-					text-decoration: underline;
-				}
 			}
 		}
 
@@ -170,9 +157,10 @@
 			color:$black;
 			display: flex;
 			flex-direction: column;
-			p{
+			span{
 				text-align: center;
 				font-family: 'discover-light';
+				margin-top: 0;
 			}
 			img{
 				margin-bottom: 10px;
@@ -211,9 +199,6 @@
 		a{
 			font-size: 16px;
 			color:#a899c6;
-			&:hover{
-				text-decoration: underline;
-			}
 		}
 	}
 
