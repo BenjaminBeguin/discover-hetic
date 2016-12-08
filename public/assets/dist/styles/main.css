@@ -1338,6 +1338,9 @@ main .posts-list {
       -webkit-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
 
+.edit_post {
+  width: 100%; }
+
 .top-users {
   padding-left: 30px; }
   @media (max-width: 1100px) {

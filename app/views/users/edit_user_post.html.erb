@@ -3,47 +3,58 @@
 <section class="newpost_wrapper">
 
     <%= form_for @post , :url => posts_update_path(id: @post.id) do |f| %>
-        <%= @post.errors.full_messages.join(",") %>
-        
-        <div class="field">
-            <%= f.label :title, 'Discover title', :class => "form_title asterisk" %><br />
-            <%= f.text_field :title, :class => "form_input",autofocus: true %>
+        <div class="on_submit_feedback_forms">
+            <% if !@post.errors.full_messages.blank? %>
+                <h2 class="alert">
+                    <% @post.errors.full_messages.each do |error| %>
+                        <span><%= error %></span>
+                    <% end %>
+                </h2>
+            <% end %>
+            <div class="dismiss"></div>
         </div>
 
-        <div class="field">
-            <%= f.label :content, 'Description', :class => "form_title" %><br />
-            <%= f.text_field :content, :class => "form_input",autofocus: true %>
-        </div>
-
-        <div class="field">
-            <p class="form_title">Upload an image</p>
-            <div class="file-input-field">
-                <div class="file-input image-input" style="background-image: url(<%= @post.asset %>)">
-                    <%= f.label :asset, 'Drag and drop your file or click to upload', :id=> "newpost_form_file" %>
-                    <%= f.file_field :asset, autofocus: true %>
-                </div>
-
-                <span class="current-image" style="background-image: url(<%= @post.asset.url%>);"></span>
+        <div class="fields_wrapper">
+            <div class="field">
+                <%= f.label :title, 'Title', :class => "form_title asterisk" %><br />
+                <%= f.text_field :title, :class => "form_input",autofocus: true, :id => "newpost_form_title" %>
             </div>
-        </div>
 
-        <div class="field">
-            <%= f.label "category", 'Theme', :class => "form_title asterisk" %><br />
-            <%= f.collection_select :category_id, @categories, :id, :label  %>
-        </div>
+            <div class="field">
+                <%= f.label :content, 'Description', :class => "form_title" %><br />
+                <%= f.text_field :content, :class => "form_input",autofocus: true, :id => "newpost_form_content" %>
+            </div>
 
-        <div class="field">
-            <%= f.label :url, 'Website Url', :class => "form_title" %><br />
-            <%= f.text_field :url, :class => "form_input",autofocus: true %>
-        </div>
+            <div class="field">
+                <p class="form_title">Upload an image</p>
+                <div class="file-input-field">
+                    <div class="file-input image-input" style="background-image: url(<%= @post.asset %>)">
+                        <%= f.label :asset, 'Drag and drop your file or click to upload', :id=> "newpost_form_file" %>
+                        <%= f.file_field :asset, autofocus: true %>
+                    </div>
 
-        <div class="field">
-            <%= f.hidden_field :id  %>
-        </div>
+                    <span class="current-image" style="background-image: url(<%= @post.asset.url%>);"></span>
+                </div>
+            </div>
 
-        <div class="actions">
-            <h4 class="asterisk_explanation">* Fields required</h4>
-            <%= f.submit "Update" %>
+            <div class="field">
+                <%= f.label "category", 'Theme', :class => "form_title asterisk" %><br />
+                <%= f.collection_select :category_id, @categories, :id, :label  %>
+            </div>
+
+            <div class="field">
+                <%= f.label :url, 'Website Url', :class => "form_title" %><br />
+                <%= f.text_field :url, :class => "form_input",autofocus: true, :id => "newpost_form_url"%>
+            </div>
+
+            <div class="field">
+                <%= f.hidden_field :id  %>
+            </div>
+
+            <div class="actions">
+                <h4 class="asterisk_explanation">* Fields required</h4>
+                <%= f.submit "Update" %>
+            </div>
         </div>
      <% end %>
 
