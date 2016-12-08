@@ -43,7 +43,11 @@ $(document).ready(function(){
 			img.attr("src", '/assets/images/icons/like_active.svg');
 			value++;
 			number.text(value);
-		}	
+		}
+
+		var tl = new TimelineLite();
+		tl.to(img, 0.2, {scale:1.2, rotation:"+10", ease:Power2.ease});
+		tl.to(img, 0.2, {scale:1.0, rotation:"0", ease:Power2.ease});
 	}
 
 	$('.post-likes').on('click', function(){
