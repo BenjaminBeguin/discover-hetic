@@ -2,7 +2,7 @@
 	<%= link_to posts_by_user_path(slug: user.slug ), class:"user", method: :get do %>
 		<div class="user-avatar">
 			<% if user.avatar.blank? %>
-				<img src="/images/original/missing<%= user.id.to_s.split('').last %>.png">
+				<img src="<%= set_random_avatar(user.id) %>">
 			<% else %>
 				<img src="<%= user.avatar.url(:thumb) %>">
 			<% end %>

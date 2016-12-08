@@ -32,7 +32,7 @@
 			<%
 				if @top_post.user
 					if @top_post.user.avatar.blank? %>
-						<img src="/images/original/missing<%= @top_post.user.id.to_s.split('').last %>.png">
+						<img src="<%= set_random_avatar(@top_post.user.id) %>">
 					<% else %>
 						<img src="<%= @top_post.user.avatar.url(:thumb) %>">
 					<% end %>

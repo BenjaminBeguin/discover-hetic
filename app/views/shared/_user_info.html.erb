@@ -9,7 +9,7 @@
 	
 	<div class="profile-card-content">
 		<% if @user.avatar.blank? %>
-			<span class="avatar" style="background-image: url(/images/original/missing<%= @user.id.to_s.split('').last %>.png);"></span>
+			<span class="avatar" style="background-image: url(<%= set_random_avatar(@user.id) %>);"></span>
 		<% else %>
 			<span class="avatar" style="background-image: url(<%= @user.avatar %>);"></span>
 		<% end %>

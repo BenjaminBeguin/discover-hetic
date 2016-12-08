@@ -4,7 +4,11 @@
 		<%= link_to posts_by_user_path(slug: @post.user.slug ), class:"post-author", method: :get do %>
 			<%
 				if @post.user %>
-					<img src="<%= @post.user.avatar.url(:thumb) %>">
+					<% if @post.user.avatar.blank? %>
+						<img src="<%= set_random_avatar(@post.user.id) %>">
+					<% else %>
+						<img src="<%= @post.user.avatar.url(:thumb) %>">
+					<% end %>
 					<div class="author-data">
 						<span class="user-name"><%= @post.user.name %></span>					
 						<span class="user-postDate"><%= distance_of_time_in_words_to_now(@post.created_at) %> ago</span>
@@ -34,7 +38,7 @@
 	</div>
 
 	<% if @post.asset.url != "" %>
-		<div class="post-thumbnail" style='background:url("<%= @post.asset.url %>")no-repeat; background-size:auto 100%; background-position:left center;'></div>
+		<div class="post-thumbnail" style='background-image:url("<%= @post.asset.url %>");'></div>
 	<% end %>
 
 	<div class="post-content">
