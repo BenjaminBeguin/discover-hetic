@@ -258,8 +258,10 @@ section {
   border: solid 0.5px #ccc; }
 
 .field .current-image {
-  min-width: 20%;
-  max-width: 50%;
+  height: 120px;
+  width: auto;
+  margin-left: 20px;
+  opacity: 0;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat; }

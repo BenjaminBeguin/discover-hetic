@@ -20,8 +20,12 @@
 		</div>
 		<%= link_to posts_by_user_path(slug: @top_post.user.slug ), class:"post-author", method: :get do %>
 			<%
-				if @top_post.user %>
-					<img src="<%= @top_post.user.avatar.url(:thumb) %>">
+				if @top_post.user
+					if @top_post.user.avatar.blank? %>
+						<img src="/images/original/missing<%= @top_post.user.id.to_s.split('').last %>.png">
+					<% else %>
+						<img src="<%= @top_post.user.avatar.url(:thumb) %>">
+					<% end %>
 					<span class="user-name"><%= @top_post.user.name %></span>					
 			<%
 				else

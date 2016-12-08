@@ -186,8 +186,10 @@ section{
 	}
 
 	.current-image {
-		min-width: 20%;
-		max-width: 50%;
+		height: 120px;
+		width: auto;
+		margin-left: 20px;
+		opacity: 0;
 		-webkit-background-size: contain;
 		background-size: contain;
 		background-position: center center;
