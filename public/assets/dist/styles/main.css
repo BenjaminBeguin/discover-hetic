@@ -383,7 +383,9 @@ header {
           header .header-main .search-form.active form button {
             width: 28%; }
     header .header-main .connect {
-      padding: 0 20px; }
+      padding: 0 20px;
+      width: 157px;
+      text-align: center; }
       header .header-main .connect a {
         font-size: 16px;
         color: #202121;
@@ -1197,9 +1199,6 @@ main .posts-list {
 @media (max-width: 768px) {
   .on_submit_feedback {
     margin: 30px 20px 0px 20px; } }
-
-.on_submit_feedback .notice, .on_submit_feedback .alert, .on_submit_feedback #error {
-  margin-top: 30px; }
 
 .notice, .alert, #error {
   padding: 30px 0px 30px 70px;
