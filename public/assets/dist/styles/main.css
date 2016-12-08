@@ -1198,7 +1198,7 @@ main .posts-list {
 
 @media (max-width: 768px) {
   .on_submit_feedback {
-    margin: 30px 20px 0px 20px; } }
+    margin: 0px 20px 0px 20px; } }
 
 .notice, .alert, #error {
   padding: 30px 0px 30px 70px;

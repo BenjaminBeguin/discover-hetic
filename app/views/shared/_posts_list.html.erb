@@ -2,7 +2,7 @@
 	<% @posts.each do |post| %>
 	<div class="post-single regular-post">
 
-			<% if post.user.avatar.blank? && !current_page?(users_posts_path) %>
+			<% if post.user.avatar.blank? %>
 				<span class="post-single__avatar" style="background-image: url(<%= set_random_avatar(post.user.id) %>)"></span>
 			<% else %>
 				<span class="post-single__avatar" style="background-image: url(<%= post.user.avatar %>)">
