@@ -8,8 +8,21 @@
 				<span class="post-single__avatar" style="background-image: url(<%= post.user.avatar %>)">
 				</span>
 			<% end %>
+
+			<div class="post-metadatas">
+				<div class="post-link">
+					<a href="<%= post.url %>" target="_blank" class="post-link">
+						<img src="/assets/images/icons/link.svg" alt="">
+						<span>Discover</span>
+					</a>
+				</div>
+
+				<div class="post-votes">
+					<%= render "shared/post_votes",  :post => post %>
+				</div>
+			</div>
+
 		<div class="post-single__content">
-			
 			<div class="post-head-datas">
 				<% if  post.category %>
 					<span class="post-cat"><%= link_to post.category.label, category_path(:slug => post.category.slug), method: :get %></span>
@@ -29,22 +42,6 @@
 					<span class="author-postDate"><%= distance_of_time_in_words_to_now(post.created_at) %> ago</span>
 				</div>
 				<%= link_to post.title, post_path(:id => post.id), method: :get, :class => "post-title"  %>
-
-<!--  
-				<%	if post.is_my_post? %>
-					<%= link_to "Edit", users_posts_id_path(:id => post.id), method: :get  %> <br>
-					
-					<%	if post.published? %>
-						<%= button_to 'Unpublish', posts_unpublished_path(id: post.id ), method: :post, :remote=>true %>
-					<%	else %>
-						<%= button_to 'Publish', posts_published_path(id: post.id ), method: :post, :remote=>true %>
-					<%	end %>
-				<% end %>
-
--->
-				<%= render "shared/post_votes",  :post => post %>
-
-
 			</div>
 
 			<div class="post-content">
