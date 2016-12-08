@@ -15,18 +15,19 @@
 		<% end %>
 		<h1><%= @user.name %></h1>
 		<div class="user-palmares">
-				<div class="user-likes">
-					<p><%= @user.vote_count %></p>
-					<img src='/assets/images/icons/like_inactive.svg' alt="">
-				</div>
-				<div class="user-posts">
-					<% if params[:slug] != current_user.slug %>
-						<p><%= @user.posts.count %></p>
-					<% else %>
-						<p><%= @user.posts.published.count %></p>
-					<% end %>
-					<i class="fa fa-file-text-o"></i>
-				</div>
+			<div class="user-likes">
+				<p><%= @user.vote_count %></p>
+				<img src='/assets/images/icons/like_inactive.svg' alt="">
 			</div>
+			<div class="user-posts">
+				<% if params[:slug] != current_user.slug %>
+					<p><%= @user.posts.count %></p>
+				<% else %>
+					<p><%= @user.posts.published.count %></p>
+				<% end %>
+				<i class="fa fa-file-text-o"></i>
+			</div>
+		</div>
+		<div class="paragraph"><%= @user.desc %></div>
 	</div>
 </section>

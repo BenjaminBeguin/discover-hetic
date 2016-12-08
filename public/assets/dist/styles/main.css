@@ -549,6 +549,8 @@ main .posts-list {
     .user-profile-card .profile-card-content h1 {
       margin-top: 10px;
       font-size: 30px; }
+    .user-profile-card .profile-card-content .paragraph {
+      margin-top: 20px; }
 
 /* @endgroup PROFILE */
 /* @group POST */

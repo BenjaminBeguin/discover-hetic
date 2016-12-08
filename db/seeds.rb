@@ -15,12 +15,15 @@ Category.create(label: "Art")
 Category.create(label: "Nature")
 Category.create(label: "Society")
 
-10.times do 
+# User.delete_all
+
+10.times do
 	User.create(
 		name: Faker::Name.name,
-		email: Faker::Internet.url(),
+		email: Faker::Internet.email,
 		password: 'testpassword',
-		url: Faker::Internet.url()
+		url: Faker::Internet.url(),
+		desc: Faker::Lorem.sentence(7, true)
 	)
 end
 
@@ -87,3 +90,20 @@ Comment.delete_all
 		message: Faker::Lorem.sentence(7, true)
 	)
 end
+
+
+users = User.all
+users.each do |user|
+
+	user_post_count = 0
+
+	user_posts = Post.where(user_id: user.id)
+	user_posts.each do |post|
+		user_post_count += post.vote
+	end
+
+	user.update(vote_count: user_post_count)
+end
+
+
+
