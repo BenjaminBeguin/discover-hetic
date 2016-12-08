@@ -1,15 +1,8 @@
-<% if user_signed_in? %>
-    <%= link_to posts_add_vote_path(id: post.id ), method: :post,  :remote => true, :class => "post-likes" do %>
-        <% if @post_voted.include?(post.id) %>
-            <img src='/assets/images/icons/like_active.svg' alt="">
-        <% else %>
-            <img src='/assets/images/icons/like_inactive.svg' alt="">
-        <% end %> 
-       <span><%= post.vote %></span>
-    <% end %> 
-<% else %>
-    <%= link_to new_user_session_path(:error => "You need to be sign up to vote" ), method: :get, :class => "post-likes" do %>
+<%= link_to posts_add_vote_path(id: post.id ), remote: user_signed_in? , method: :post, :class => "post-likes" do %>
+    <% if @post_voted.include?(post.id) %>
+        <img src='/assets/images/icons/like_active.svg' alt="">
+    <% else %>
         <img src='/assets/images/icons/like_inactive.svg' alt="">
-       <span><%= post.vote %></span>
-    <% end %>
+    <% end %> 
+    <p><%= post.vote %></p>  
 <% end %>

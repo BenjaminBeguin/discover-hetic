@@ -64,9 +64,18 @@
 	<div class="clear"></div>
 </header>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<p id="error"><%= flash[:error] %></p>
+<div class="on_submit_feedback">
+	<% if notice %>
+	    <h2 class="notice"><%= notice %></h2><div class="dismiss"></div>
+	<% end %>
+	<% if alert %>
+	    <h2 class="alert"><%= alert %></h2><div class="dismiss"></div>
+	<% end %>
+
+	<% if flash[:error] %>
+	    <h2 id="error"><%= flash[:error] %></h2><div class="dismiss"></div>
+	<% end %>
+</div>
 
 <main>
 	<%= yield %>

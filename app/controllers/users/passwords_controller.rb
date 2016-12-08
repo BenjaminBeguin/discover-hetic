@@ -1,14 +1,15 @@
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
-  def new
-    super
-    flash[:error] = "You have successfully logged out."
-  end
+  # def new
+  #   super
+    
+  # end
 
   # POST /resource/password
-  # def create
-  #   super
-  # end
+  def create
+    flash[:error] = "This feature don't work for the moment please contact us for more information"
+    redirect_to action: "new"
+  end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit

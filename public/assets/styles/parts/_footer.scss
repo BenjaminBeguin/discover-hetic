@@ -22,6 +22,7 @@
 
 		.links {
 			line-height: 60px;
+			font-size: 14px;
 	
 			a {
 				position: relative;
@@ -57,9 +58,9 @@
 		.socials {
 			a {
 				display: inline-block;
-				padding: 0 10px;
+				padding: 0 8px;
 				line-height: 60px;
-				font-size: 22px;
+				font-size: 16px;
 				color: $black-opacity;
 
 				&:hover {
