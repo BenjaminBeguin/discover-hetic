@@ -47,7 +47,7 @@
 			.user-palmares{
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
+				justify-content: flex-start;
 				margin-top:20px;
 
 				>	div{
@@ -60,7 +60,7 @@
 				}
 				img, i{
 					height: 20px;
-					color: $black-opacity;
+					color:#ababab;
 					font-size: 20px;
 				}
 				p{

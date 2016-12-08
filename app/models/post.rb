@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 	has_many :comments 
 	has_many :votes 
 	cattr_accessor :current_user, :already_voted
+	scope :published, -> { where(published: true) }
 
 	validates :user_id, presence: true
 	validates :category_id, presence: true

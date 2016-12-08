@@ -110,16 +110,19 @@ body {
   background: #fafafa; }
 
 a {
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease; }
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease; }
   a span {
-    -webkit-transition: color .3s ease;
-    transition: color .3s ease; }
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease; }
   a:hover {
     text-decoration: none !important;
     color: #8362c6 !important; }
     a:hover span {
       color: #8362c6 !important; }
+    a:hover.button-submit {
+      color: white !important;
+      background: rgba(131, 98, 198, 0.7); }
 
 .clear {
   clear: both; }
@@ -131,7 +134,7 @@ button {
 
 main {
   padding: 60px 80px;
-  min-height: 450px;
+  min-height: calc(100vh - 161px);
   /* Yeah it's ugly but that way, the footer will stay down. Don't juge me please.  */ }
   @media (max-width: 1280px) {
     main {
@@ -202,6 +205,15 @@ section {
   .pagination a {
     opacity: .5; }
 
+.hider {
+  position: absolute;
+  height: 100%;
+  width: 40px;
+  display: none;
+  z-index: 10; }
+  .hider.active {
+    display: block; }
+
 /* @group FOOTER */
 footer {
   display: -moz-flex;
@@ -217,7 +229,8 @@ footer {
   height: 60px;
   padding: 0 80px;
   background-color: #fff;
-  width: 100%; }
+  width: 100%;
+  border: 1px solid #efefef; }
   @media (max-width: 1280px) {
     footer {
       padding: 0 40px; } }
@@ -479,12 +492,47 @@ main .posts-list {
   position: relative;
   margin-top: 40px;
   padding-top: 0; }
+  .user-profile-card .user-palmares {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 20px; }
+    .user-profile-card .user-palmares div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin: 0 15px; }
+      .user-profile-card .user-palmares div img, .user-profile-card .user-palmares div i {
+        height: 20px;
+        font-size: 20px;
+        color: #ababab;
+        margin-left: 10px; }
   .user-profile-card .edit-button {
     position: absolute;
-    right: 20px;
+    right: 48px;
     top: 20px; }
     .user-profile-card .edit-button img {
-      height: 25px; }
+      height: 18px; }
   .user-profile-card .profile-card-content {
     text-align: center; }
     .user-profile-card .profile-card-content .avatar {
@@ -515,7 +563,8 @@ main .posts-list {
   position: relative; }
   .post-single.top-post .post-content {
     padding-left: 40px;
-    color: #202121; }
+    color: #202121;
+    width: calc(100% - 100px); }
     .post-single.top-post .post-content .post-title {
       font-size: 25px;
       margin: 30px 0 20px 0; }
@@ -625,7 +674,11 @@ main .posts-list {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column; }
+            flex-direction: column;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
     .post-single .post-likes span {
       text-align: center;
       font-family: 'discover-light';
@@ -691,6 +744,8 @@ main .posts-list {
       font-family: 'discover-light';
       font-size: 12px;
       color: rgba(32, 33, 33, 0.5); }
+  .post-metadatas .post-published a {
+    width: 51px; }
   .post-metadatas .publish-switch-txt {
     margin-top: 8px; }
   .post-metadatas .post-votes .post-likes {
@@ -1124,7 +1179,7 @@ main .posts-list {
 .publish-switch.active .switch-button {
   border: 2px solid #8362c6;
   left: inherit;
-  right: 0; }
+  left: 20px; }
 
 .on_submit_feedback_forms, .on_submit_feedback {
   position: relative; }
@@ -1187,6 +1242,9 @@ main .posts-list {
 
 .fields_wrapper {
   padding: 60px 40px; }
+
+input, select {
+  outline: none; }
 
 .field.field-avatar .file-input {
   width: 120px;
@@ -1338,6 +1396,9 @@ main .posts-list {
       -webkit-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
 
+.edit_post {
+  width: 100%; }
+
 .top-users {
   padding-left: 30px; }
   @media (max-width: 1100px) {
@@ -1389,9 +1450,9 @@ main .posts-list {
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
       margin-top: 20px; }
       .top-users .user .user-infos .user-palmares > div {
         display: -webkit-box;
@@ -1406,7 +1467,7 @@ main .posts-list {
           margin-left: 10px; }
       .top-users .user .user-infos .user-palmares img, .top-users .user .user-infos .user-palmares i {
         height: 20px;
-        color: rgba(32, 33, 33, 0.5);
+        color: #ababab;
         font-size: 20px; }
       .top-users .user .user-infos .user-palmares p {
         color: rgba(32, 33, 33, 0.5);

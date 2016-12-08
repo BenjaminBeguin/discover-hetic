@@ -4,15 +4,20 @@ body {
 }
 
 a{
-	transition:color .3s ease;
+	transition:all .3s ease;
 	span{
-		transition:color .3s ease;
+		transition:all .3s ease;
 	}
 	&:hover{
 		text-decoration: none !important;
 		color:$purple !important;
 		span{
 			color:$purple !important;
+		}
+
+		&.button-submit{
+			color:white !important;
+			background:rgba($purple, 0.7);
 		}
 	}
 }
@@ -29,7 +34,7 @@ button{
 
 main{
 	padding: 60px 80px;
-	min-height: 450px; /* Yeah it's ugly but that way, the footer will stay down. Don't juge me please.  */
+	min-height: calc(100vh - 161px); /* Yeah it's ugly but that way, the footer will stay down. Don't juge me please.  */
 
 	@media (max-width: 1280px) {
 		padding: 40px 80px;
@@ -106,5 +111,15 @@ section{
 	}
 }
 
+.hider{
+	position: absolute;
+	height: 100%;
+	width: 40px;
+	display: none;
+	z-index: 10;
+	&.active{
+		display: block;
+	}
+}
 
 

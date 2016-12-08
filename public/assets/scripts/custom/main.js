@@ -27,11 +27,11 @@ $(document).ready(function(){
 
 
 	//Likes toggle
-	$('.post-likes').on('click', function(){
-		var img = $(this).find('img');
-		var number = img.siblings('p');
-		var value = parseInt(number.text());
+	function like_post(link){
 
+		var img = $(link).find('img');
+		var number = img.siblings('span');
+		var value = parseInt(number.text());
 		if(img.hasClass('active')){
 			img.removeClass('active');
 			img.attr("src", '/assets/images/icons/like_inactive.svg');
@@ -44,6 +44,18 @@ $(document).ready(function(){
 			value++;
 			number.text(value);
 		}
+
+		var tl = new TimelineLite();
+		tl.to(img, 0.2, {scale:1.2, rotation:"+10", ease:Power2.ease});
+		tl.to(img, 0.2, {scale:1.0, rotation:"0", ease:Power2.ease});
+	}
+
+	$('.post-likes').on('click', function(){
+		$('.hider').addClass('active');
+		like_post(this);
+		setTimeout(function(){
+			$('.hider').removeClass('active');
+		}, 1000);
 	});
 
 	//Publish toggle
