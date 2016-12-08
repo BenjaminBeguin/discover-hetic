@@ -1242,8 +1242,13 @@ main .posts-list {
 .fields_wrapper {
   padding: 60px 40px; }
 
-input, select {
+input, select, textarea {
   outline: none; }
+  input:focus, select:focus, textarea:focus {
+    border: 1px solid #8362c6 !important; }
+
+textarea {
+  padding-top: 10px; }
 
 .field.field-avatar .file-input {
   width: 120px;
