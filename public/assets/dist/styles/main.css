@@ -1352,9 +1352,21 @@ main .posts-list {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    margin-bottom: 30px; }
+    margin-bottom: 60px;
+    position: relative; }
     .top-users .user:last-child {
       margin-bottom: 0px; }
+      .top-users .user:last-child:after {
+        display: none; }
+    .top-users .user:after {
+      content: "";
+      display: block;
+      height: 1px;
+      background: #efefef;
+      position: absolute;
+      bottom: -30px;
+      left: 20px;
+      right: 20px; }
     .top-users .user .user-avatar {
       margin-right: 15px; }
       .top-users .user .user-avatar img {

@@ -5,9 +5,24 @@
 		flex-direction: row;
 		justify-content:flex-start;
 		align-items: flex-start;
-		margin-bottom:30px;
+		margin-bottom:60px;
+		position: relative;
 		&:last-child{
 			margin-bottom: 0px;
+			&:after{
+				display: none;
+			}
+		}
+
+		&:after{
+			content:"";
+			display: block;
+			height: 1px;
+			background:$grey;
+			position: absolute;
+			bottom: -30px;
+			left: 20px;
+			right: 20px;
 		}
 		.user-avatar{
 			margin-right: 15px;
