@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
     def index
+        #Post.update_all(published: false)
+
         if params[:orderby] == 'top'
-            @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC')
+            @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC').published
         else
-            @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('id DESC')
+            @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('id DESC').published
         end
         @post_voted = post_like_unlike
 
@@ -13,7 +15,7 @@ class PostsController < ApplicationController
     end
     
     def top_of_the_day(date)
-        Post.where(created_at: date.midnight..date.end_of_day).order(vote_created: :desc).first
+        Post.where(created_at: date.midnight..date.end_of_day).order(vote_created: :desc).published.first
     end
 
     def get_best_users
@@ -21,23 +23,23 @@ class PostsController < ApplicationController
     end
 
     def show
-        @post = Post.find_by_id(params[:id]) or not_found
+        @post = Post.find_by_id(params[:id]).published or not_found
         @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
         post_like_unlike
     end
 
     def search
         if params[:q]
-            if params[:orderby] == 'newest'
-                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC')
+            if params[:orderby] == 'top'
+                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC').published
             else
-                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC')
+                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC').published
             end
         else
-            if params[:orderby] == 'newest'
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC')
+            if params[:orderby] == 'top'
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC').published
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC')
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC').published
             end
         end
         @post_voted = post_like_unlike
@@ -50,15 +52,15 @@ class PostsController < ApplicationController
 
         if  @category.present?
             if params[:orderby] == 'top'
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(vote: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(vote: :desc).published
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(created_at: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(created_at: :desc).published
             end
             post_like_unlike
 
             #--- get the first by vote --#
             date = Date.yesterday
-            @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).first
+            @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).published.first
         else
             redirect_to action: "index"
         end
@@ -83,9 +85,9 @@ class PostsController < ApplicationController
 
         if  @user.present?
             if params[:orderby] == 'top'
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('vote DESC').order(created_at: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('vote DESC').order(created_at: :desc).published
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC').order(created_at: :desc)
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC').order(created_at: :desc).published
             end
             post_like_unlike
         else

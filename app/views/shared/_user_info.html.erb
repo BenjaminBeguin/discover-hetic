@@ -20,7 +20,11 @@
 					<img src='/assets/images/icons/like_inactive.svg' alt="">
 				</div>
 				<div class="user-posts">
-					<p><%= @user.posts.count %></p>
+					<% if params[:slug] != current_user.slug %>
+						<p><%= @user.posts.count %></p>
+					<% else %>
+						<p><%= @user.posts.published.count %></p>
+					<% end %>
 					<i class="fa fa-file-text-o"></i>
 				</div>
 			</div>
