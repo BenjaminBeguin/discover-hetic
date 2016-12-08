@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	//EXPAND SEARCH
 	$('.search-button').on('click', function(){		
 		var form = $('.search-form');
 
@@ -24,6 +25,51 @@ $(document).ready(function(){
 	$('#user_avatar').on('change', previewImageUploaded);
 	$('#post_asset').on('change', previewImageUploaded);
 
+
+	//Likes toggle
+	$('.post-likes').on('click', function(){
+		var img = $(this).find('img');
+		var number = img.siblings('p');
+		var value = parseInt(number.text());
+
+		if(img.hasClass('active')){
+			img.removeClass('active');
+			img.attr("src", '/assets/images/icons/like_inactive.svg');
+			value--;
+			number.text(value);
+		}
+		else{
+			img.addClass('active');
+			img.attr("src", '/assets/images/icons/like_active.svg');
+			value++;
+			number.text(value);
+		}
+	});
+
+	//Publish toggle
+	$('.post-published a').on('click', function(){
+
+		var button = $(this).find('.publish-switch');
+		var span = button.siblings('span');
+
+		console.log($(this).attr('link_publish'));
+
+		if(button.hasClass('active')){
+			button.removeClass('active');
+			span.text('Publish');
+			
+			console.log($(this));
+
+			$(this).attr('href', $(this).attr('link_publish'));
+		}
+		else{
+			button.addClass('active');
+			span.text('Unpublish');
+
+			$(this).attr('href', $(this).attr('link_unpublish'));
+		}
+	});
+
 	function previewImageUploaded () {
 		
 		if(this.files && this.files[0]) {
@@ -37,7 +83,6 @@ $(document).ready(function(){
 	}
 
 	new Newpost();
-
 
 	var makerLink = $('.maker-link');
 	var audio = new Audio(BASE_URL+'assets/sound/waf.wav');
