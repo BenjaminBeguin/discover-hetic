@@ -72,6 +72,8 @@ class PostsController < ApplicationController
                 @post_voted << post_voted.post_id
             end
             @post_voted            
+        else
+            @post_voted = [];
         end
     end
 
@@ -116,32 +118,26 @@ class PostsController < ApplicationController
     end
 
     def vote
-        @connected = user_signed_in?
-        if @connected
+        if user_signed_in?
             @post = Post.find(params[:id])
-            @already_voted = Vote.where(user_id: current_user.id , post_id: @post.id);
-            if @already_voted.empty?
-                @post.update(vote: @post.vote + 1)
-                @post.save
-                if @post.created_at.to_date ==  Date.current
+            already_voted = Vote.where(user_id: current_user.id , post_id: @post.id).first;
+            if !already_voted
+                @post.increment
+                if @post.created_today?
                     @post.update(vote_created: @post.vote_created + 1)
-                    @post.save
                 end
                 @vote = Vote.create(user_id: current_user.id , post_id: @post.id)
-
-                redirect_to posts_path 
+                 
             else
-                @post.update(vote: @post.vote - 1)
-                @post.save
-                if @post.created_at.to_date ==  Date.current
+                @post.decrement
+                if @post.created_today?
                     @post.update(vote_created: @post.vote_created - 1)
-                    @post.save
                 end
-                Vote.destroy(@already_voted.first.id)
-                
-                redirect_to posts_path 
+                already_voted.destroy
             end
+            redirect_to posts_path
         else
+            flash[:error] = 'You need to be sign in to vote'
             redirect_to new_user_session_path 
         end
     end
