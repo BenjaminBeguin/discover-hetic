@@ -837,6 +837,48 @@ main .posts-list {
     display: block;
     margin-top: 15px; }
 
+.top-post-missing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%; }
+  .top-post-missing h2 {
+    font-size: 28px;
+    font-family: 'discover-bold';
+    margin-top: 15px; }
+  .top-post-missing p {
+    font-family: 'discover-light';
+    font-size: 16px;
+    margin-top: 15px; }
+  .top-post-missing a {
+    margin-top: 30px;
+    font-size: 18px;
+    font-family: 'discover-regular';
+    color: #8362c6;
+    position: relative;
+    display: block; }
+    .top-post-missing a:after {
+      content: "";
+      height: 1px;
+      display: block;
+      width: 90px;
+      background: #8362c6;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+
 /* @endgroup POST */
 .login_wrapper {
   display: -webkit-box;

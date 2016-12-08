@@ -354,5 +354,42 @@
 		}
 	}
 
+	.top-post-missing{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		h2{
+			font-size: 28px;
+			font-family: 'discover-bold';
+			margin-top: 15px;
+		}
+		p{
+			font-family: 'discover-light';
+			font-size: 16px;
+			margin-top: 15px;
+		}
+		a{
+			margin-top: 30px;
+			font-size: 18px;
+			font-family: 'discover-regular';
+			color:$purple;
+			position: relative;
+			display: block;
+			&:after{
+				content:"";
+				height: 1px;
+				display: block;
+				width: 90px;
+				background:$purple;
+				position: absolute;
+				bottom:-10px;
+				left: 50%;
+				transform:translateX(-50%);
+			}
+		}
+	}
+
 
 /* @endgroup POST */
