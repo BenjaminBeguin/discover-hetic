@@ -10,6 +10,11 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.dismiss').on('click', function(){		
+		$('.on_submit_feedback').fadeOut();
+		$('.on_submit_feedback_forms').fadeOut();
+	});
+
 	$('main').on('click', function(){
 		if($('.search-form').hasClass('active')){
 			$('.search-form').removeClass('active');

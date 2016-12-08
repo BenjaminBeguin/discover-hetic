@@ -3,7 +3,7 @@
 		<%= image_tag current_user.avatar, class:"comments-avatar" %>
 		<%= form_for([@post, @post.comments.build]) do |f| %>
 		 	<div class="form-fields">
-	        <%= f.text_area :message, size: "24x6" %>
+	        <%= f.text_area :message, size: "24x6", placeholder: "Write a comment" %>
 	        <%= button_tag(type: "submit") do %>
 	            <img src="/assets/images/icons/send_comment.svg" alt="">
 	        <% end %>

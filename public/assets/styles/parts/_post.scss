@@ -27,15 +27,12 @@
 			}
 			
 			.post-author{
-				position: absolute;
-				bottom: 0;
-				left: 340px;
 				text-decoration: none;
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
+				justify-content: flex-start;
 				align-items: center;
-
+				margin-top: 30px;
 				img{
 					border-radius:50%;
 					width: 50px;
@@ -47,16 +44,27 @@
 					font-family: 'discover-regular';
 				}
 			}
+
+			.post-metadatas{
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
 		}
 
 		&.regular-post {
 			padding: 40px 0;
+			padding-right: 100px;
 
 			&:first-child {
 				padding-top: 0;
 
 				.post-likes{
 					top:0;
+				}
+
+				.post-metadatas{
+					top:0px;
 				}
 			}
 
@@ -70,15 +78,27 @@
 				background-color: $grey;
 			}
 
+
+			&:last-child{
+				&:after{
+					left:300px;
+					right: 300px;
+				}
+			}
+
+			.post-metadatas{
+				position: absolute;
+				right: 0;
+				top: 40px;
+			}
+
 			.post-head-datas{
 				margin-bottom: 15px;
 				.post-author{
 					margin-top:15px;
-
-					.author-name{
-						a{
-							font-size: 16px;
-						}
+					a{
+						font-size: 16px;
+						color:$black;
 					}
 
 					.author-postDate{
@@ -92,6 +112,9 @@
 
 			.post-likes{
 				top:40px;
+				span{
+					font-family:'discover-light';
+				}
 			}
 
 			.post-content{
@@ -117,23 +140,12 @@
 			width:90%;
 		}
 
-		.post-author{
-			&:hover{
-				span.user-name a{
-					text-decoration: underline;
-				}
-			}
-		}
-
 		.post-cat {
 			font-size: 12px;
 			text-transform: uppercase;
 			display: block;
 			a{
 				color:$black-opacity;
-				&:hover{
-					text-decoration: underline;
-				}
 			}
 		}
 
@@ -145,8 +157,10 @@
 			color:$black;
 			display: flex;
 			flex-direction: column;
-			p{
+			span{
 				text-align: center;
+				font-family: 'discover-light';
+				margin-top: 0;
 			}
 			img{
 				margin-bottom: 10px;
@@ -185,11 +199,47 @@
 		a{
 			font-size: 16px;
 			color:#a899c6;
-			&:hover{
-				text-decoration: underline;
+		}
+	}
+
+
+	.post-metadatas{
+		margin-left: auto;
+		display: flex;
+		flex-direction: row;
+		& > div > a{
+			margin:0 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			img{
+				height: 25px;
+				fill:$black-opacity;
+			}
+			span{
+				font-family: 'discover-light';
+				font-family: 14px;
+				color:$black;
+				margin-top: 10px;
+			}
+		}
+		.post-link{
+
+			img, span{
+			}
+		}
+
+		.post-votes{
+			.post-likes{
+				position: static;
+				p{
+					font-family: 'discover-light';
+				}
 			}
 		}
 	}
+
 	.post-single-view{
 		flex-flow:wrap;
 		margin-top: 15px;
@@ -198,7 +248,6 @@
 			flex-direction: row;
 
 			width:100%;
-			margin-bottom: 40px;
 			.post-author{
 				display: flex;
 				flex-direction: row;
@@ -210,47 +259,21 @@
 				.author-data{
 					padding-top: 10px;
 					margin-left: 15px;
+					display: flex;
+					flex-direction: column;
 
 					.user-name{
 						font-family: 'discover-regular';
 						color:$black;
 					}
-				}
-			}	
-			.post-metadatas{
-				margin-left: auto;
-				display: flex;
-				flex-direction: row;
-				& > div > a{
-					margin:0 30px;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					img{
-						width:25px;
-						fill:$black-opacity;
-					}
-					span{
+					.user-postDate{
 						font-family: 'discover-light';
-						font-family: 14px;
-						color:$black;
+						color:$black-opacity;
+						font-size: 14px;
 						margin-top: 10px;
 					}
 				}
-				.post-link{
-
-					img, span{
-					}
-				}
-
-				.post-votes{
-					.post-likes{
-						position: static;
-						font-family: 'discover-light';
-					}
-				}
-			}
+			}	
 		}
 
 
@@ -258,10 +281,12 @@
 			width:100%;
 			height: 400px;
 			margin-bottom: 20px;
+			margin-top: 40px;
 		}
 
 		.post-content{
 			padding: 20px;
+			width: 100%;
 			.post-title{
 				font-size: 26px;
 			}
@@ -269,12 +294,12 @@
 				font-size: 18px;
 				font-family: 'discover-light';
 				margin-top: 30px;
+				color:$black;
 			}
 		}
 	}
 
 	.post-single-comments{
-
 	}
 
 	.comment {

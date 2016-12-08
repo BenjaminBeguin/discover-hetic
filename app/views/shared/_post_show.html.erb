@@ -7,6 +7,7 @@
 					<img src="<%= @post.user.avatar.url(:thumb) %>">
 					<div class="author-data">
 						<span class="user-name"><%= @post.user.name %></span>					
+						<span class="user-postDate"><%= distance_of_time_in_words_to_now(@post.created_at) %> ago</span>
 					</div>
 			<%
 				else
@@ -29,15 +30,16 @@
 			<div class="post-votes">
 				<%= render "shared/post_votes",  :post => @post %>
 			</div>
-
-			
-			
 		</div>
 	</div>
-	<div class="post-thumbnail" style='background:url("<%= @post.asset.url %>")no-repeat; background-size:auto 100%; background-position:left center;'></div>
+
+	<% if @post.asset.url != "" %>
+		<div class="post-thumbnail" style='background:url("<%= @post.asset.url %>")no-repeat; background-size:auto 100%; background-position:left center;'></div>
+	<% end %>
+
 	<div class="post-content">
-	<h1 class="post-title"><%= @post.title %></h1>
-	<p class="post-desc"><%= @post.content %></p>
+		<h1 class="post-title"><%= @post.title %></h1>
+		<p class="post-desc"><%= @post.content %></p>
 	</div>
 </section>
 

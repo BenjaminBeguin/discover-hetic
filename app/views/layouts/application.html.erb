@@ -51,16 +51,11 @@
 
 	<div class="header-second">
 		<ul class="menu-cat">
-		
-		<% @categories.each do |category| %>
-			<% if params[:slug] == category.slug %>
-		  		<li><%= link_to category.label, category_path(:slug => category.slug), method: :get, :class=>"active"  %> </li>
-				
-			<% else %>
-		  		<li><%= link_to category.label, category_path(:slug => category.slug), method: :get  %> </li>
-				
+			<% @categories.each do |category| %>
+			  		<li>
+			  			<%= link_to category.label, category_path(:slug => category.slug), method: :get, class: class_for_active_menu(category.slug)  %>
+			  		 </li>
 			<% end %>
-		<% end %>
 		</ul>
 
 		<%= link_to "SUBMIT", posts_new_path(), :class=>'button button-submit' %>
@@ -69,22 +64,21 @@
 	<div class="clear"></div>
 </header>
 
-<!-- 
-<div class="main-menu">
-	<%= link_to "user edit", edit_user_registration_path, method: :get %>
-	<%= link_to "all user", user_registration_path, method: :get %>
-	<%= link_to "all post", posts_path, method: :get %>
-	<%= link_to "your post ", users_posts_path, method: :get %>
-	<%= link_to "new post ", posts_new_path, method: :get %>
-</div>
- -->
+<div class="on_submit_feedback">
+	<% if notice %>
+	    <h2 class="notice"><%= notice %></h2><div class="dismiss"></div>
+	<% end %>
+	<% if alert %>
+	    <h2 class="alert"><%= alert %></h2><div class="dismiss"></div>
+	<% end %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<p id="error"><%= flash[:error] %></p>
+	<% if flash[:error] %>
+	    <h2 id="error"><%= flash[:error] %></h2><div class="dismiss"></div>
+	<% end %>
+</div>
 
 <main>
-<%= yield %>
+	<%= yield %>
 </main>
 
 	<footer>
