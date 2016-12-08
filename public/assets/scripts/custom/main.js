@@ -60,13 +60,13 @@ $(document).ready(function(){
 			
 			console.log($(this));
 
-			$(this).attr('href', $(this).attr('link_publish'));
+			$(this).attr('href', $(this).attr('link_unpublish'));
 		}
 		else{
 			button.addClass('active');
 			span.text('Unpublish');
 
-			$(this).attr('href', $(this).attr('link_unpublish'));
+			$(this).attr('href', $(this).attr('link_publish'));
 		}
 	});
 
