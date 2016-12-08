@@ -563,7 +563,8 @@ main .posts-list {
   position: relative; }
   .post-single.top-post .post-content {
     padding-left: 40px;
-    color: #202121; }
+    color: #202121;
+    width: calc(100% - 100px); }
     .post-single.top-post .post-content .post-title {
       font-size: 25px;
       margin: 30px 0 20px 0; }
