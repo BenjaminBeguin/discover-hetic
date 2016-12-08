@@ -20,6 +20,38 @@
 				<div class="post-votes">
 					<%= render "shared/post_votes",  :post => post %>
 				</div>
+				
+				<%	if post.is_my_post? && current_page?(users_posts_path) %>
+					<div class="post-edit">
+					
+						<%= link_to users_posts_id_path(:id => post.id), method: :get do %>
+							<img src="/assets/images/icons/pencil.svg" alt="">
+							<span>Edit</span>
+						<% end %>
+					</div>
+					
+					<div class="post-published">
+						<%	if post.published? %>
+							<%= link_to posts_unpublished_path(id: post.id ), method: :post, :remote=>true do %>
+								<div class="publish-switch active">
+									<div class="switch-background">
+										<div class="switch-button"></div>
+									</div>
+								</div>
+								<span>Unpublish</span>
+							<% end %>
+						<%	else %>
+							<%= link_to posts_published_path(id: post.id ), method: :post, :remote=>true do %>
+								<div class="publish-switch">
+									<div class="switch-background">
+										<div class="switch-button"></div>
+									</div>
+								</div>
+								<span>Publish</span>
+							<% end %>
+						<%	end %>
+					</div>
+				<% end %>
 			</div>
 
 		<div class="post-single__content">
