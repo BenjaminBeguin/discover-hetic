@@ -117,4 +117,9 @@ $(document).ready(function(){
 		}
 	});
 
+	var crying_dog_sound = $('#not_found_dog').get(0);
+	if(crying_dog_sound) {
+		crying_dog_sound.play();
+	}
+
 });
