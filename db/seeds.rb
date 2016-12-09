@@ -29,67 +29,67 @@
 
 #Post.delete_all
 
-5.times do
-	Post.create(
-		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
-		user_id: User.order("RANDOM()").first.id,
-		category_id: Category.order("RANDOM()").first.id,
-		title: Faker::Lorem.sentence,
-		url: Faker::Internet.url('example.com'),
-		content: Faker::Lorem.sentence(7, true),
-		asset: 'http://lorempixel.com/800/400/',
-		vote: rand(600),
-		vote_created: rand(300)
-	)
-end
+# 5.times do
+# 	Post.create(
+# 		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
+# 		user_id: User.order("RANDOM()").first.id,
+# 		category_id: Category.order("RANDOM()").first.id,
+# 		title: Faker::Lorem.sentence,
+# 		url: Faker::Internet.url('example.com'),
+# 		content: Faker::Lorem.sentence(7, true),
+# 		asset: 'http://lorempixel.com/800/400/',
+# 		vote: rand(600),
+# 		vote_created: rand(300)
+# 	)
+# end
 
-5.times do
-Post.create(
-		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
-		user_id: User.order("RANDOM()").first.id,
-		category_id: Category.order("RANDOM()").first.id,
-		title: Faker::Lorem.sentence,
-		url: Faker::Internet.url('example.com'),
-		content: Faker::Lorem.sentence(7, true),
-		vote: rand(600),
-		vote_created: rand(300)
-	)
-end
+# 5.times do
+# Post.create(
+# 		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
+# 		user_id: User.order("RANDOM()").first.id,
+# 		category_id: Category.order("RANDOM()").first.id,
+# 		title: Faker::Lorem.sentence,
+# 		url: Faker::Internet.url('example.com'),
+# 		content: Faker::Lorem.sentence(7, true),
+# 		vote: rand(600),
+# 		vote_created: rand(300)
+# 	)
+# end
 
-5.times do
-Post.create(
-		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
-		user_id: User.order("RANDOM()").first.id,
-		category_id: Category.order("RANDOM()").first.id,
-		title: Faker::Lorem.sentence,
-		url: Faker::Internet.url('example.com'),
-		asset: 'http://lorempixel.com/800/400/',
-		vote: rand(600),
-		vote_created: rand(300)
-	)
-end
+# 5.times do
+# Post.create(
+# 		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
+# 		user_id: User.order("RANDOM()").first.id,
+# 		category_id: Category.order("RANDOM()").first.id,
+# 		title: Faker::Lorem.sentence,
+# 		url: Faker::Internet.url('example.com'),
+# 		asset: 'http://lorempixel.com/800/400/',
+# 		vote: rand(600),
+# 		vote_created: rand(300)
+# 	)
+# end
 
-5.times do
-Post.create(
-		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
-		user_id: User.order("RANDOM()").first.id,
-		category_id: Category.order("RANDOM()").first.id,
-		title: Faker::Lorem.sentence,
-		content: Faker::Lorem.sentence(7, true),
-		vote: rand(600),
-		vote_created: rand(300)
-	)
-end
+# 5.times do
+# Post.create(
+# 		created_at: Faker::Date.between(2.days.ago, Date.today).to_date,
+# 		user_id: User.order("RANDOM()").first.id,
+# 		category_id: Category.order("RANDOM()").first.id,
+# 		title: Faker::Lorem.sentence,
+# 		content: Faker::Lorem.sentence(7, true),
+# 		vote: rand(600),
+# 		vote_created: rand(300)
+# 	)
+# end
 
-Comment.delete_all
-20.times do
+# Comment.delete_all
+# 20.times do
 
-	Comment.create(
-		post_id: Post.order("RANDOM()").first.id,
-		user_id: User.order("RANDOM()").first.id,
-		message: Faker::Lorem.sentence(7, true)
-	)
-end
+# 	Comment.create(
+# 		post_id: Post.order("RANDOM()").first.id,
+# 		user_id: User.order("RANDOM()").first.id,
+# 		message: Faker::Lorem.sentence(7, true)
+# 	)
+# end
 
 
 users = User.all
