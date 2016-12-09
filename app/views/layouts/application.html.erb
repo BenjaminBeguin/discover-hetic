@@ -40,10 +40,13 @@
 
 		<div class="connect">
 			<% if !user_signed_in? %>
+				<div class="not-connected">
 				<%= link_to "Sign in", new_user_session_path, method: :get %>
 				<span>/</span>
 				<%= link_to "Sign up", new_user_registration_path, method: :get %>
+				</div>
 			<% else %>
+
 				<div class="profile">
 					<p><%= current_user.name %></p>
 					<% if current_user.avatar.blank? %>
