@@ -25,7 +25,7 @@
 			<span class="post-cat"><%= link_to @top_post.category.label, category_path(:slug => @top_post.category.slug), method: :get %></span>
 			<%= link_to @top_post.title, post_path(:id => @top_post.id), method: :get, :class => "post-title"  %>
 			<p class="post-desc">
-				<%= truncate(strip_tags(@top_post.content), :length=>200)%>
+				<%= truncate(strip_tags(@top_post.content), :length=>300)%>
 			</p>
 			
 			<%= link_to posts_by_user_path(slug: @top_post.user.slug ), class:"post-author", method: :get do %>

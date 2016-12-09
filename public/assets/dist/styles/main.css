@@ -614,7 +614,8 @@ main .posts-list {
       .post-single.top-post .post-content .post-link img {
         width: 25px; }
     .post-single.top-post .post-content .post-desc {
-      font-family: 'discover-light'; }
+      font-family: 'discover-light';
+      line-height: 25px; }
   .post-single.top-post .post-author {
     text-decoration: none;
     display: -webkit-box;
@@ -688,7 +689,8 @@ main .posts-list {
       height: 200px; }
     .post-single.regular-post .post-content .post-description {
       margin-top: 20px;
-      font-family: 'discover-light'; }
+      font-family: 'discover-light';
+      line-height: 25px; }
   .post-single .post-title {
     font-size: 24px;
     font-family: 'discover-semibold';

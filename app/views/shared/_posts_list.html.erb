@@ -82,7 +82,7 @@
 						<div class="post-thumbnail" style='background:url("<%= post.asset.url %>"); background-size:cover; background-position:center center;'></div>
 					<% end %>
 				<% end %>
-				<p class="post-description"><%= post.content %></p>
+				<p class="post-description"><%= truncate(post.content, length:300) %></p>
 			</div>
 		</div>
 	</div>
