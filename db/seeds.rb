@@ -37,7 +37,7 @@ Post.delete_all
 		title: Faker::Lorem.sentence,
 		url: Faker::Internet.url('example.com'),
 		content: Faker::Lorem.sentence(7, true),
-		asset: Faker::Placeholdit.image("600x400"),
+		asset: 'http://lorempixel.com/800/400/',
 		vote: rand(1000),
 		vote_created: rand(300)
 	)
@@ -63,7 +63,7 @@ Post.create(
 		category_id: Category.order("RANDOM()").first.id,
 		title: Faker::Lorem.sentence,
 		url: Faker::Internet.url('example.com'),
-		asset: Faker::Placeholdit.image("600x400"),
+		asset: 'http://lorempixel.com/800/400/',
 		vote: rand(1000),
 		vote_created: rand(300)
 	)
