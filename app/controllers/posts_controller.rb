@@ -62,7 +62,7 @@ class PostsController < ApplicationController
             date = Date.yesterday
             @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).published.first
         else
-            redirect_to action: "index"
+            not_found
         end
     end
 
@@ -91,7 +91,7 @@ class PostsController < ApplicationController
             end
             post_like_unlike
         else
-            redirect_to action: "index"
+            not_found
         end
     end
 
@@ -209,6 +209,6 @@ class PostsController < ApplicationController
 
    def not_found
         #redirect_to root_path
-       render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
+       redirect_to not_found_path   
     end
 end
