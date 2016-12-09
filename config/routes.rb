@@ -60,6 +60,7 @@ Rails.application.routes.draw do
 
    get '/legal-mentions' => 'pages#legal_mentions'
    get '/about' => 'pages#about'
+   get '/404' => 'pages#error404'
 
     #----------------------------------#
 
