@@ -133,15 +133,15 @@ button {
   outline: none; }
 
 main {
-  padding: 60px 80px;
+  padding: 40px 80px;
   min-height: calc(100vh - 161px);
   /* Yeah it's ugly but that way, the footer will stay down. Don't juge me please.  */ }
   @media (max-width: 1280px) {
     main {
-      padding: 0 40px; } }
+      padding: 40px 80px; } }
   @media (max-width: 768px) {
     main {
-      padding: 0 20px; } }
+      padding: 30px 20px; } }
 
 .title-main {
   color: #d0c6e6;
@@ -233,10 +233,10 @@ footer {
   border: 1px solid #efefef; }
   @media (max-width: 1280px) {
     footer {
-      padding: 0 40px; } }
+      padding: 0 80px; } }
   @media (max-width: 768px) {
     footer {
-      padding: 0 20px; } }
+      padding: 0px 20px; } }
   footer .links {
     line-height: 60px;
     font-size: 14px; }
@@ -259,6 +259,8 @@ footer {
         bottom: 20px;
         width: 1px;
         background-color: rgba(32, 33, 33, 0.5); }
+      footer .links a:first-child {
+        padding-left: 0px; }
       footer .links a:last-child:after {
         display: none; }
   footer .socials a {
@@ -389,7 +391,7 @@ header {
       header .header-main .connect div {
         border-right: 1px solid #efefef;
         height: 100%;
-        padding: 0 30px;
+        padding: 0 33px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -593,6 +595,9 @@ main .posts-list {
         font-size: 20px;
         color: #ababab;
         margin-left: 10px; }
+    .user-profile-card .user-palmares p {
+      font-family: 'discover-light';
+      color: rgba(32, 33, 33, 0.5); }
   .user-profile-card .edit-button {
     position: absolute;
     right: 48px;
@@ -698,7 +703,7 @@ main .posts-list {
     .post-single.regular-post .post-head-datas {
       margin-bottom: 15px; }
       .post-single.regular-post .post-head-datas .post-author {
-        margin-top: 15px; }
+        margin-top: 8px; }
         .post-single.regular-post .post-head-datas .post-author a {
           font-size: 16px;
           color: #202121; }
@@ -725,13 +730,15 @@ main .posts-list {
     margin-top: 18px;
     text-decoration: none;
     color: #202121;
-    width: 90%; }
+    width: 84%; }
   .post-single .post-cat {
     font-size: 12px;
     text-transform: uppercase;
     display: block; }
     .post-single .post-cat a {
       color: rgba(32, 33, 33, 0.5); }
+      .post-single .post-cat a:hover {
+        color: #202121 !important; }
   .post-single .post-likes {
     position: absolute;
     right: 0;
@@ -1131,12 +1138,11 @@ main .posts-list {
         height: 20px;
         margin-left: 15px; }
 
-.search h1 {
-  color: #8362c6; }
-
-.search .sort-by {
-  top: 40px !important;
-  right: 40px !important; }
+.search {
+  position: relative; }
+  .search .sort-by {
+    top: 23px !important;
+    right: 10px !important; }
 
 .newpost_title:after {
   content: " Fill the form";
@@ -1360,6 +1366,8 @@ input, select, textarea {
   outline: none; }
   input:focus, select:focus, textarea:focus {
     border: 1px solid #8362c6 !important; }
+    input:focus.search, select:focus.search, textarea:focus.search {
+      border: none !important; }
 
 textarea {
   padding-top: 10px; }
@@ -1587,9 +1595,9 @@ textarea {
         .top-users .user .user-infos .user-palmares > div img, .top-users .user .user-infos .user-palmares > div i {
           margin-left: 10px; }
       .top-users .user .user-infos .user-palmares img, .top-users .user .user-infos .user-palmares i {
-        height: 20px;
+        height: 18px;
         color: #ababab;
-        font-size: 20px; }
+        font-size: 19px; }
       .top-users .user .user-infos .user-palmares p {
         color: rgba(32, 33, 33, 0.5);
         margin: 2px 0;

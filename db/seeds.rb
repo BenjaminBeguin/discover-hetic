@@ -6,14 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.delete_all
+# Category.delete_all
 
-Category.create(label: "Lifestyle")
-Category.create(label: "Culture")
-Category.create(label: "Tech")
-Category.create(label: "Art")
-Category.create(label: "Nature")
-Category.create(label: "Society")
+# Category.create(label: "Lifestyle")
+# Category.create(label: "Culture")
+# Category.create(label: "Tech")
+# Category.create(label: "Art")
+# Category.create(label: "Nature")
+# Category.create(label: "Society")
 
 # User.delete_all
 
@@ -27,7 +27,7 @@ Category.create(label: "Society")
 # 	)
 # end
 
-Post.delete_all
+#Post.delete_all
 
 5.times do
 	Post.create(
@@ -38,7 +38,7 @@ Post.delete_all
 		url: Faker::Internet.url('example.com'),
 		content: Faker::Lorem.sentence(7, true),
 		asset: 'http://lorempixel.com/800/400/',
-		vote: rand(1000),
+		vote: rand(600),
 		vote_created: rand(300)
 	)
 end
@@ -51,7 +51,7 @@ Post.create(
 		title: Faker::Lorem.sentence,
 		url: Faker::Internet.url('example.com'),
 		content: Faker::Lorem.sentence(7, true),
-		vote: rand(1000),
+		vote: rand(600),
 		vote_created: rand(300)
 	)
 end
@@ -64,7 +64,7 @@ Post.create(
 		title: Faker::Lorem.sentence,
 		url: Faker::Internet.url('example.com'),
 		asset: 'http://lorempixel.com/800/400/',
-		vote: rand(1000),
+		vote: rand(600),
 		vote_created: rand(300)
 	)
 end
@@ -76,7 +76,7 @@ Post.create(
 		category_id: Category.order("RANDOM()").first.id,
 		title: Faker::Lorem.sentence,
 		content: Faker::Lorem.sentence(7, true),
-		vote: rand(1000),
+		vote: rand(600),
 		vote_created: rand(300)
 	)
 end
