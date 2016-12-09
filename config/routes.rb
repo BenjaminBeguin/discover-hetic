@@ -55,13 +55,13 @@ Rails.application.routes.draw do
     get 'users/posts/:id' => 'users#edit_user_post' , :as => :users_posts_id 
     get 'users/:slug' => "posts#by_user", as: :posts_by_user
 
-    #----------------------------------#
-
-   # get "*path" => redirect("/")
 
    #-------------- Static Pages -------------#
 
    get '/legal-mentions' => 'pages#legal_mentions'
    get '/about' => 'pages#about'
 
+    #----------------------------------#
+
+    get "*path" => 'posts#not_found';
 end
