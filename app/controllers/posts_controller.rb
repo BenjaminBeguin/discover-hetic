@@ -153,7 +153,10 @@ class PostsController < ApplicationController
                 @post = Post.new
                 @categories = Category.all;
             else
-                @message = "You have already post today ! "
+                # @message = "You have already post today ! "
+                @message = ""
+                flash[:error] = 'You have already post today ! '
+                redirect_to root_path 
              end
         else
             flash[:error] = 'You need to be login to post'
@@ -176,7 +179,7 @@ class PostsController < ApplicationController
                 end
             else
                 flash[:error] = 'You have already post today ! '
-                redirect_to new_user_session_path 
+                redirect_to root_path  
             end
         end
     end

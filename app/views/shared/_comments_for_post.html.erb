@@ -1,19 +1,17 @@
 <% @comments.each do |comment| %>
 	<div class="comment">
 		<% if comment.user %>
-			<% if current_user && !current_user.avatar.blank? %>
-				<%= image_tag comment.user.avatar, class:"comments-avatar" %>
-			<% else %>
+			<% if comment.user.avatar.blank? %>
 				<%= image_tag set_random_avatar(comment.user.id), class:"comments-avatar" %>
+			<% else %>
+				<%= image_tag comment.user.avatar, class:"comments-avatar" %>
 			<% end %>
-		<% else %>
-			<%= image_tag set_random_avatar(4), class:"comments-avatar" %>
 		<% end %>
 		<div class="comment-content">
 		<% if comment.user %>
-			<span class="comment-datas"><strong><%= comment.user.name %></strong><i> | <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</i></span>
+			<span class="comment-datas"><%= comment.user.name %><i> | <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</i></span>
 		<% else %>
-		<span class="comment-datas"><strong>RIP - User deleted</strong><i> | <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</i></span>
+		<span class="comment-datas">RIP - User deleted<i> | <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</i></span>
 
 		<% end %>
 			<p class="comment-text">

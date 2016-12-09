@@ -87,10 +87,11 @@
 		.comment-userActions{
 			position: absolute;
 			right: 40px;
-			top: 40px;
+			top: 50%;
+			transform: translateY(50%);
 			img{
 				height: 20px;
-				margin-left: 10px;
+				margin-left: 15px;
 			}
 		}
 	}
