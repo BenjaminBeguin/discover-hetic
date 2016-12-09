@@ -60,9 +60,11 @@ Rails.application.routes.draw do
 
    get '/legal-mentions' => 'pages#legal_mentions'
    get '/about' => 'pages#about'
-   get '/404' => 'pages#error404', :as => :not_found ;
+   get '/404' => 'pages#error404', :as => :not_found;
+
+
 
     #----------------------------------#
-    get "*path" => redirect('/404')
+    get "*path" => redirect('404')
     #get "*path" => 'pages#error404', :as => :not_found ;
 end
