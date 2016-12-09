@@ -81,12 +81,12 @@
 			}
 
 
-			&:last-child{
+			&:last-child, &:nth-last-child(2){
 				&:after{
-					left:300px;
-					right: 300px;
+					content:none;
 				}
 			}
+			
 
 			.post-metadatas{
 				position: absolute;
