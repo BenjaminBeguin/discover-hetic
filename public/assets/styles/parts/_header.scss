@@ -105,9 +105,36 @@
 				}
 			}
 			.connect{
-				padding: 0 20px;
-				width: 157px;
-				text-align: center;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				align-items: center;
+				height: 100%;
+
+				div{
+					border-right:1px solid $grey;
+					height: 100%;
+					padding:0 30px;
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					align-items: center;
+
+					&:last-child{
+						border:none;
+					}
+
+					&.profile{
+						a{
+							margin-right: 15px;
+						}
+						span{
+							display: inline-block;
+							height: 40px;
+							width: 40px;
+						}
+					}
+				}
 
 				a{
 					font-size: 16px;
