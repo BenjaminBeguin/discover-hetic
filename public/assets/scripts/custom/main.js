@@ -82,6 +82,9 @@ $(document).ready(function(){
 		}
 	});
 
+	//Menu toggle
+
+
 	function previewImageUploaded () {
 		
 		if(this.files && this.files[0]) {

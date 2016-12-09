@@ -45,17 +45,19 @@
 				<%= link_to "Sign up", new_user_registration_path, method: :get %>
 			<% else %>
 				<div class="profile">
-					<%= link_to "Profile", users_posts_path, method: :get %>
+					<p><%= current_user.name %></p>
 					<% if current_user.avatar.blank? %>
 						<span class="post-single__avatar" style="background-image: url(<%= set_random_avatar(current_user.id) %>)"></span>
 					<% else %>
 						<span class="post-single__avatar" style="background-image: url(<%= current_user.avatar %>)">
 						</span>
 					<% end %>
+					<div class="collapse">
+						<%= link_to "Profile", users_posts_path, method: :get %>
+						<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+					</div>
 				</div>
-			  <div class="logout">
-			  	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-			  </div>
+				
 			<% end %>
 		</div>
 	</div>
