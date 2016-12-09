@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find_by_id(params[:id]) or not_found
-        @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
+        @comments = Comment.where(post_id: params[:id]).order(id: :desc)
         post_like_unlike
     end
 
@@ -162,15 +162,21 @@ class PostsController < ApplicationController
     end
 
     def create
-        @connected = user_signed_in?
-        if @connected
-            @post = Post.new(params.require(:post).permit(:title, :category_id, :url, :content, :asset));
-            @post.user_id = current_user.id 
-            if @post.save 
-                redirect_to action: "index"
+        date = Time.now;
+        if user_signed_in?
+            @has_voted = Post.where(created_at: date.midnight..date.end_of_day, user_id: current_user.id).first
+            if @has_voted.blank?
+                @post = Post.new(params.require(:post).permit(:title, :category_id, :url, :content, :asset));
+                @post.user_id = current_user.id 
+                if @post.save 
+                    redirect_to action: "index"
+                else
+                    @categories = Category.all;
+                    render :new  
+                end
             else
-                @categories = Category.all;
-                render :new  
+                flash[:error] = 'You have already post today ! '
+                redirect_to new_user_session_path 
             end
         end
     end
