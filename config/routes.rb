@@ -64,5 +64,5 @@ Rails.application.routes.draw do
 
     #----------------------------------#
 
-    get "*path" => 'posts#not_found';
+    get "*path" => 'pages#error404', :as => :not_found ;
 end

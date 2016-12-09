@@ -9,6 +9,6 @@ class PagesController < ApplicationController
 	end
 
 	def error404
-
+		
 	end
 end
