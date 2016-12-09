@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find_by_id(params[:id]) or not_found
-        @comments = Comment.where(post_id: params[:id]).order(created_at: :desc)
+        @comments = Comment.where(post_id: params[:id]).order(id: :desc)
         post_like_unlike
     end
 
