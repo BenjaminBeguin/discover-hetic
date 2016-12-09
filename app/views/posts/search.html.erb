@@ -1,26 +1,25 @@
-<section class="posts-list search">
-	<h1>Search post : "<%= params[:q] %>"</h1>
-
+<div class="search posts-list">
+	<h1 class="title-main">Search post : "<%= params[:q] %>"</h1>
 	<div class="sort-by">
 		<%= link_to "NEWEST", root_path, :class=>"active" %>
 		<span>/</span>
 		<%= link_to "TOP", root_path(:orderby => "top" ) %>
 	</div>
+	<section class="posts-list">
+		<% if @posts.present? %>
+			<%= render "shared/posts_list" %>
+		<% else %>
+		    <div class="top-post-missing">
+		  		<img src="/assets/images/dog.png" alt="">
+		  		<h2>No Discover for this search term yet !</h2>
+		  		<%= link_to "Submit a discover", posts_new_path %>
+		  	</div>
+		<% end %>
 
-	<% if @posts.present? %>
-		<%= render "shared/posts_list" %>
-	<% else %>
-	    <div class="top-post-missing">
-	  		<img src="/assets/images/dog.png" alt="">
-	  		<h2>No Discover for this search term yet !</h2>
-	  		<%= link_to "Submit a discover", posts_new_path %>
-	  	</div>
-	<% end %>
+		<%= will_paginate @posts %>
 
-	<%= will_paginate @posts %>
-
-	
-</section>
-
+		
+	</section>
+</div>
 
 

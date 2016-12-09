@@ -30,7 +30,7 @@
 		<div class="search">		
 			<div class="search-form">
 				<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
-			    <%= text_field_tag :q, params[:q], placeholder: "Search" %>
+			    <%= text_field_tag :q, params[:q], placeholder: "Search", class: "search" %>
 			    <%= button_tag( :class => "search-button") do %>
 			      <img src="/assets/images/icons/search.svg" alt="">
 			    <% end %>

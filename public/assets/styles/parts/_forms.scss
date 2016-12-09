@@ -6,6 +6,10 @@ input, select, textarea{
 	outline: none;
 	&:focus{
 		border:1px solid $purple !important;
+
+		&.search{
+			border:none !important;
+		}
 	}
 }
 
