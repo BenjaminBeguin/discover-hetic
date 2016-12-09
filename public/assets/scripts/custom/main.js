@@ -51,10 +51,10 @@ $(document).ready(function(){
 	}
 
 	$('.post-likes').on('click', function(){
-		$('.hider').addClass('active');
+		$('.post-likes').css('pointer-events', 'none');
 		like_post(this);
 		setTimeout(function(){
-			$('.hider').removeClass('active');
+			$('.post-likes').css('pointer-events', 'auto');
 		}, 1000);
 	});
 

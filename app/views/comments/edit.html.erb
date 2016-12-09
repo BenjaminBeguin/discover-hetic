@@ -1,4 +1,18 @@
-<%= form_for([@post, @comment]) do |f| -%>
-	<%= f.text_area :message %>
-	<%= f.submit %>
-<% end %>
+<h2 class="title-second">Edit your comment</h2>
+
+<section class="comment_edit_wrapper">
+
+	<%= form_for([@post, @comment]) do |f| -%>
+
+		<div class="field">
+			<%= f.label :message, "New comment", :class => "form_title" %>
+			<%= f.text_area :message, autofocus: true, :class => "form_input", :id => "edit_comment_content" %>
+		</div>
+		
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+
+	<% end %>
+
+</section>
