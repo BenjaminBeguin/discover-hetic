@@ -138,10 +138,10 @@ main {
   /* Yeah it's ugly but that way, the footer will stay down. Don't juge me please.  */ }
   @media (max-width: 1280px) {
     main {
-      padding: 40px 80px; } }
+      padding: 0 40px; } }
   @media (max-width: 768px) {
     main {
-      padding: 30px 20px; } }
+      padding: 0 20px; } }
 
 .title-main {
   color: #d0c6e6;
@@ -194,7 +194,16 @@ section {
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  position: relative; }
+  .pagination:before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 1px;
+    background: #efefef;
+    position: absolute;
+    top: -20px; }
   .pagination .previous_page, .pagination .next_page {
     display: none; }
   .pagination .current, .pagination a {
@@ -204,15 +213,6 @@ section {
     margin: 0 5px; }
   .pagination a {
     opacity: .5; }
-
-.hider {
-  position: absolute;
-  height: 100%;
-  width: 40px;
-  display: none;
-  z-index: 10; }
-  .hider.active {
-    display: block; }
 
 /* @group FOOTER */
 footer {
@@ -643,7 +643,7 @@ main .posts-list {
         width: 25px; }
     .post-single.top-post .post-content .post-desc {
       font-family: 'discover-light';
-      line-height: 25px; }
+      line-height: 22px; }
   .post-single.top-post .post-author {
     text-decoration: none;
     display: -webkit-box;
@@ -689,9 +689,8 @@ main .posts-list {
       right: 20px;
       height: 1px;
       background-color: #efefef; }
-    .post-single.regular-post:last-child:after {
-      left: 300px;
-      right: 300px; }
+    .post-single.regular-post:last-child:after, .post-single.regular-post:nth-last-child(2):after {
+      content: none; }
     .post-single.regular-post .post-metadatas {
       position: absolute;
       right: 0;
@@ -717,7 +716,8 @@ main .posts-list {
       height: 200px; }
     .post-single.regular-post .post-content .post-description {
       font-family: 'discover-light';
-      line-height: 25px; }
+      line-height: 22px;
+      margin-top: 15px; }
   .post-single .post-title {
     font-size: 24px;
     font-family: 'discover-semibold';
@@ -884,7 +884,8 @@ main .posts-list {
       font-size: 18px;
       font-family: 'discover-light';
       margin-top: 30px;
-      color: #202121; }
+      color: #202121;
+      line-height: 25px; }
 
 .comment {
   display: block;
@@ -894,8 +895,6 @@ main .posts-list {
   .comment__datas {
     display: block;
     margin-bottom: 20px; }
-    .comment__datas strong {
-      font-weight: bold; }
     .comment__datas i {
       font-style: italic; }
   .comment__content {
@@ -1125,10 +1124,12 @@ main .posts-list {
     .post-single-comments .comment .comment-userActions {
       position: absolute;
       right: 40px;
-      top: 40px; }
+      top: 50%;
+      -webkit-transform: translateY(50%);
+              transform: translateY(50%); }
       .post-single-comments .comment .comment-userActions img {
         height: 20px;
-        margin-left: 10px; }
+        margin-left: 15px; }
 
 .search h1 {
   color: #8362c6; }
@@ -1593,6 +1594,12 @@ textarea {
         color: rgba(32, 33, 33, 0.5);
         margin: 2px 0;
         font-family: 'discover-light'; }
+
+.comment_edit_wrapper #edit_comment_content {
+  max-width: 700px;
+  min-height: 150px;
+  width: 100%;
+  display: block; }
 
 h1 {
   font-size: 25px; }
