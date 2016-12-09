@@ -97,7 +97,7 @@
 			.post-head-datas{
 				margin-bottom: 15px;
 				.post-author{
-					margin-top:15px;
+					margin-top:8px;
 					a{
 						font-size: 16px;
 						color:$black;
@@ -140,7 +140,7 @@
 			margin-top: 18px;
 			text-decoration: none;
 			color: $black;
-			width:90%;
+			width:84%;
 		}
 
 		.post-cat {
@@ -149,6 +149,10 @@
 			display: block;
 			a{
 				color:$black-opacity;
+
+				&:hover {
+					color:$black !important;					
+				}
 			}
 		}
 
