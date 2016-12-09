@@ -1101,6 +1101,9 @@ main .posts-list {
         height: 20px;
         margin-left: 10px; }
 
+.search h1 {
+  color: #8362c6; }
+
 .search .sort-by {
   top: 40px !important;
   right: 40px !important; }
