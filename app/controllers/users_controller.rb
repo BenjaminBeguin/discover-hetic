@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     end
 
     def not_found
-      render file: "#{Rails.root}/public/404.html", layout: false, status: 404    
+      redirect_to not_found_path      
     end
 
     def post_like_unlike
