@@ -23,6 +23,7 @@ textarea{
 
 			&:after {
 				border-radius: 50%;
+				opacity: .7;
 			}
 
 			label {
@@ -105,7 +106,7 @@ textarea{
 
 		&:hover {
 			&:after {
-				opacity: .7;
+				opacity: .6;
 			}
 		}
 
@@ -117,6 +118,7 @@ textarea{
 			width: 100%;
 			height: 100%;
 			background-color: $black-opacity;
+			opacity: .4;
 			transition: .3s;
 			z-index: 1;
 		}
@@ -149,6 +151,7 @@ textarea{
 			height: 100%;
 			padding-top: 40px;
 			cursor: pointer;
+			font-family: 'discover-light';
 			z-index: 2;
 		}
 
