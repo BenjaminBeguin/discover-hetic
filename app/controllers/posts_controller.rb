@@ -91,7 +91,7 @@ class PostsController < ApplicationController
             end
             post_like_unlike
         else
-            not_found
+            
         end
     end
 
