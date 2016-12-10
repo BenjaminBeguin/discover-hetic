@@ -119,6 +119,13 @@ RSpec.describe "A user", :type => :model do
     userFromDB = User.last
     expect(userFromDB.name).to eq("Jean Pierre")
     expect(userFromDB.slug).to eq("jean_pierre")
+
+
+      user2 = User.create(name: "Jan.Pierre", email: "dsvm@rshow.com" , password: "jesuislepassword")
+     user2 = User.last
+
+
+    expect(user2.slug).to eq("jan_pierre")
   end
 
   it "- Can have a description" do
