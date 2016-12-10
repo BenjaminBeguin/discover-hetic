@@ -45,7 +45,7 @@ class User < ApplicationRecord
         ret.gsub! /\s*[^A-Za-z0-9\.\-]\s*/, '_'  
         ret.gsub! /_+/,"_"
         ret.gsub! /\A[_\.]+|[_\.]+\z/,""
-        ret.downcase
+        ret.split('.').join('_').downcase
     end
 
 	def check_url
