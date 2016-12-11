@@ -139,7 +139,7 @@ class PostsController < ApplicationController
             end
             redirect_to posts_path
         else
-            flash[:error] = 'You need to be sign in to vote'
+            flash[:error] = 'You need to be signed in to vote'
             redirect_to new_user_session_path 
         end
     end
@@ -155,11 +155,11 @@ class PostsController < ApplicationController
             else
                 # @message = "You have already posted today ! "
                 @message = ""
-                flash[:error] = 'You have already posted today ! '
+                flash[:error] = 'You have already posted today !'
                 redirect_to root_path 
              end
         else
-            flash[:error] = 'You have to be logged to create a post'
+            flash[:error] = 'You have to be logged in to create a post'
             redirect_to new_user_session_path 
         end
     end
@@ -178,7 +178,7 @@ class PostsController < ApplicationController
                     render :new  
                 end
             else
-                flash[:error] = 'You have already created a post today ! '
+                flash[:error] = 'You have already posted today !'
                 redirect_to root_path  
             end
         end

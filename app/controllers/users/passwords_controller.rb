@@ -7,7 +7,7 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # POST /resource/password
   def create
-    flash[:error] = "This feature don't work for the moment please contact us for more information"
+    flash[:error] = "This feature is not implemented yet, please contact us for more information"
     redirect_to action: "new"
   end
 
