@@ -196,14 +196,6 @@ section {
       -ms-flex-align: center;
           align-items: center;
   position: relative; }
-  .pagination:before {
-    content: "";
-    display: block;
-    width: 200px;
-    height: 1px;
-    background: #efefef;
-    position: absolute;
-    top: -20px; }
   .pagination .previous_page, .pagination .next_page {
     display: none; }
   .pagination .current, .pagination a {
@@ -694,7 +686,7 @@ main .posts-list {
       right: 20px;
       height: 1px;
       background-color: #efefef; }
-    .post-single.regular-post:last-child:after, .post-single.regular-post:nth-last-child(2):after {
+    .post-single.regular-post:last-child:after {
       content: none; }
     .post-single.regular-post .post-metadatas {
       position: absolute;

@@ -81,7 +81,7 @@
 			}
 
 
-			&:last-child, &:nth-last-child(2){
+			&:last-child{
 				&:after{
 					content:none;
 				}
