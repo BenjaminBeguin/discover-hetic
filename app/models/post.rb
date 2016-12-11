@@ -13,12 +13,12 @@ class Post < ApplicationRecord
 	#default_scope { where(published: true) }
 	#validates :url, :format => URI::regexp(%w(http https));
 
+	# Paperclip file upload validation
 	has_attached_file :asset,
 					  :styles => { 
 					  	:medium => "300x300>", 
 					  	:thumb => "100x100#" 
-				  	  },
-					  :default_url => ""
+				  	  }
   	validates_attachment :asset,
   		content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"] }
 	validates_attachment_content_type :asset, :content_type => /\Aimage\/.*\Z/
@@ -58,13 +58,11 @@ class Post < ApplicationRecord
 
 	def increment
 		update(vote: vote + 1)
-
 	end
 
 
 	def decrement
 		update(vote: vote - 1)
-
 	end
 
 	def capitalize_title

@@ -18,8 +18,4 @@ class Category < ApplicationRecord
         ret.gsub! /\A[_\.]+|[_\.]+\z/,""
         ret.downcase
     end
-
-
-
-	
 end

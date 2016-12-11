@@ -1,113 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Discover</title>
+	<head>
+	  <title>Discover</title>
 
-   <%= javascript_include_tag "application" %>
-   <%= javascript_include_tag "libs" %>
-   <%= javascript_include_tag "custom" %>
-  
-  <link rel="stylesheet" href="/assets/dist/styles/font-awesome.min.css">
-  <link rel="stylesheet" href="/assets/dist/styles/main.css">
+	   <%= javascript_include_tag "application" %>
+	   <%= javascript_include_tag "libs" %>
+	   <%= javascript_include_tag "custom" %>
+	  
+	  <link rel="stylesheet" href="/assets/dist/styles/font-awesome.min.css">
+	  <link rel="stylesheet" href="/assets/dist/styles/main.css">
 
-  <link rel="icon" href="/assets/images/favicon.png">
-  <!-- <script href="/assets/dist/scripts/libs.js"></script>
-  <script href="/assets/dist/scripts/custom.js"></script> -->
-  <%= csrf_meta_tags %>
+	  <link rel="icon" href="/assets/images/favicon.png">
+	  <!-- <script href="/assets/dist/scripts/libs.js"></script>
+	  <script href="/assets/dist/scripts/custom.js"></script> -->
+	  <%= csrf_meta_tags %>
 
-  <script type="text/javascript">
-    var BASE_URL = '<%= root_url %>';
-  </script>
-</head>
-<body>
+	  <script type="text/javascript">
+	    var BASE_URL = '<%= root_url %>';
+	  </script>
+	</head>
+	
+	<body>
 
-<header>
-	<div class="header-main">
-		<a href='/' class="logo">
-			<span>Discover.</span>
-		</a>
+		<header>
+			<div class="header-main">
+				<a href='/' class="logo">
+					<span>Discover.</span>
+				</a>
 
-		<div class="search">		
-			<div class="search-form">
-				<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
-			    <%= text_field_tag :q, params[:q], placeholder: "Search", class: "search" %>
-			    <%= button_tag( :class => "search-button") do %>
-			      <img src="/assets/images/icons/search.svg" alt="">
-			    <% end %>
-				<% end %>
-			</div>
-		</div>
-
-		<div class="connect">
-			<% if !user_signed_in? %>
-				<div class="not-connected">
-				<%= link_to "Sign in", new_user_session_path, method: :get %>
-				<span>/</span>
-				<%= link_to "Sign up", new_user_registration_path, method: :get %>
-				</div>
-			<% else %>
-
-				<div class="profile">
-					<p><%= current_user.name %></p>
-					<% if current_user.avatar.blank? %>
-						<span class="post-single__avatar" style="background-image: url(<%= set_random_avatar(current_user.id) %>)"></span>
-					<% else %>
-						<span class="post-single__avatar" style="background-image: url(<%= current_user.avatar %>)">
-						</span>
-					<% end %>
-					<div class="collapse">
-						<%= link_to "Profile", users_posts_path, method: :get %>
-						<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+				<div class="search">		
+					<div class="search-form">
+						<%= form_tag(posts_search_path, :method => "get", id: "search-form") do %>
+					    <%= text_field_tag :q, params[:q], placeholder: "Search", class: "search" %>
+					    <%= button_tag( :class => "search-button") do %>
+					      <img src="/assets/images/icons/search.svg" alt="">
+					    <% end %>
+						<% end %>
 					</div>
 				</div>
-				
+
+				<div class="connect">
+					<% if !user_signed_in? %>
+						<div class="not-connected">
+						<%= link_to "Sign in", new_user_session_path, method: :get %>
+						<span>/</span>
+						<%= link_to "Sign up", new_user_registration_path, method: :get %>
+						</div>
+					<% else %>
+
+						<div class="profile">
+							<p><%= current_user.name %></p>
+							<% if current_user.avatar.blank? %>
+								<span class="post-single__avatar" style="background-image: url(<%= set_random_avatar(current_user.id) %>)"></span>
+							<% else %>
+								<span class="post-single__avatar" style="background-image: url(<%= current_user.avatar %>)">
+								</span>
+							<% end %>
+							<div class="collapse">
+								<%= link_to "Profile", users_posts_path, method: :get %>
+								<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+							</div>
+						</div>
+						
+					<% end %>
+				</div>
+			</div>
+
+			<div class="header-second">
+				<ul class="menu-cat">
+					<% @categories.each do |category| %>
+					  		<li>
+					  			<%= link_to category.label, category_path(:slug => category.slug), method: :get, class: class_for_active_menu(category.slug)  %>
+					  		 </li>
+					<% end %>
+				</ul>
+
+				<%= link_to "SUBMIT", posts_new_path(), :class=>'button button-submit' %>
+			</div>
+
+			<div class="clear"></div>
+		</header>
+
+		<div class="on_submit_feedback">
+			<% if notice %>
+			    <h2 class="notice"><%= notice %></h2><div class="dismiss"></div>
+			<% end %>
+			<% if alert %>
+			    <h2 class="alert"><%= alert %></h2><div class="dismiss"></div>
+			<% end %>
+
+			<% if flash[:error] %>
+			    <h2 id="error"><%= flash[:error] %></h2><div class="dismiss"></div>
 			<% end %>
 		</div>
-	</div>
 
-	<div class="header-second">
-		<ul class="menu-cat">
-			<% @categories.each do |category| %>
-			  		<li>
-			  			<%= link_to category.label, category_path(:slug => category.slug), method: :get, class: class_for_active_menu(category.slug)  %>
-			  		 </li>
-			<% end %>
-		</ul>
+		<main>
+			<%= yield %>
+		</main>
 
-		<%= link_to "SUBMIT", posts_new_path(), :class=>'button button-submit' %>
-	</div>
+		<footer>
+			<div class="links">
+				<%= link_to "Legal mentions", legal_mentions_path %>
+				<%= link_to "About", about_path %>
+			</div>
 
-	<div class="clear"></div>
-</header>
+			<div class="socials">
+				<a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				<a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</div>
+		</footer>
 
-<div class="on_submit_feedback">
-	<% if notice %>
-	    <h2 class="notice"><%= notice %></h2><div class="dismiss"></div>
-	<% end %>
-	<% if alert %>
-	    <h2 class="alert"><%= alert %></h2><div class="dismiss"></div>
-	<% end %>
-
-	<% if flash[:error] %>
-	    <h2 id="error"><%= flash[:error] %></h2><div class="dismiss"></div>
-	<% end %>
-</div>
-
-<main>
-	<%= yield %>
-</main>
-
-	<footer>
-		<div class="links">
-			<%= link_to "Legal mentions", legal_mentions_path %>
-			<%= link_to "About", about_path %>
-		</div>
-
-		<div class="socials">
-			<a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-			<a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-		</div>
-	</footer>
-
-</body>
+	</body>
 </html>

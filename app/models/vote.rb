@@ -8,7 +8,6 @@ class Vote < ApplicationRecord
 	def add_vote_to_user
 		post.user.vote_count += 1
 		post.user.save
-
 	end
 
 	def remove_vote_to_user

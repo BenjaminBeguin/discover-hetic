@@ -7,8 +7,8 @@ class PostsController < ApplicationController
         else
             @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('id DESC').published
         end
-        @post_voted = post_like_unlike
 
+        @post_voted = post_like_unlike
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
         @best_users = get_best_users
@@ -56,6 +56,7 @@ class PostsController < ApplicationController
             else
                 @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(created_at: :desc).published
             end
+
             post_like_unlike
 
             #--- get the first by vote --#
@@ -129,7 +130,6 @@ class PostsController < ApplicationController
                     @post.update(vote_created: @post.vote_created + 1)
                 end
                 @vote = Vote.create(user_id: current_user.id , post_id: @post.id)
-                 
             else
                 @post.decrement
                 if @post.created_today?
@@ -153,13 +153,13 @@ class PostsController < ApplicationController
                 @post = Post.new
                 @categories = Category.all;
             else
-                # @message = "You have already post today ! "
+                # @message = "You have already posted today ! "
                 @message = ""
-                flash[:error] = 'You have already post today ! '
+                flash[:error] = 'You have already posted today ! '
                 redirect_to root_path 
              end
         else
-            flash[:error] = 'You need to be login to post'
+            flash[:error] = 'You have to be logged to create a post'
             redirect_to new_user_session_path 
         end
     end
@@ -178,7 +178,7 @@ class PostsController < ApplicationController
                     render :new  
                 end
             else
-                flash[:error] = 'You have already post today ! '
+                flash[:error] = 'You have already created a post today ! '
                 redirect_to root_path  
             end
         end

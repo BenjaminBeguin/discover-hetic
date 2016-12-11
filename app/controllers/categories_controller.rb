@@ -8,9 +8,7 @@ class CategoriesController < ApplicationController
     end
 
     def create
-        @category = Category.new(
-            label: params[:category][:label]
-        )
+        @category = Category.new(label: params[:category][:label])
         if @category.save
             redirect_to action: "index"
         else

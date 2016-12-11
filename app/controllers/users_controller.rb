@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     end
 
     def not_found
-      redirect_to not_found_path      
+        redirect_to not_found_path      
     end
 
     def post_like_unlike

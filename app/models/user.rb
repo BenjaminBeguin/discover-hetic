@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   	has_many :posts, :dependent => :destroy
 	validates :name, presence: true, uniqueness: true
 	validates :slug, uniqueness: true
@@ -13,6 +11,7 @@ class User < ApplicationRecord
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+    # Paperclip file upload validation
 	has_attached_file :avatar,
 					  :styles => { 
 					  	:medium => "300x300>", 
