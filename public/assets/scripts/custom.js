@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-$(document).ready(function(){
+s$(document).ready(function(){
 
 	//EXPAND SEARCH
 	$('.search-button').on('click', function(){		
