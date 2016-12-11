@@ -27,7 +27,9 @@
 # 	)
 # end
 
-#Post.delete_all
+ Post.delete_all
+ Comment.delete_all
+ Vote.delete_all
 
 # 5.times do
 # 	Post.create(
@@ -96,10 +98,11 @@ users = User.all
 users.each do |user|
 
 	user_post_count = 0
-
 	user_posts = Post.where(user_id: user.id)
-	user_posts.each do |post|
-		user_post_count += post.vote
+	if user_posts
+		user_posts.each do |post|
+			user_post_count += post.vote
+		end
 	end
 
 	user.update(vote_count: user_post_count)
