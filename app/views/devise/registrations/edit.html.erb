@@ -24,7 +24,7 @@
                         <% else %>
                             <div class="file-input image-input" style="background-image: url(<%= current_user.avatar %>)" >
                         <% end %>
-                        <%= f.label :avatar, 'Drag and drop your file or click to upload' %>
+                        <%= f.label :avatar, 'Click to upload your file' %>
                         <%= f.file_field :avatar, autofocus: true %>
                             <img src="" class="current-image" id="current-image"></span>
                         </div>
