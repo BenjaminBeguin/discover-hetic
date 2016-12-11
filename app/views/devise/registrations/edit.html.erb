@@ -5,12 +5,12 @@
 
         <div class="on_submit_feedback_forms">
              <% if !devise_error_messages!.blank? %>
-                <h2 class="alert">
-                    <% devise_error_messages!.each do |error| %>
-                        <span><%= error %></span>
-                    <% end %>
-                </h2>
-            <% end %>
+                 <h2 class="alert">
+                     <% devise_error_messages!.messages.each do |error| %>
+                         <span><%= error[0] %> <%= error[1][0] %></span>
+                     <% end %>
+                 </h2>
+             <% end %>
             <div class="dismiss"></div>
         </div>
         
