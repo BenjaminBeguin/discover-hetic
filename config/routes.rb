@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 
     #-------------- Categorie -------------#
 
-    get 'categories/'  => "categories#index"
-    post 'categories/create'
+    #get 'categories/'  => "categories#index"
+    #post 'categories/create'
+    #get 'categories/new'
 
-    get 'categories/new'
+
+    #-------------- HOME -------------#
 
     root 'posts#index' #home
 
@@ -50,7 +52,7 @@ Rails.application.routes.draw do
         put 'users/upload', to: 'devise/registrations#upload', as: :upload
     end
       
-    get 'users/' => 'users#index'
+    #get 'users/' => 'users#index'
     get 'users/posts' => 'users#get_user_post'
     get 'users/posts/:id' => 'users#edit_user_post' , :as => :users_posts_id 
     get 'users/:slug' => "posts#by_user", as: :posts_by_user

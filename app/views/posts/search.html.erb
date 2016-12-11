@@ -1,9 +1,9 @@
 <div class="search posts-list">
 	<h1 class="title-main">Search post : "<%= params[:q] %>"</h1>
 	<div class="sort-by">
-		<%= link_to "NEWEST", root_path, :class=>"active" %>
+		<%= link_to "NEWEST", posts_search_path(q: params[:q] ), class: order_by_class_for("") %>
 		<span>/</span>
-		<%= link_to "TOP", root_path(:orderby => "top" ) %>
+		<%= link_to "TOP", posts_search_path(orderby: "top", q: params[:q] ), class: order_by_class_for("top") %>
 	</div>
 	<section class="posts-list">
 		<% if @posts.present? %>
