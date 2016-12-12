@@ -38,7 +38,7 @@
 		</div>
 	</div>
 
-	<% if @post.asset.present? %>
+	<% if @post.url.present? %>
 		<div class="post-thumbnail" style='background-image:url("<%= @post.asset.url %>");'></div>
 	<% end %>
 
