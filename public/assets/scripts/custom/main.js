@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	//EXPAND SEARCH
 	$('.search-button').on('click', function(){		
-		var form = $('.search-form');
+		var form = $('.search-form'); 
 
 		if(!form.hasClass('active')){
 			event.preventDefault();
