@@ -10,12 +10,15 @@
 			<% end %>
 
 			<div class="post-metadatas">
-				<div class="post-link">
-					<a href="<%= post.url %>" target="_blank" class="post-link">
-						<img src="/assets/images/icons/link.svg" alt="">
-						<span>Discover</span>
-					</a>
-				</div>
+
+				<% if !post.url.blank? %>
+					<div class="post-link">
+						<a href="<%= post.url %>" target="_blank" class="post-link">
+							<img src="/assets/images/icons/link.svg" alt="">
+							<span>Discover</span>
+						</a>
+					</div>
+				<% end %>
 
 				<div class="post-votes">
 					<%= render "shared/post_votes",  :post => post %>
