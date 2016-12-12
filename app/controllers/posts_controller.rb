@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
     def index
-        #Post.update_all(published: false)
-
         if params[:orderby] == 'top'
             @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC').published
         else
@@ -9,9 +7,9 @@ class PostsController < ApplicationController
         end
 
         @post_voted = post_like_unlike
+        @best_users = get_best_users
         @day = Date.yesterday
         @top_post = top_of_the_day(@day);
-        @best_users = get_best_users
     end
     
     def top_of_the_day(date)
@@ -33,15 +31,16 @@ class PostsController < ApplicationController
             if params[:orderby] == 'top'
                 @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC').published
             else
-                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC').published
+                @posts = Post.search(params[:q]).paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('id DESC').published
             end
         else
             if params[:orderby] == 'top'
                 @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('vote DESC').published
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('created_at DESC').published
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).order('id DESC').published
             end
         end
+
         @post_voted = post_like_unlike
     end
 
@@ -54,12 +53,10 @@ class PostsController < ApplicationController
             if params[:orderby] == 'top'
                 @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(vote: :desc).published
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(created_at: :desc).published
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(category_id: @category.id).order(id: :desc).published
             end
 
             post_like_unlike
-
-            #--- get the first by vote --#
             date = Date.yesterday
             @top_post = Post.where(category_id: @category.id, created_at: date.midnight..date.end_of_day).order(vote: :desc).published.first
         else
@@ -71,9 +68,11 @@ class PostsController < ApplicationController
         if user_signed_in?
             posts_voted = Vote.select(:post_id).where(user_id: current_user.id)
             @post_voted = [];
+
             posts_voted.each do |post_voted|
                 @post_voted << post_voted.post_id
             end
+
             @post_voted            
         else
             @post_voted = [];
@@ -84,15 +83,16 @@ class PostsController < ApplicationController
         @user_slug = params[:slug];
         @user = User.where(slug: @user_slug).first
 
-        if  @user.present?
+        if @user.present?
             if params[:orderby] == 'top'
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('vote DESC').order(created_at: :desc).published
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('vote DESC').order(id: :desc).published
             else
-                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('created_at DESC').order(created_at: :desc).published
+                @posts = Post.paginate(:page => params[:page], :per_page => POST_PER_PAGE).where(user_id: @user.id).order('id DESC').order(id: :desc).published
             end
+
             post_like_unlike
         else
-            
+            not_found
         end
     end
 

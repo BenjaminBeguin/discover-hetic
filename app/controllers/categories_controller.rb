@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+   
+    # Route deleted
     def index
         @categories = Category.all;
     end
