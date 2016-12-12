@@ -2,12 +2,13 @@
 <% if @top_post %>
 	
 	<div class="post-single top-post">
+	<% if @top_post.asset.url.present? %>
 		<%= link_to post_path(:id => @top_post.id), method: :get do %>
 			<div class="post-picture">
 				<%= image_tag @top_post.asset.url(:medium) %>
 			</div>
 		<% end %>
-
+	<% end %>
 		<div class="post-metadatas">
 			<% if !@top_post.url.blank? %>
 				<div class="post-link">
