@@ -13,18 +13,19 @@
 						<span class="user-name"><%= @post.user.name %></span>					
 						<span class="user-postDate"><%= distance_of_time_in_words_to_now(@post.created_at) %> ago</span>
 					</div>
-			<%
-				else
-					%><span>User doesn't exist</span><%
-				end
-		end %>
+				<% else %>
+					<span>User doesn't exist</span>
+				<% end %>
+		<% end %>
 		<div class="post-metadatas">
-			<div class="post-link">
-				<a href="<%= @post.url %>" target="_blank" class="post-link">
-					<img src="/assets/images/icons/link.svg" alt="">
-					<span>Discover</span>
-				</a>
-			</div>
+			<% if !@post.url.blank? %>
+					<div class="post-link">
+						<a href="<%= @post.url %>" target="_blank" class="post-link">
+							<img src="/assets/images/icons/link.svg" alt="">
+							<span>Discover</span>
+						</a>
+					</div>
+			<% end %>
 			<div class="post-comments">
 				<a href="#comments" class="post-comments">
 					<img src="/assets/images/icons/comment.svg" alt="">
