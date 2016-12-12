@@ -10,8 +10,6 @@ class Post < ApplicationRecord
 	validates :category_id, presence: true
 	validates :title, presence: true
 
-	#default_scope { where(published: true) }
-	#validates :url, :format => URI::regexp(%w(http https));
 
 	# Paperclip file upload validation
 	has_attached_file :asset,
@@ -25,13 +23,15 @@ class Post < ApplicationRecord
 	validates_with AttachmentSizeValidator, attributes: :asset, less_than: 2.megabytes
 
 	before_post_process :check_file_size
+	validate  :check_field
+	validate  :url, :if => :check_url
+	before_save :capitalize_title
+	
 	def check_file_size
 	  valid?
 	  errors[:image_file_size].blank?
 	end
 
-	validate  :check_field
-	validate  :url, :if => :check_url
 
 	def check_url
 		if (self.url)	
@@ -44,7 +44,6 @@ class Post < ApplicationRecord
 		end
 	end
 
-	before_save :capitalize_title
 
 	def check_field
 		if (!self.content || self.content == "") && (!self.url || self.url == "")

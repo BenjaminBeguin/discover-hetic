@@ -21,16 +21,14 @@ class User < ApplicationRecord
   		content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"] }
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 	validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
-
-	before_post_process :check_file_size
-	def check_file_size
-	  valid?
-	  errors[:image_file_size].blank?
-	end
-
 	validate  :url, :if => :check_url
-
 	before_create :add_slug_if_not_exist
+	before_post_process :check_file_size
+
+	def check_file_size
+		valid?
+		errors[:image_file_size].blank?
+	end
 
 	def add_slug_if_not_exist
 	    self.slug = self.to_slug

@@ -30,10 +30,12 @@ class CommentsController < ApplicationController
 	end
 
 	def update
-		if @comment.update(params[:comment].permit(:message))
-			redirect_to post_path(@post)
-		else
-			render 'edit'
+		if user_signed_in?
+			if @comment.update(params[:comment].permit(:message))
+				redirect_to post_path(@post)
+			else
+				render 'edit'
+			end
 		end
 	end
 
