@@ -1,4 +1,4 @@
-s$(document).ready(function(){
+$(document).ready(function(){
 
 	//EXPAND SEARCH
 	$('.search-button').on('click', function(){		

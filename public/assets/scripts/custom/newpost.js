@@ -1,11 +1,11 @@
-var Newpost = function(){
+var Newpost = function(){ 	 
 
 	// DOM
 	this.id = 'newpost';
 	this.fileField = $('#newpost_form_file');
 	this.fileFieldWrapper =$('.file-input');
 
-	this.init();
+	this.init(); 
 
 };
 
