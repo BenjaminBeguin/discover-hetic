@@ -2,7 +2,7 @@
 <% if @top_post %>
 	
 	<div class="post-single top-post">
-	<% if @top_post.asset.url.present? %>
+	<% if @top_post.asset.present? %>
 		<%= link_to post_path(:id => @top_post.id), method: :get do %>
 			<div class="post-picture">
 				<%= image_tag @top_post.asset.url(:medium) %>
